@@ -5,7 +5,8 @@ class CreateItems < ActiveRecord::Migration
       t.string :description
       t.string :picture_url
       t.integer :condition_id
-
+      t.integer :listing_id
+      
       t.timestamps null: false
     end
   end

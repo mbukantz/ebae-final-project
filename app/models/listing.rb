@@ -15,7 +15,9 @@
 #
 
 class Listing < ActiveRecord::Base
-  belongs_to :item
+  has_one :item
   belongs_to :seller
   has_many :watchlists
+  accepts_nested_attributes_for :item
+
 end

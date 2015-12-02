@@ -66,6 +66,7 @@ x.times do |i|
     item.description = Faker::Company.catch_phrase
     item.picture_url = Faker::Company.logo
     item.condition_id = rand(1..7)
+    item.listing_id = i + 1
     item.save
   end
 
@@ -77,7 +78,6 @@ x.times do |i|
 
   y.times do |i|
     listing = Listing.new
-    listing.item_id = i + 1
     listing.starting_price = Faker::Commerce.price * 100
     listing.current_price = listing.starting_price
     listing.shipping_price = Faker::Commerce.price

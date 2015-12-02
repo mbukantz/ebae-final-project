@@ -1,0 +1,33 @@
+<%= form_for(@listing) do |f| %>
+
+  <%= f.fields_for :item do |item| %>
+    <%= item.label :name %>
+    <%= item.text_field :name %> <br>
+
+    <%= item.label :description %>
+    <%= item.text_field :description %><br>
+
+    <%= item.label :picture_url %>
+    <%= item.text_field :picture_url %><br>
+
+    <%= item.label :condition_id %>
+    <%= item.collection_select :condition_id, Condition.all,:id,:description, include_blank: false %><br>
+
+
+  <% end %>
+
+  <%= f.label :starting_price %>
+  <%= f.number_field :starting_price, class: 'text_field', step: 0.01 %><br>
+
+  <%= f.label :shipping_price %>
+  <%= f.number_field :shipping_price, class: 'text_field', step: 0.01  %><br>
+
+  <%= f.label :start_time %>
+  <%= f.datetime_select :start_time %><br>
+
+  <%= f.label :duration %>
+  <%= f.number_field :duration %><br>
+
+  <%= f.submit "Create Listing" %>
+
+<% end %>

@@ -1,7 +1,6 @@
 class CreateListings < ActiveRecord::Migration
   def change
     create_table :listings do |t|
-      t.integer :item_id
       t.integer :starting_price
       t.integer :current_price
       t.integer :shipping_price
