@@ -87,11 +87,11 @@ ActiveRecord::Schema.define(version: 20151202180727) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer  "transaction_id"
+    t.integer  "sale_id"
     t.integer  "rating"
     t.string   "comments"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sales", force: :cascade do |t|

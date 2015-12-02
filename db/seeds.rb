@@ -6,7 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-x = 2
+x = 2 #users
+y = 10 #listings
+z = 5 #sales, which is lower than listings
+w = 7 #number of categories
+
 
 conditions = Condition.create([{description: 'New'},{description: 'Used-Like-New'},{description: 'Used-Very-Good'},{description: 'Used-Good'},{description: 'Used-Fair'},{description: 'Refurbished'},{description: 'Used-Acceptable'}])
 
@@ -19,7 +23,6 @@ x.times do |i|
     user.birthday = Faker::Date.between(30.years.ago, 18.years.ago)
     user.save
   end
-
 
 x.times do |i|
   location = Location.new
@@ -49,7 +52,13 @@ x.times do |i|
     seller.save
   end
 
-  x.times do |i|
+  w.times do |i|
+    category = Category.new
+    category.name = Faker::Commerce.department
+    category.save
+  end
+
+  y.times do |i|
     item = Item.new
     item.name = Faker::Commerce.product_name
     item.description = Faker::Company.catch_phrase
@@ -58,19 +67,36 @@ x.times do |i|
     item.save
   end
 
-  x.times do |i|
+  y.times do |i|
+    category_item = CategoryItem.new
+    category_item.item_id = i + 1
+    category_item.category_id = rand(1..w)
+  end
+
+  y.times do |i|
     listing = Listing.new
     listing.item_id = i + 1
     listing.starting_price = Faker::Commerce.price * 100
     listing.current_price = listing.starting_price
     listing.shipping_price = Faker::Commerce.price
-    listing.seller_id = i + 1
+    listing.seller_id = rand(1..x)
     listing.start_time = Faker::Date.forward(5)
     listing.duration = rand(3..10)
     listing.save
   end
 
-  x.times do |i|
+  z.times do |i|
+    sale = Sale.new
+    sale.listing_id = i + 1
+    sale.buyer_id = rand(1..x)
+    sale.price = Faker::Commerce.price * 100
+    sale.save
+  end
+
+  z.times do |i|
     review = Review.new
-    review.transaction_id = i + 1
+    review.sale_id = i + 1
+    review.rating = rand(1..5)
+    review.comments = Faker::Lorem.sentence
+    review.save
   end
