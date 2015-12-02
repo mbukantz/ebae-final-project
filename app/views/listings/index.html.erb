@@ -1,0 +1,7 @@
+All Listings
+
+<%@listings.each do |listing| %>
+  <p>
+    <a href="/listings/<%=listing.id%>"><%=listing.item.name%></a> 
+  </p>
+<%end%>

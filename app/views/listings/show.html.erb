@@ -2,7 +2,7 @@
 <%= @listing.item.name %> <br>
 <%= @listing.item.description %> <br>
 <%= @listing.item.condition.description %> <br>
-<%= @listing.item.picture_url %> <br>
+<img src="<%= @listing.item.picture_url %>"/>  <br>
 <%= @listing.starting_price / 100.0 %> <br>
 <%= @listing.shipping_price / 100.0 %> <br>
 <%= @listing.start_time %> <br>
