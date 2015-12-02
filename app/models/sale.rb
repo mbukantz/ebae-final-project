@@ -12,5 +12,7 @@
 
 class Sale < ActiveRecord::Base
   belongs_to :listing
-  belongs_to :buyer 
+  belongs_to :buyer
+  has_one :seller, through: :listing
+  has_one :item, through: :listing
 end

@@ -113,8 +113,10 @@ ActiveRecord::Schema.define(version: 20151202180727) do
     t.string   "last_name"
     t.string   "email"
     t.datetime "birthday"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "watchlists", force: :cascade do |t|

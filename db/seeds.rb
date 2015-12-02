@@ -21,6 +21,8 @@ x.times do |i|
     user.last_name = Faker::Name.last_name
     user.email = Faker::Internet.email
     user.birthday = Faker::Date.between(30.years.ago, 18.years.ago)
+    user.password_digest = "password123"
+    user.remember_digest = "password123"
     user.save
   end
 
