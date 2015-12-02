@@ -1,0 +1,19 @@
+<% if current_user %>
+<p align="right" style="padding-right:20px">
+<i>logged in as <%= current_user.email %></i>
+</p>
+     <ul class="nav navbar-nav navbar-right">
+       <li><a href="/user/<%="#{current_user.id}"%>">Home</a></li>
+       <li><a href="/logout">Sign Out</a></li>
+
+     </ul>
+
+<% else %>
+   <ul class="nav navbar-nav navbar-right">
+       <li><a href="/signup">Sign Up!</a></li>
+   </ul>
+   <ul class="nav navbar-nav navbar-right">
+       <li><a href="/login">Login</a></li>
+   </ul>
+   
+<%end%>
