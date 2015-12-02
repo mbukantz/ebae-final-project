@@ -12,4 +12,12 @@
 #
 
 class User < ActiveRecord::Base
+  has_one :buyer
+  has_one :seller
+  has_many :locations
+  has_many :phones
+
+  # Seller.create(user_id: self.id)
+  # Buyer.create(user_id: self.id)
+
 end
