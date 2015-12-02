@@ -1,15 +1,14 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: sales
 #
 #  id         :integer          not null, primary key
-#  first_name :string
-#  last_name  :string
-#  email      :string
-#  birthday   :datetime
+#  listing_id :integer
+#  buyer_id   :integer
+#  price      :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class User < ActiveRecord::Base
+class Sale < ActiveRecord::Base
 end

@@ -1,15 +1,14 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: bids
 #
 #  id         :integer          not null, primary key
-#  first_name :string
-#  last_name  :string
-#  email      :string
-#  birthday   :datetime
+#  amount     :integer
+#  listing_id :integer
+#  buyer_id   :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class User < ActiveRecord::Base
+class Bid < ActiveRecord::Base
 end

@@ -1,13 +1,10 @@
 # == Schema Information
 #
-# Table name: locations
+# Table name: phones
 #
 #  id         :integer          not null, primary key
-#  street     :string
-#  city       :string
-#  state      :string
-#  zip        :string
-#  label      :string
+#  number     :string
+#  type       :string
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -16,17 +13,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  street: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  label: MyString
+  number: MyString
+  type: 
   user_id: 1
 
 two:
-  street: MyString
-  city: MyString
-  state: MyString
-  zip: MyString
-  label: MyString
+  number: MyString
+  type: 
   user_id: 1

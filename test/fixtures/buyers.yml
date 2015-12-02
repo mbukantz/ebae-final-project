@@ -1,17 +1,17 @@
 # == Schema Information
 #
-# Table name: locations
+# Table name: buyers
 #
 #  id         :integer          not null, primary key
-#  street     :string
-#  city       :string
-#  state      :string
-#  zip        :string
-#  label      :string
 #  user_id    :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Location < ActiveRecord::Base
-end
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+
+two:
+  user_id: 1
