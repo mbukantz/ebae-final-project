@@ -1,0 +1,11 @@
+Item: <%=@listing.item.name%> <br>
+Current Price: <%=number_to_currency(@listing.current_price / 100.0)%><br>
+Shipping Price: <%=number_to_currency(@listing.shipping_price / 100.0)%><br>
+Total: <%=number_to_currency((@listing.shipping_price + @listing.current_price) / 100.0)%><br>
+
+Buyer: <%=@listing.highest_bidder.email%>
+
+<%=form_for [@listing, @sale] do |f|%>
+  <%= f.hidden_field :listing_id, value: @listing.id%>
+  <%= f.submit "Create Sale" %>
+<%end%>

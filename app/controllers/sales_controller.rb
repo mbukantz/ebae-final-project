@@ -1,13 +1,17 @@
-class salesController < ApplicationController
+class SalesController < ApplicationController
 
   def new
-    @sale = sale.new
+    @sale = Sale.new
+    @listing = Listing.find(params[:listing_id])
   end
 
   def create
-    sale = Sale.create(sale_params)
+    listing = Listing.find(sale_params[:listing_id])
+    sale = Sale.find_or_initialize_by(listing_id: listing.id)
+    sale.buyer = listing.highest_bidder.buyer
+    sale.price = listing.current_price + listing.shipping_price
     if sale.save
-      redirect_to sales_path
+      redirect_to listing_path(listing)
     else
       redirect_to new_sale_path
     end

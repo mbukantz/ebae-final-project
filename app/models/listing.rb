@@ -19,6 +19,7 @@ class Listing < ActiveRecord::Base
   belongs_to :seller
   has_many :watchlists
   has_many :bids
+  has_one :sale
   accepts_nested_attributes_for :item
 
   validates :starting_price, presence: true

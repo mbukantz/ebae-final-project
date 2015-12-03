@@ -2,19 +2,28 @@
 <h1> <%= @listing.item.name %> </h1> <br>
 Description: <%= @listing.item.description %> <br>
 Condition: <%= @listing.item.condition.description %> <br>
+<a href="#">Watch this item</a><br>
 <img src="<%= @listing.item.picture_url %>"/>  <br>
 
 
-Place Bid: 
-
+Place Bid:
+<% if @listing.active? %>
 <%= form_for(@bid) do |f| %>
   <%= f.number_field :amount, class: 'text_field', step: 0.01, min: (@listing.min_bid_amount / 100.0), :value => (number_with_precision(f.object.amount, :precision => 2) || 0)%>
   <%= f.hidden_field :listing_id, value: @listing.id %>
   <%= f.submit "Place Bid" %>
 <% end %>
+<% else %>
+  Auction Over
+  <% if @listing.seller.user == current_user && @listing.bids.size >= 1 && !@listing.sale %>
+    <%= link_to "Create and Send Invoice", new_listing_sale_path(@listing)%></a>
+    <% elsif @listing.sale %>
+    <%= link_to "Invoice Sent at #{@listing.sale.updated_at}", new_listing_sale_path(@listing)%></a>
+  <% end %>
+<% end %>
 
 <br>
-Current Price: <%= number_to_currency(@listing.current_price / 100.0) if @listing.current_price %><br> 
+Current Price: <%= number_to_currency(@listing.current_price / 100.0) if @listing.current_price %><br>
 Bids: <%= @listing.bids.size %> <br>
 Highest Bidder: <%= link_to @listing.highest_bidder.email, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
 Start Price: <%= number_to_currency(@listing.starting_price / 100.0) %> <br>
