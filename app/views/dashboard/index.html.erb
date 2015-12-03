@@ -48,4 +48,26 @@
 
 <h3>Watching</h3>
 
-<h3>Selling</h3>
+<h3>Selling: Active Listings</h3>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Max Bid</th> 
+    <th>Current Price</th>
+    <th>End Date</th>
+    <th>Time Left</th>
+  </tr>
+
+  <% @user.seller.listings.each do |listing| %>
+    <% if listing.end_time > Time.now %>
+    <tr>
+      <td><a href="/listings/<%= listing.id %>"><%= listing.item.name %></a></td>
+      <td><%= listing.highest_bid ? number_to_currency(listing.highest_bid.amount / 100.0) : number_to_currency(0) %></td>
+      <td><%= listing.current_price ? number_to_currency(listing.current_price / 100.0) : number_to_currency(0) %></td>
+      <td><%= listing.end_time %></td>
+      <td><%= listing.time_left %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </table>
+<h3>Selling: Completed Listings</h3>
