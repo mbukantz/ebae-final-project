@@ -6,6 +6,7 @@ class CreateListings < ActiveRecord::Migration
       t.integer :shipping_price
       t.integer :seller_id
       t.datetime :start_time
+      t.datetime :end_time
       t.integer :duration
 
       t.timestamps null: false

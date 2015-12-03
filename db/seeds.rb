@@ -83,6 +83,7 @@ x.times do |i|
     listing.seller_id = rand(1..x)
     listing.start_time = Faker::Date.forward(5)
     listing.duration = rand(3..10)
+    listing.end_time = listing.start_time + listing.duration.days
     listing.save
   end
 

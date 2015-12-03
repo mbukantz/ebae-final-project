@@ -11,18 +11,40 @@
     <th>Time Left</th>
   </tr>
   <% @user.buyer.unique_listings.each do |listing| %>
-    <tr>
-      <td><%= link_to listing.item.name, listing_path(listing) %></td>
-      <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td> 
-      <td><%= number_to_currency(listing.current_price / 100.0) %></td>
-      <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
-      <td><%= listing.end_time %></td>
-      <td><%= listing.time_left %></td>
-    </tr>
+    <% if listing.active? %>
+      <tr>
+        <td><%= link_to listing.item.name, listing_path(listing) %></td>
+        <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td> 
+        <td><%= number_to_currency(listing.current_price / 100.0) %></td>
+        <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
+        <td><%= listing.end_time %></td>
+        <td><%= listing.time_left %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
 
-<h3>Won</h3>
+<h3>Ended</h3>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Max Bid</th> 
+    <th>Price</th>
+    <th>Won</th>
+    <th>End Date</th>
+  </tr>
+  <% @user.buyer.unique_listings.each do |listing| %>
+    <% if listing.inactive? %>
+      <tr>
+        <td><%= link_to listing.item.name, listing_path(listing) %></td>
+        <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td> 
+        <td><%= number_to_currency(listing.current_price / 100.0) %></td>
+        <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
+        <td><%= listing.end_time %></td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>
 
 <h3>Watching</h3>
 

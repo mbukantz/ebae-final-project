@@ -8,12 +8,11 @@
 #  shipping_price :integer
 #  seller_id      :integer
 #  start_time     :datetime
+#  end_time       :datetime
 #  duration       :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-
-
 
 require 'spec_helper'
 require 'rails_helper'
