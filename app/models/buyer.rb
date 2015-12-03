@@ -12,4 +12,6 @@ class Buyer < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
   has_many :watchlists
+
+  validates_presence_of :user_id
 end

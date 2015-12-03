@@ -15,5 +15,10 @@
 
 class Location < ActiveRecord::Base
   belongs_to :user
-   
+  validates :street, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
+  validates :zip, presence: true
+  validates :user_id, presence: true
+
 end
