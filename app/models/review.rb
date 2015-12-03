@@ -12,6 +12,7 @@
 
 class Review < ActiveRecord::Base
   belongs_to :sale
+  belongs_to :user
 
   validates :sale_id, presence: true
   validates :rating, presence: true

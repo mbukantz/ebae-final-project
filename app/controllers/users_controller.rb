@@ -35,6 +35,15 @@ class UsersController < ApplicationController
     redirect_to user_path(user)
   end
 
+  def feedback
+    @user = User.find(params[:id])
+    @buyerreviews =  @user.buyer.feedback_received
+    @sellerreviews = @user.seller.feedback_received 
+  end
+
+  def givefeedback
+  end
+
 private
 
   def user_params

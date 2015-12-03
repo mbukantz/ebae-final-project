@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20151203163747) do
     t.integer  "sale_id"
     t.integer  "rating"
     t.string   "comments"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

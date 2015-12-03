@@ -10,8 +10,14 @@
 
 class Seller < ActiveRecord::Base
   belongs_to :user
-  has_many :reviews
+  has_many :sales, through: :listings
+  has_many :reviews, through: :sales
   has_many :listings
   validates :user_id, presence: true
+
+  def feedback_received
+    # self.reviews.select {|review| review.user_id != self.id}
+    self.reviews.where("user_id != ?", self.user.id)
+  end
 
 end
