@@ -15,4 +15,8 @@ class Sale < ActiveRecord::Base
   belongs_to :buyer
   has_one :seller, through: :listing
   has_one :item, through: :listing
+
+  validates :listing_id, presence: true
+  validates :buyer_id, presence: true
+  validates :price, presence: true
 end

@@ -3,7 +3,6 @@
 # Table name: listings
 #
 #  id             :integer          not null, primary key
-#  item_id        :integer
 #  starting_price :integer
 #  current_price  :integer
 #  shipping_price :integer
@@ -20,4 +19,8 @@ class Listing < ActiveRecord::Base
   has_many :watchlists
   accepts_nested_attributes_for :item
 
+  validates :starting_price, presence: true
+  validates :current_price, presence: true
+  validates :shipping_price, presence: true
+  validates :seller_id, presence: true
 end

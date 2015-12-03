@@ -7,8 +7,5 @@ FactoryGirl.define do
     password 'foobar123'
     password_confirmation 'foobar123'
 
-    # trait :doe do
-    #   last_name 'doe'
-    # end
   end
 end

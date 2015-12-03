@@ -12,5 +12,9 @@
 
 class Bid < ActiveRecord::Base
   belongs_to :buyer
-  belongs_to :listing 
+  belongs_to :listing
+
+  validates :amount, presence: true
+  validates :listing_id, presence: true
+  validates :buyer_id, presence: true
 end
