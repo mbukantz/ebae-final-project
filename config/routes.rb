@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :listings
   resources :search, only: [:index]
+  resources :bids, only: [:create]
 
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new', as: 'log_in'
