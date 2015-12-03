@@ -36,11 +36,6 @@ RSpec.describe Item, :type => :model do
        expect(item).to_not be_valid
      end
    end
-   context 'when an item is invalid' do
-      it 'is invalid without a listing id' do
-       item.listing_id = nil
-       expect(item).to_not be_valid
-     end
-   end
+
 
 end

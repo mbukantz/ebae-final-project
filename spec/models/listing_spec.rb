@@ -28,12 +28,6 @@ RSpec.describe Listing, type: :model do
       end
     end
 
-    context 'when there is no current price' do
-      it 'is invalid if there is no current price' do
-        listing.current_price = nil
-        expect(listing).to_not be_valid
-      end
-    end
 
     context 'when there is no shipping price' do
       it 'is invalid if there is no shipping price' do

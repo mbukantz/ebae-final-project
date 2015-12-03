@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy, :new]
   resources :users
   resources :listings
+  resources :reviews
   resources :search, only: [:index]
   resources :bids, only: [:create]
 

@@ -1,0 +1,8 @@
+All Reviews
+
+<%@reviews.each do |review| %>
+  <p>
+    <a href="/reviews/<%=review.id%>"> <%=review.rating%></a><br>
+    <%= review.comments %>
+  </p>
+<%end%>
