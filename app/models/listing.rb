@@ -42,9 +42,18 @@ class Listing < ActiveRecord::Base
   end
 
   def highest_bid
-    ordered_bids = self.bids.sort_by(&:amount)
-    ordered_bids.reverse[0] if ordered_bids
-    ##still need to handle use case where 2 users have same bid amount. earlier bid should take precedence
+    # ordered_bids = self.bids.sort_by(&:amount)
+    # ordered_bids.reverse[0] if ordered_bids
+    if self.bids.present?
+      highest_bids = self.bids.group_by(&:amount).max.last
+      if highest_bids.size == 1
+        highest_bids.first
+      else
+        highest_bids.sort_by(&:created_at).first
+      end
+    else
+      nil
+    end
   end
 
   def highest_bidder
