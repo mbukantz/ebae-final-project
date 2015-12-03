@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203163747) do
+ActiveRecord::Schema.define(version: 20151203181858) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(version: 20151203163747) do
     t.integer  "condition_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.integer  "listing_id"
   end
 
   create_table "listings", force: :cascade do |t|

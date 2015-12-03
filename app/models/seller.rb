@@ -11,6 +11,6 @@
 class Seller < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
+  validates :user_id, presence: true
 
-    validates :user_id, presence: true
 end
