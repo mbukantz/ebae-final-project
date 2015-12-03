@@ -10,6 +10,9 @@ class UsersController < ApplicationController
       Buyer.create(user_id: @user.id)
       Seller.create(user_id: @user.id)
       session[:user_id] = @user.id
+
+      ExampleMailer.sample_email(@user).deliver_now
+
       redirect_to root_path
     else
       flash.now[:error] = "COULD NOT DAVE USER"
