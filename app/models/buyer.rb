@@ -13,5 +13,5 @@ class Buyer < ActiveRecord::Base
   has_many :reviews
   has_many :watchlists
 
-  validates_presence_of :user_id
+  validates :user_id, presence: true
 end

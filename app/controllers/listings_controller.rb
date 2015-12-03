@@ -13,7 +13,7 @@ class ListingsController < ApplicationController
     if listing.save
       redirect_to listing_path(listing)
     else
-
+      redirect_to new_listing_path
     end
   end
 
@@ -23,6 +23,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @bid = Bid.new
   end
 
   def edit

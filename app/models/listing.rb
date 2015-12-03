@@ -3,7 +3,6 @@
 # Table name: listings
 #
 #  id             :integer          not null, primary key
-#  item_id        :integer
 #  starting_price :integer
 #  current_price  :integer
 #  shipping_price :integer
@@ -18,6 +17,52 @@ class Listing < ActiveRecord::Base
   has_one :item
   belongs_to :seller
   has_many :watchlists
+  has_many :bids
   accepts_nested_attributes_for :item
+
+  validates :starting_price, presence: true
+  validates :shipping_price, presence: true
+  validates :seller_id, presence: true
+
+  def end_time
+    start_time + duration.days
+  end
+
+  def time_left
+    t = end_time - Time.now
+    mm, ss = t.divmod(60)            #=> [4515, 21]
+    hh, mm = mm.divmod(60)           #=> [75, 15]
+    dd, hh = hh.divmod(24)           #=> [3, 3]
+    "%d days, %d hours, %d minutes and %d seconds" % [dd, hh, mm, ss]
+  end
+
+  def min_bid_amount
+    if current_price
+      current_price + 1
+    else
+      starting_price
+    end
+  end
+
+  def highest_bid
+    # ordered_bids = self.bids.sort_by(&:amount)
+    # ordered_bids.reverse[0] if ordered_bids
+    if self.bids.present?
+      highest_bids = self.bids.group_by(&:amount).max.last
+      if highest_bids.size == 1
+        highest_bids.first
+      else
+        highest_bids.sort_by(&:created_at).first
+      end
+    else
+      nil
+    end
+  end
+
+  def highest_bidder
+    if highest_bid
+      highest_bid.buyer.user
+    end
+  end
 
 end

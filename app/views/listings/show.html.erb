@@ -1,10 +1,25 @@
 
-<%= @listing.item.name %> <br>
-<%= @listing.item.description %> <br>
-<%= @listing.item.condition.description %> <br>
+<h1> <%= @listing.item.name %> </h1> <br>
+Description: <%= @listing.item.description %> <br>
+Condition: <%= @listing.item.condition.description %> <br>
 <img src="<%= @listing.item.picture_url %>"/>  <br>
-<%= @listing.starting_price / 100.0 %> <br>
-<%= @listing.shipping_price / 100.0 %> <br>
-<%= @listing.start_time %> <br>
-<%= @listing.duration %> <br>
-<%= @listing.seller.user.name %> <br>
+
+
+Place Bid: 
+
+<%= form_for(@bid) do |f| %>
+  <%= f.number_field :amount, class: 'text_field', step: 0.01, min: (@listing.min_bid_amount / 100.0), :value => (number_with_precision(f.object.amount, :precision => 2) || 0)%>
+  <%= f.hidden_field :listing_id, value: @listing.id %>
+  <%= f.submit "Place Bid" %>
+<% end %>
+
+<br>
+Current Price: <%= @listing.current_price / 100.0 if @listing.current_price %><br> 
+Bids: <%= @listing.bids.size %> <br>
+Highest Bidder: <%= link_to @listing.highest_bidder.email, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
+Start Price: <%= @listing.starting_price / 100.0 %> <br>
+Shipping Price: <%= @listing.shipping_price / 100.0 %> <br>
+Start Time: <%= @listing.start_time %> <br>
+End Time: <%= @listing.end_time %> <br>
+Time Left: <%= @listing.time_left %> <br>
+Seller: <%= link_to @listing.seller.user.email, user_path(@listing.seller.user) %> <br>
