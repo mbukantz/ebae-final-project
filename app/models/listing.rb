@@ -44,6 +44,10 @@ class Listing < ActiveRecord::Base
     end
   end
 
+  def highest_bid_by_user(user)
+    self.bids.where(buyer_id: user.buyer.id).max_by(&:amount)
+  end
+
   def highest_bid
     # ordered_bids = self.bids.sort_by(&:amount)
     # ordered_bids.reverse[0] if ordered_bids
