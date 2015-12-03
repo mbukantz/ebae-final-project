@@ -21,7 +21,6 @@ class Listing < ActiveRecord::Base
   accepts_nested_attributes_for :item
 
   validates :starting_price, presence: true
-  validates :current_price, presence: true
   validates :shipping_price, presence: true
   validates :seller_id, presence: true
 
