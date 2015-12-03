@@ -1,7 +1,8 @@
 <h3>Hello, <%= @user.name %>!</h3>
+<%= link_to "Edit Profile",  edit_user_path %>
 
 <h3>Account Info</h3>
-<p>Addresses on File:</p>
+<p>Addresses:</p>
 <% @user.locations.each do |location| %>
   <%= location.label.capitalize %>:
   <br>
@@ -11,4 +12,14 @@
   <%= location.state %>
   <%= location.zip %>
 <% end %>
+
+<p>Phone Numbers:</p>
+<% @user.phones.each do |phone| %>
+  <p><%= phone.label %>: <%= phone.number %></p>
+<% end %>
+
+<p>Email:</p>
+<%= @user.email %>
+
+
 

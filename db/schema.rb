@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202180727) do
+ActiveRecord::Schema.define(version: 20151203163747) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
@@ -51,12 +51,12 @@ ActiveRecord::Schema.define(version: 20151202180727) do
     t.string   "description"
     t.string   "picture_url"
     t.integer  "condition_id"
-    t.integer  "listing_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   create_table "listings", force: :cascade do |t|
+    t.integer  "item_id"
     t.integer  "starting_price"
     t.integer  "current_price"
     t.integer  "shipping_price"
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20151202180727) do
 
   create_table "phones", force: :cascade do |t|
     t.string   "number"
-    t.string   "type"
+    t.string   "label"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
