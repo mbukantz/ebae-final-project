@@ -8,5 +8,5 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new', as: 'log_in'
   get '/logout', to: 'sessions#destroy', as: 'log_out'
-  root to: "users#show"
+  root to: "home#index"
 end

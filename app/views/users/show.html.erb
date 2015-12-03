@@ -1,1 +1,14 @@
-HELLO!
+<h3>Hello, <%= @user.name %>!</h3>
+
+<h3>Account Info</h3>
+<p>Addresses on File:</p>
+<% @user.locations.each do |location| %>
+  <%= location.label.capitalize %>:
+  <br>
+  <%= location.street %>
+  <br>
+  <%= location.city %>, 
+  <%= location.state %>
+  <%= location.zip %>
+<% end %>
+
