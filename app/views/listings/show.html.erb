@@ -16,7 +16,7 @@ Place Bid:
 <br>
 Current Price: <%= @listing.current_price / 100.0 if @listing.current_price %><br> 
 Bids: <%= @listing.bids.size %> <br>
-Highest Bidder: <%= @listing.highest_bidder.email if @listing.highest_bidder %><br>
+Highest Bidder: <%= link_to @listing.highest_bidder.email, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
 Start Price: <%= @listing.starting_price / 100.0 %> <br>
 Shipping Price: <%= @listing.shipping_price / 100.0 %> <br>
 Start Time: <%= @listing.start_time %> <br>
