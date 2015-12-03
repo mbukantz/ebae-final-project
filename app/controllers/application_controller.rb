@@ -5,8 +5,14 @@ class ApplicationController < ActionController::Base
 
   #before_action :require_login
 
+  helper_method :dollars
+
 
  include SessionsHelper
+
+  def dollars
+    '%.2f' % (self / 100)
+  end
 
 
  private

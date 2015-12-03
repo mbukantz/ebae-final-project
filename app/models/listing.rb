@@ -8,6 +8,7 @@
 #  shipping_price :integer
 #  seller_id      :integer
 #  start_time     :datetime
+#  end_time       :datetime
 #  duration       :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
@@ -24,16 +25,32 @@ class Listing < ActiveRecord::Base
   validates :shipping_price, presence: true
   validates :seller_id, presence: true
 
-  def end_time
-    start_time + duration.days
+  def self.active
+    Listing.where('end_time > ?', Time.now)
+  end
+
+  def self.inactive
+    Listing.where('end_time < ?', Time.now)
+  end
+
+  def active?
+    self.end_time > Time.now
+  end
+
+  def inactive?
+    self.end_time < Time.now
   end
 
   def time_left
-    t = end_time - Time.now
-    mm, ss = t.divmod(60)            #=> [4515, 21]
-    hh, mm = mm.divmod(60)           #=> [75, 15]
-    dd, hh = hh.divmod(24)           #=> [3, 3]
-    "%d days, %d hours, %d minutes and %d seconds" % [dd, hh, mm, ss]
+    if self.active?
+      t = end_time - Time.now
+      mm, ss = t.divmod(60)            #=> [4515, 21]
+      hh, mm = mm.divmod(60)           #=> [75, 15]
+      dd, hh = hh.divmod(24)           #=> [3, 3]
+      "%d days, %d hours, %d minutes and %d seconds" % [dd, hh, mm, ss]
+    else
+      "Ended"
+    end
   end
 
   def min_bid_amount
@@ -42,6 +59,10 @@ class Listing < ActiveRecord::Base
     else
       starting_price
     end
+  end
+
+  def highest_bid_by_user(user)
+    self.bids.where(buyer_id: user.buyer.id).max_by(&:amount)
   end
 
   def highest_bid

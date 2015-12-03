@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :reviews
   resources :search, only: [:index]
   resources :bids, only: [:create]
+  resources :dashboard, only: [:index]
 
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new', as: 'log_in'

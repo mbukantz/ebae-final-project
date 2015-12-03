@@ -12,5 +12,11 @@ class Buyer < ActiveRecord::Base
   belongs_to :user
   has_many :reviews
   has_many :watchlists
-  validates :user_id, presence: true
+  has_many :bids
+  has_many :listings, through: :bids
+
+  def unique_listings
+    listings.uniq
+  end
+
 end
