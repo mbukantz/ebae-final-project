@@ -21,10 +21,26 @@
 <p>Email:</p>
 <%= @user.email %>
 
-<h3>Your Listings</h3>
-<ul>
+<h3>Your Active Listings</h3>
 
+<ul>
+<% @user.seller.listings.each do |listing| %>
+  <% if listing.end_time > Time.now %>
+    <li><a href="/listings/<%= listing.id %>"><%= listing.item.name %></a></li>
+  <% end %>
+<% end %>
 </ul>
+
+<h3>Your Completed Listings</h3>
+
+<ul>
+<% @user.seller.listings.each do |listing| %>
+  <% if Time.now > listing.end_time %>
+    <li><a href="/listings/<%= listing.id %>"><%= listing.item.name %></a></li>
+  <% end %>
+<% end %>
+</ul>
+
 
 
 

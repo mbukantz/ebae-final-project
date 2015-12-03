@@ -40,7 +40,7 @@ x.times do |i|
   x.times do |i|
     phone = Phone.new
     phone.number = Faker::PhoneNumber.phone_number
-    phone.type = "cell"
+    phone.label = "cell"
     phone.user_id = i + 1
     phone.save
   end
