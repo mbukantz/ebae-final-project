@@ -1,1 +1,65 @@
-HELLO!
+<h3>Hello, <%= @user.first_name %>!</h3>
+<%= link_to "Edit Profile",  edit_user_path %>
+
+<h3>Account Info</h3>
+<p>Addresses:</p>
+<% @user.locations.each do |location| %>
+  <%= location.label.capitalize %>:
+  <br>
+  <%= location.street %>
+  <br>
+  <%= location.city %>, 
+  <%= location.state %>
+  <%= location.zip %>
+<% end %>
+
+<p>Phone Numbers:</p>
+<% @user.phones.each do |phone| %>
+  <p><%= phone.label %>: <%= phone.number %></p>
+<% end %>
+
+<p>Email:</p>
+<%= @user.email %>
+
+<h3>Your Active Listings</h3>
+
+<ul>
+<% @user.seller.listings.each do |listing| %>
+  <% if listing.end_time > Time.now %>
+    <li><a href="/listings/<%= listing.id %>"><%= listing.item.name %></a>
+      <ul> 
+        <li>
+          Current High Bid: $<%= listing.highest_bid ? listing.highest_bid.amount / 100.0 : 0 %>
+        </li>
+        <li>
+          Current Highest Bidder:
+          <%= listing.highest_bidder ? listing.highest_bidder.name : "No one has bid yet!" %>
+        </li>
+        <li>
+          Time Left: <%= listing.time_left %>
+        </li>
+      </ul>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+
+<h3>Your Completed Listings</h3>
+
+<ul>
+<% @user.seller.listings.each do |listing| %>
+  <% if Time.now > listing.end_time %>
+    <li>
+      <a href="/listings/<%= listing.id %>"><%= listing.item.name %></a>
+      <ul>
+        Sale Price: 
+      </ul>
+    </li>
+  <% end %>
+<% end %>
+</ul>
+
+
+
+
+

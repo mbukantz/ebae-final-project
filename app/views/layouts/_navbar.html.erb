@@ -1,9 +1,9 @@
 <% if current_user %>
 <p align="right" style="padding-right:20px">
-<i>logged in as <%= current_user.email %></i>
+<i>logged in as <a href="/users/<%="#{current_user.id}"%>"><%= current_user.email %></a></i>
 </p>
      <ul class="nav navbar-nav navbar-right">
-       <li><a href="/user/<%="#{current_user.id}"%>">Home</a></li>
+       <li><a href="/users/<%="#{current_user.id}"%>">Home</a></li>
        <li><a href="/listings/new">Create Listing</a></li>
        <li><a href="/logout">Sign Out</a></li>
 
