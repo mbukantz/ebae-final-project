@@ -26,7 +26,20 @@
 <ul>
 <% @user.seller.listings.each do |listing| %>
   <% if listing.end_time > Time.now %>
-    <li><a href="/listings/<%= listing.id %>"><%= listing.item.name %></a></li>
+    <li><a href="/listings/<%= listing.id %>"><%= listing.item.name %></a>
+      <ul> 
+        <li>
+          Current High Bid: $<%= listing.highest_bid ? listing.highest_bid.amount / 100.0 : 0 %>
+        </li>
+        <li>
+          Current Highest Bidder:
+          <%= listing.highest_bidder ? listing.highest_bidder.name : "No one has bid yet!" %>
+        </li>
+        <li>
+          Time Left: <%= listing.time_left %>
+        </li>
+      </ul>
+    </li>
   <% end %>
 <% end %>
 </ul>
@@ -36,7 +49,12 @@
 <ul>
 <% @user.seller.listings.each do |listing| %>
   <% if Time.now > listing.end_time %>
-    <li><a href="/listings/<%= listing.id %>"><%= listing.item.name %></a></li>
+    <li>
+      <a href="/listings/<%= listing.id %>"><%= listing.item.name %></a>
+      <ul>
+        Sale Price: 
+      </ul>
+    </li>
   <% end %>
 <% end %>
 </ul>
