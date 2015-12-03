@@ -15,8 +15,11 @@ class Bid < ActiveRecord::Base
   belongs_to :listing 
 
   def update_listing_price
-    if self.listing.bids.size > 1 && (self.listing.highest_bid.amount + 1 < self.amount)
+    if self.listing.highest_bidder == self.buyer.user
+    elsif self.listing.bids.size >= 1 && (self.listing.highest_bid.amount + 1 < self.amount)
       self.listing.current_price = self.listing.highest_bid.amount + 1
+    elsif self.listing.bids.empty?
+      self.listing.current_price = self.listing.starting_price
     else
       self.listing.current_price = self.amount
     end
