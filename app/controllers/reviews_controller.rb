@@ -5,8 +5,8 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    byebug
     review = Review.create(review_params)
-    review.sale_id = 6
     if review.save
       redirect_to reviews_path
     else
