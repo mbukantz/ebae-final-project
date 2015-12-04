@@ -42,7 +42,7 @@ Highest Bidder: <%= link_to @listing.highest_bidder.name, user_path(@listing.hig
 Item Bid History:
 <ol>
 <% @past_bids.each do |bid| %>
-<li><%= bid.buyer.user.name %>, <%= bid.amount %>, <%= bid.created_at %></li>
+<li><%= bid.buyer.user.name %>, <%= number_to_currency(bid.amount / 100.0) %>, <%= bid.created_at %></li>
 <% end %>
 </ol>
 

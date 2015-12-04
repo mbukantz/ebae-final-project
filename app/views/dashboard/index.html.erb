@@ -9,6 +9,7 @@
     <th>Winning</th>
     <th>End Date</th>
     <th>Time Left</th>
+    <th>Bid History</th>
   </tr>
   <% @user.buyer.unique_listings.each do |listing| %>
     <% if listing.active? %>
@@ -19,6 +20,17 @@
         <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
         <td><%= listing.end_time %></td>
         <td><%= listing.time_left %></td>
+        <% user_bids = [] %>
+        <td><% listing.bids.each do |bid| %>
+            <% if bid.buyer.user == @user %>
+              <% user_bids << bid %>
+            <ul>
+              <li><%= number_to_currency(bid.amount / 100.0) %> at <%= bid.created_at %> </li>
+              <% end %>
+            </ul>
+            <% end %>
+            Total Bids on item: <%= user_bids.count %> 
+          </td>
       </tr>
     <% end %>
   <% end %>
@@ -32,6 +44,7 @@
     <th>Price</th>
     <th>Won</th>
     <th>End Date</th>
+    <th>Bid History</th>
   </tr>
   <% @user.buyer.unique_listings.each do |listing| %>
     <% if listing.inactive? %>
@@ -41,6 +54,17 @@
         <td><%= number_to_currency(listing.current_price / 100.0) %></td>
         <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
         <td><%= listing.end_time %></td>
+        <% user_bids = [] %>
+        <td><% listing.bids.each do |bid| %>
+            <% if bid.buyer.user == @user %>
+              <% user_bids << bid %>
+            <ul>
+              <li><%= number_to_currency(bid.amount / 100.0) %> at <%= bid.created_at %>
+              <% end %></li>
+            </ul>
+            <% end %>
+            Total Bids on item: <%= user_bids.count %> 
+          </td>
       </tr>
     <% end %>
   <% end %>
