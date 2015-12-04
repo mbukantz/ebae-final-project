@@ -1,4 +1,4 @@
-<% recent_views_view_obj = RecentlyViewedListingsViewObject.new %>
+<% recent_views_view_obj = RecentlyViewedListingsViewObject.new(current_user) %>
 
 <% if recent_views_view_obj %>
   <h3>You recently viewed these listings:</h3>
@@ -6,7 +6,7 @@
     <div class="recently-viewed-listing">
       <%= viewed_listing.listing.item.name %>
       <br>
-      <a href="/listings/<%= recently_viewed_listing.listing.id %>"><img src="<%= recently_viewed_listing.listing.item.picture_url %>" width="200" height="200" /></a>
+      <a href="/listings/<%= viewed_listing.listing.id %>"><img src="<%= viewed_listing.listing.item.picture_url %>" width="200" height="200" /></a>
     </div>
   <% end %>
 <% else %>

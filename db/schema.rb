@@ -33,6 +33,13 @@ ActiveRecord::Schema.define(version: 20151204202045) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "category_items", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "conditions", force: :cascade do |t|
     t.string   "description"
     t.datetime "created_at",  null: false
@@ -45,7 +52,6 @@ ActiveRecord::Schema.define(version: 20151204202045) do
     t.string   "picture_url"
     t.integer  "condition_id"
     t.integer  "listing_id"
-    t.integer  "category_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
