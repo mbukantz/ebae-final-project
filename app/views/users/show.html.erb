@@ -4,7 +4,7 @@
   <%= link_to "Edit Profile",  edit_user_path %>
 
   <h3>Account Info</h3>
-  <p>Addresses:</p>
+  <h4>Addresses:</h4>
   <% @user.locations.each do |location| %>
     <%= location.label.capitalize %>:
     <br>
@@ -15,12 +15,12 @@
     <%= location.zip %>
   <% end %>
 
-  <p>Phone Numbers:</p>
+  <h4>Phone Numbers:</h4>
   <% @user.phones.each do |phone| %>
     <p><%= phone.label %>: <%= phone.number %></p>
   <% end %>
 
-  <p>Email:</p>
+  <h4>Email:</h4>
   <%= @user.email %>
 <% else %>
   You do not have access to this profile
