@@ -14,6 +14,8 @@ w = 7 #number of categories
 
 conditions = Condition.create([{description: 'New'},{description: 'Used-Like-New'},{description: 'Used-Very-Good'},{description: 'Used-Good'},{description: 'Used-Fair'},{description: 'Refurbished'},{description: 'Used-Acceptable'}])
 
+categories = Category.create([{name:"Collectibles & art"},{name:"Electronics"},{name:"Entertainment memorabilia"},{name:"Fashion"},{name:"Home and garden"},{name:"Motors"},{name:"Sporting goods"},{name:"Toys & hobbies"},{name:"Other"}])
+
 
 x.times do |i|
   user = User.new
@@ -54,11 +56,6 @@ x.times do |i|
     seller.save
   end
 
-  w.times do |i|
-    category = Category.new
-    category.name = Faker::Commerce.department
-    category.save
-  end
 
   y.times do |i|
     item = Item.new
@@ -105,7 +102,6 @@ x.times do |i|
     bid.listing_id = rand(1..y)
     bid.amount = bid.listing.current_price + i + 10
     bid.buyer_id = rand(1..x)
-    bid.created_at = Faker::Date.backward(15)          
-    bid.save         
+    bid.created_at = Faker::Date.backward(15)
+    bid.save
   end
-

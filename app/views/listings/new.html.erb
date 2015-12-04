@@ -13,6 +13,9 @@
     <%= item.label :condition_id %>
     <%= item.collection_select :condition_id, Condition.all,:id,:description, include_blank: false %><br>
 
+    <%= item.label :category_id %>
+    <%= item.collection_select :category_id, Category.all,:id,:name, include_blank: false %><br>
+
 
   <% end %>
 
