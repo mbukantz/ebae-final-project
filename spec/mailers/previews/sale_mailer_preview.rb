@@ -6,7 +6,7 @@ class SaleMailerPreview < ActionMailer::Preview
   end
 
   def buyer_mail_preview
-    SaleMailer.buyer_email(User.first)
+    SaleMailer.buyer_email(Sale.first)
   end
 
 end

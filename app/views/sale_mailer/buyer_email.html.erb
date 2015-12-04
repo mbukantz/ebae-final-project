@@ -4,9 +4,38 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Congrats, <%= @user.name %>!</h1>
+    <h1>Congrats, <%= @buyer.name %>!</h1>
+   <h2>You are the winning bidder!</h2>
+    <h3>Sale Details:</h3>
     <p>
-      You just bought an item! This is the BUYER's new sale email!
+Item: <%= @listing.item.name %><br>
+Final Sale Price: <%=number_to_currency(@listing.current_price / 100.0)%><br>
+Shipping: <%=number_to_currency(@listing.shipping_price / 100.0)%><br>
+----------------------------------<br>
+Total: <%=number_to_currency((@listing.shipping_price + @listing.current_price) / 100.0)%><br>
     </p>
+
+<h3>Seller Information:</h3>
+<ul>
+  <li>Name: <%= @seller.name %></li>
+  <li>Email: <%= @seller.email %></li>
+
+  <li>Phone Number: <% @seller.phones.each do |phone| %>
+      <ul>
+        <li>Type: <%= phone.label.capitalize %>, Number: <%= phone.number %>
+        <% end %>
+        </li>
+      </ul>
+  <li>Address: <% @seller.locations.each do |location| %>
+    <ul>
+     <li>
+      Type: <%= location.label.capitalize %><br>
+       <%= location.street %> <br>
+       <%= location.city %>, <%= location.state %> <%= location.zip %>  
+       <% end %>
+    </li>
+  </ul>
+
+
   </body>
 </html>

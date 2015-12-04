@@ -6,6 +6,7 @@
   <body>
     <h1>Congrats, <%= @seller.name %>!</h1>
     <h2>You just finalized a sale.</h2>
+    <h3>Sale Details:</h3>
     <p>
 Item: <%= @listing.item.name %><br>
 Final Sale Price: <%=number_to_currency(@listing.current_price / 100.0)%><br>
