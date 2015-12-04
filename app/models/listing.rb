@@ -91,6 +91,4 @@ class Listing < ActiveRecord::Base
     self.watchlists.length
   end
 
-  
-
 end

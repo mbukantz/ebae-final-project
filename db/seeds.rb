@@ -101,6 +101,7 @@ x.times do |i|
     review = Review.new
     review.sale_id = i + 1
     review.rating = rand(1..5)
+    review.user_id = i + 1
     review.comments = Faker::Lorem.sentence
     review.save
   end

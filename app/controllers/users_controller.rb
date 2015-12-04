@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       Seller.create(user_id: @user.id)
       session[:user_id] = @user.id
 
-      # ExampleMailer.sample_email(@user).deliver_now
+      ExampleMailer.sample_email(@user).deliver_now
 
       redirect_to root_path
     else
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # binding.pry
     @user = User.find(params[:id])
   end
 

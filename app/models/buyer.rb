@@ -25,4 +25,6 @@ class Buyer < ActiveRecord::Base
     self.reviews.where("user_id != ?", self.user.id)
   end
 
+
+
 end
