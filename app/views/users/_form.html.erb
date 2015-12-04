@@ -31,6 +31,41 @@
    <%= f.date_field :birthday %><br>
  </div>
 
+  <%= f.fields_for :locations do |location_field| %>
+
+    <div>
+      <%= location_field.label 'Address Type' %><br>
+      <%= location_field.text_field :label %><br>
+    </div>
+    <div>
+      <%= location_field.label 'Street Address (include apartment number if application)' %><br>
+      <%= location_field.text_field :street %><br>
+    </div>
+    <div>
+      <%= location_field.label 'City' %><br>
+      <%= location_field.text_field :city %><br>
+    </div>
+    <div>
+      <%= location_field.label 'State' %><br>
+      <%= location_field.text_field :state %><br>
+    </div>
+    <div>
+      <%= location_field.label 'Zip Code' %><br>
+      <%= location_field.text_field :zip %><br>
+    </div>
+  <% end %>
+
+  <%= f.fields_for :phones do |phone_field| %>
+   <div>
+      <%= phone_field.label 'Number' %><br>
+      <%= phone_field.text_field :number %><br>
+    </div>
+    <div>
+      <%= phone_field.label 'Type (Cell or Home)' %><br>
+      <%= phone_field.text_field :label %><br>
+    </div>
+  <% end %>
+
 <% if !current_user %>
  <div class="field">
    <%= f.label :password %><br>

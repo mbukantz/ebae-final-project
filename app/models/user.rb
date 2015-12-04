@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
   validates :birthday, presence: true
   # validates :password, presence: true, length: 6..15
 
+  accepts_nested_attributes_for :locations
+  accepts_nested_attributes_for :phones
+
   has_secure_password
   attr_accessor :remember_token
 
