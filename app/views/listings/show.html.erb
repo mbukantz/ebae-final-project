@@ -37,7 +37,16 @@ Place Bid:
 <br>
 Current Price: <%= number_to_currency(@listing.current_price / 100.0) if @listing.current_price %><br>
 Bids: <%= @listing.bids.size %> <br>
-Highest Bidder: <%= link_to @listing.highest_bidder.email, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
+Highest Bidder: <%= link_to @listing.highest_bidder.name, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
+<br>
+Item Bid History:
+<ol>
+<% @past_bids.each do |bid| %>
+<li><%= bid.buyer.user.name %>, <%= bid.amount %>, <%= bid.created_at %></li>
+<% end %>
+</ol>
+
+
 Start Price: <%= number_to_currency(@listing.starting_price / 100.0) %> <br>
 Shipping Price: <%= number_to_currency(@listing.shipping_price / 100.0) %> <br>
 Start Time: <%= @listing.start_time %> <br>

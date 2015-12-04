@@ -107,7 +107,7 @@ x.times do |i|
   20.times do |i|
     bid = Bid.new
     bid.listing_id = rand(1..y)
-    bid.amount = bid.listing.current_price + 10
+    bid.amount = bid.listing.current_price + i + 10
     bid.buyer_id = rand(1..x)
     bid.created_at = Faker::Date.backward(15)          
     bid.save         
