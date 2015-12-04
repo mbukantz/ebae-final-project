@@ -1,8 +1,12 @@
 class SalesController < ApplicationController
 
   def new
-    @sale = Sale.new
     @listing = Listing.find(params[:listing_id])
+    if @listing.sale
+      redirect_to listing_sale_path(@listing, @listing.sale)
+    else
+      @sale = Sale.new
+    end
   end
 
   def create
