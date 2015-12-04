@@ -1,0 +1,21 @@
+<% recent_views = @user.recently_viewed_listings.last(5) %>
+
+<% if @user.recently_viewed_listings.length > 0 %>
+  <h3>You recently viewed these listings:</h3>
+  <% @user.recently_viewed_listings.last(5).each do |recently_viewed_listing| %>
+    <div class="recently-viewed-listing">
+      <%= recently_viewed_listing.listing.item.name %>
+      <br>
+      <a href="/listings/<%= recently_viewed_listing.listing.id %>"><img src="<%= recently_viewed_listing.listing.item.picture_url %>" width="200" height="200" /></a>
+    </div>
+  <% end %>
+<% else %>
+  <h3>Don't forget these items!</h3>
+  <% Listing.all.last(5).each do |listing| %>
+    <div class="recently-viewed-listing">
+      <%= listing.item.name %>
+      <br>
+      <a href="/listings/<%= listing.id %>"><img src="<%= listing.item.picture_url %>" width="200" height="200" /></a>
+    </div>
+  <% end %>
+<% end %>
