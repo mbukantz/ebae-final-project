@@ -16,6 +16,8 @@ class Buyer < ActiveRecord::Base
   has_many :bids
   has_many :listings, through: :bids
 
+  validates :user_id, presence: true
+
   def unique_listings
     listings.uniq
   end
