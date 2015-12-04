@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203163747) do
+ActiveRecord::Schema.define(version: 20151204202045) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
@@ -76,6 +76,13 @@ ActiveRecord::Schema.define(version: 20151203163747) do
   create_table "phones", force: :cascade do |t|
     t.string   "number"
     t.string   "label"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "recently_viewed_listings", force: :cascade do |t|
+    t.integer  "listing_id"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
