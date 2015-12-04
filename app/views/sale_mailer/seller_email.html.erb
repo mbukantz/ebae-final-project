@@ -10,11 +10,11 @@
 Item: <%= @listing.item.name %><br>
 Final Sale Price: <%=number_to_currency(@listing.current_price / 100.0)%><br>
 Shipping: <%=number_to_currency(@listing.shipping_price / 100.0)%><br>
-=================<br>
+----------------------------------<br>
 Total: <%=number_to_currency((@listing.shipping_price + @listing.current_price) / 100.0)%><br>
     </p>
 
-<h3>Buyer Information</h3>
+<h3>Buyer Information:</h3>
 <ul>
   <li>Name: <%= @buyer.name %></li>
   <li>Email: <%= @buyer.email %></li>
