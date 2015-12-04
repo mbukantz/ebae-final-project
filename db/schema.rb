@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151204202045) do
+ActiveRecord::Schema.define(version: 20151204212721) do
+
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
