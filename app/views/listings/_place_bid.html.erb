@@ -1,0 +1,14 @@
+<% bid_view_obj = BidViewObject.new(@listing, current_user) %>
+
+<%= form_for(@bid) do |f| %>
+  <%= f.number_field :amount, class: 'text_field', step: 0.01, min: (@listing.min_bid_amount / 100.0), :value => (number_with_precision(f.object.amount, :precision => 2) || 0)%>
+  <%= f.hidden_field :listing_id, value: @listing.id %>
+  <%= f.submit "Place Bid" %>
+<% end %>
+<% else %>
+  Auction Over
+  <% if bid_view_obj.can_create_invoice? %>
+    <%= link_to "Create and Send Invoice", new_listing_sale_path(@listing)%></a>
+  <% elsif @listing.sale %>
+    <%= link_to "Invoice Sent at #{@listing.sale.updated_at}", new_listing_sale_path(@listing)%></a>
+  <% end %>
