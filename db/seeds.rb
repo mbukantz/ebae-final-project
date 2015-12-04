@@ -67,14 +67,10 @@ x.times do |i|
     item.picture_url = Faker::Company.logo
     item.condition_id = rand(1..7)
     item.listing_id = i + 1
+    item.category_id = rand(1..7)
     item.save
   end
 
-  y.times do |i|
-    category_item = CategoryItem.new
-    category_item.item_id = i + 1
-    category_item.category_id = rand(1..w)
-  end
 
   y.times do |i|
     listing = Listing.new

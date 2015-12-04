@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :listings do
     resources :sales
   end
+  resources :categories 
 
   resources :search, only: [:index]
   resources :bids, only: [:create]
