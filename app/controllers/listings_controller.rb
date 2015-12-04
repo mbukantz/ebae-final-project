@@ -19,11 +19,13 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all
+    # @listings = Listing.all
+    @listings = Listing.active.sort_by(&:end_time)
   end
 
   def show
     @listing = Listing.find(params[:id])
+    @past_bids = @listing.bids.sort_by(&:created_at)
     @bid = Bid.new
   end
 

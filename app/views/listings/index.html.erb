@@ -1,7 +1,18 @@
 All Listings
 
 <%@listings.each do |listing| %>
-  <p>
-    <a href="/listings/<%=listing.id%>"><%=listing.item.name%></a> 
-  </p>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Current Price</th>
+    <th>Bids</th>
+    <th>End Date</th>
+  </tr>
+  <tr>
+    <td><a href="/listings/<%=listing.id%>"><%=listing.item.name%></a></td>
+    <td><%= number_to_currency((listing.current_price||listing.starting_price) / 100.0)%></td>
+    <td><%=listing.bids.size%></td>
+    <td><%=listing.end_time %></td>
+  </tr>
 <%end%>

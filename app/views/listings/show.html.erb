@@ -18,8 +18,8 @@ Condition: <%= @listing.item.condition.description %> <br>
 <p><img src="<%= @listing.item.picture_url %>" height="200" width="200" />  <br></p>
 
 <br>
-Place Bid:
 <% if @listing.active? %>
+Place Bid:
 <%= form_for(@bid) do |f| %>
   <%= f.number_field :amount, class: 'text_field', step: 0.01, min: (@listing.min_bid_amount / 100.0), :value => (number_with_precision(f.object.amount, :precision => 2) || 0)%>
   <%= f.hidden_field :listing_id, value: @listing.id %>
@@ -37,7 +37,16 @@ Place Bid:
 <br>
 Current Price: <%= number_to_currency(@listing.current_price / 100.0) if @listing.current_price %><br>
 Bids: <%= @listing.bids.size %> <br>
-Highest Bidder: <%= link_to @listing.highest_bidder.email, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
+Highest Bidder: <%= link_to @listing.highest_bidder.name, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
+<br>
+Item Bid History:
+<ol>
+<% @past_bids.each do |bid| %>
+<li><%= bid.buyer.user.name %>, <%= number_to_currency(bid.amount / 100.0) %>, <%= bid.created_at %></li>
+<% end %>
+</ol>
+
+
 Start Price: <%= number_to_currency(@listing.starting_price / 100.0) %> <br>
 Shipping Price: <%= number_to_currency(@listing.shipping_price / 100.0) %> <br>
 Start Time: <%= @listing.start_time %> <br>
