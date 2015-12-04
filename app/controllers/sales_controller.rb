@@ -1,8 +1,12 @@
 class SalesController < ApplicationController
 
   def new
-    @sale = Sale.new
     @listing = Listing.find(params[:listing_id])
+    if @listing.sale
+      redirect_to listing_sale_path(@listing, @listing.sale)
+    else
+      @sale = Sale.new
+    end
   end
 
   def create
@@ -14,7 +18,7 @@ class SalesController < ApplicationController
     if sale.save
       SaleMailer.seller_email(sale).deliver_now 
       SaleMailer.buyer_email(sale).deliver_now
-      redirect_to listing_path(listing)
+      redirect_to listing_sale_path(listing, sale)
     else
       redirect_to new_sale_path
     end

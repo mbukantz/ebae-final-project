@@ -16,8 +16,14 @@ class Sale < ActiveRecord::Base
   has_one :seller, through: :listing
   has_one :item, through: :listing
   has_many :reviews 
+  has_one :charge
 
   validates :listing_id, presence: true
   validates :buyer_id, presence: true
   validates :price, presence: true
+
+  def total
+    price + listing.shipping_price
+  end
+
 end

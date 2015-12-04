@@ -1,6 +1,6 @@
 <% recent_views_view_obj = RecentlyViewedListingsViewObject.new(current_user) %>
 
-<% if recent_views_view_obj %>
+<% if recent_views_view_obj.has_viewed_listings? %>
   <h3>You recently viewed these listings:</h3>
   <% recent_views_view_obj.last_five_views.each do |viewed_listing| %>
     <div class="recently-viewed-listing">

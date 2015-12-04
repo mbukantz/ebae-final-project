@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :sales
   end
   resources :categories 
+  resources :charges, only: [:create]
 
   resources :search, only: [:index]
   resources :bids, only: [:create]
