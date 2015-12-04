@@ -1,0 +1,6 @@
+Start Price: <%= number_to_currency(@listing.starting_price / 100.0) %> <br>
+Shipping Price: <%= number_to_currency(@listing.shipping_price / 100.0) %> <br>
+Start Time: <%= @listing.start_time %> <br>
+End Time: <%= @listing.end_time %> <br>
+Time Left: <%= @listing.time_left %> <br>
+Seller: <%= link_to @listing.seller.user.email, user_path(@listing.seller.user) %> <br>
