@@ -20,5 +20,6 @@ class Item < ActiveRecord::Base
   validates :name, presence: true
   validates :description, presence: true
   validates :condition_id, presence: true
+  validates :category_id, presence: true
 
 end

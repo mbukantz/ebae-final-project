@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       Seller.create(user_id: @user.id)
       session[:user_id] = @user.id
 
-      ExampleMailer.sample_email(@user).deliver_now
+      # ExampleMailer.sample_email(@user).deliver_now
 
       redirect_to root_path
     else
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def feedback
     @user = User.find(params[:id])
     @buyerreviews =  @user.buyer.feedback_received
-    @sellerreviews = @user.seller.feedback_received 
+    @sellerreviews = @user.seller.feedback_received
   end
 
   def givefeedback

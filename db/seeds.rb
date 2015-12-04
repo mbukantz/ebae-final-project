@@ -14,6 +14,8 @@ w = 7 #number of categories
 
 conditions = Condition.create([{description: 'New'},{description: 'Used-Like-New'},{description: 'Used-Very-Good'},{description: 'Used-Good'},{description: 'Used-Fair'},{description: 'Refurbished'},{description: 'Used-Acceptable'}])
 
+conditions = Category.create([{name: 'Collectibes & art'},{name: 'Electronics'},{name: 'Entertainment memorabilia'},{name: 'Fashion'},{name: 'Home & garden'},{name: 'Motors'},{name: 'Sporting Goods'},{name: 'Toys & hobbies'},{name: 'Other'}])
+
 
 x.times do |i|
   user = User.new
@@ -54,11 +56,11 @@ x.times do |i|
     seller.save
   end
 
-  w.times do |i|
-    category = Category.new
-    category.name = Faker::Commerce.department
-    category.save
-  end
+  # w.times do |i|
+  #   category = Category.new
+  #   category.name = Faker::Commerce.department
+  #   category.save
+  # end
 
   y.times do |i|
     item = Item.new

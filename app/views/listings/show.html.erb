@@ -1,11 +1,12 @@
 
 <h1> <%= @listing.item.name %> </h1> <br>
 Description: <%= @listing.item.description %> <br>
+Category: <%= @listing.item.category.name %> <br>
 Condition: <%= @listing.item.condition.description %> <br>
 
 <% if @listing.watchlists %>
   <p><%= @listing.watchlist_total %> watchers</p>
-<% end %> 
+<% end %>
 
 <% if Watchlist.already_watched?(current_user.id, @listing.id) %>
   <% watchlist = Watchlist.find_watchlist(current_user.id, @listing.id) %>
