@@ -91,11 +91,4 @@ class Listing < ActiveRecord::Base
     self.watchlists.length
   end
 
-  def self.all_by_category
-    binding.pry
-  end
-
-
-
-
 end

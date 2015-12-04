@@ -1,5 +1,9 @@
-<%@listings.each do |listing|%>
+
+
+<%@category.items.each do |item|%>
   <p>
-    <%=listing.item.name%>
+    Item: <a href="/listings/<%=item.listing.id%>"><%=item.name%></a><br>
+    Current Price: <%=number_to_currency(item.listing.current_price / 100.0)%><br>
+    End Time: <%=item.listing.end_time%>
   </p>
 <%end%>

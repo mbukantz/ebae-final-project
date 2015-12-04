@@ -21,4 +21,7 @@ class Item < ActiveRecord::Base
   validates :description, presence: true
   validates :condition_id, presence: true
 
+  def self.all_by_category?(category)
+    Item.where("category_id = ?", category.id)
+  end
 end
