@@ -3,7 +3,7 @@ Browse Categories
 
 <%@categories.each do |category|%>
 <p>
-  <a href="/categories/<%=category.id%>"><%=category.name%></a>
+  <strong><a href="/categories/<%=category.id%>"><%=category.name%></a></strong>
     <%category.items.last(3).each do |item|%>
     <p>
       <a href="/listings/<%=item.listing.id%>"><%=item.name%></a>-<%=number_to_currency(item.listing.current_price / 100.0)%>
