@@ -9,10 +9,13 @@
   Bids: <%= @listing.bids.size %> <br>
   Highest Bidder: <%= link_to @listing.highest_bidder.name, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
   <br>
-  Item Bid History:
-  <ol>
-  <% @past_bids.each do |bid| %>
-  <li><%= bid.buyer.user.name %>, <%= number_to_currency(bid.amount / 100.0) %>, <%= bid.created_at %></li>
-  
+Item Bid History:
+<ol>
+<% @past_bids.each do |bid| %>
+    <% if bid.amount > @listing.highest_bid.amount || bid.amount > @listing.current_price %>
+    <li><%= bid.buyer.user.name %>, <%= number_to_currency(@listing.current_price / 100.0) %>, <%= bid.created_at %></li>
+    <% else %>
+    <li><%= bid.buyer.user.name %>, <%= number_to_currency(bid.amount / 100.0) %>, <%= bid.created_at %></li>
+    <% end %>
 <% end %>
 </ol>
