@@ -41,5 +41,17 @@ RSpec.describe Listing, type: :model do
         expect(listing).to_not be_valid
       end
     end
+
+    context 'when a listing has watchers' do 
+      let(:watchlist) {FactoryGirl.build(:watchlist)} 
+      let(:listy){FactoryGirl.build(:listing, :id => 1)}
+      it 'should return 2 when there are 2 watchers' do
+        watchlist1 = watchlist 
+        watchlist2 = watchlist 
+        listy.watchlists << watchlist1
+        listy.watchlists << watchlist2
+        expect(listy.watchlist_total).to eq(2)
+      end
+    end
   end
 end

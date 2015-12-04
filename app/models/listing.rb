@@ -87,4 +87,8 @@ class Listing < ActiveRecord::Base
     end
   end
 
+  def watchlist_total
+    self.watchlists.length
+  end
+
 end

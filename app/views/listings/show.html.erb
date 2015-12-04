@@ -2,8 +2,13 @@
 <h1> <%= @listing.item.name %> </h1> <br>
 Description: <%= @listing.item.description %> <br>
 Condition: <%= @listing.item.condition.description %> <br>
-<a href="#">Watch this item</a><br>
-<img src="<%= @listing.item.picture_url %>"/>  <br>
+
+<% if @listing.watchlists %>
+  <p><%= @listing.watchlist_total %> watchers</p>
+<% end %> 
+
+<%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post %>
+<p><img src="<%= @listing.item.picture_url %>" height="200" width="200" />  <br></p>
 
 
 Place Bid:
