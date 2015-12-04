@@ -1,0 +1,16 @@
+<% if @listing.active? %>
+  <% if @listing.watchlists %>
+    <div><%= @listing.watchlist_total %> watchers</div>
+  <% end %> 
+
+  <% if Watchlist.already_watched?(current_user.id, @listing.id) %>
+    <% watchlist = Watchlist.find_watchlist(current_user.id, @listing.id) %>
+    You are already watching this listing. Happy bidding!
+    <br>
+    <%= link_to "Unwatch", watchlist_path(:id => watchlist.first.id, :listing_id => watchlist.first.listing.id), :method => :delete %>
+  <% else %>
+    <%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post %>
+  <% end %>
+<% else %>
+  <h3><i>This auction has ended.</i></h3>
+<% end %>

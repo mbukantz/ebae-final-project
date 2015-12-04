@@ -1,0 +1,27 @@
+<% if @listing.active? %>
+Place Bid:
+<%= form_for(@bid) do |f| %>
+  <%= f.number_field :amount, class: 'text_field', step: 0.01, min: (@listing.min_bid_amount / 100.0), :value => (number_with_precision(f.object.amount, :precision => 2) || 0)%>
+  <%= f.hidden_field :listing_id, value: @listing.id %>
+  <%= f.submit "Place Bid" %>
+<% end %>
+<% else %>
+  Auction Over
+  <% if @listing.seller.user == current_user && @listing.bids.size >= 1 && !@listing.sale %>
+    <%= link_to "Create and Send Invoice", new_listing_sale_path(@listing)%></a>
+    <% elsif @listing.sale %>
+    <%= link_to "Invoice Sent at #{@listing.sale.updated_at}", new_listing_sale_path(@listing)%></a>
+  <% end %>
+<% end %>
+
+<br>
+Current Price: <%= number_to_currency(@listing.current_price / 100.0) if @listing.current_price %><br>
+Bids: <%= @listing.bids.size %> <br>
+Highest Bidder: <%= link_to @listing.highest_bidder.name, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
+<br>
+Item Bid History:
+<ol>
+<% @past_bids.each do |bid| %>
+<li><%= bid.buyer.user.name %>, <%= number_to_currency(bid.amount / 100.0) %>, <%= bid.created_at %></li>
+<% end %>
+</ol>
