@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   has_many :locations
   has_many :phones
   has_many :reviews 
+  has_many :recently_viewed_listings
   validates :first_name, presence: true, length: 2..50
   validates :last_name, presence: true, length: 2..50
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }

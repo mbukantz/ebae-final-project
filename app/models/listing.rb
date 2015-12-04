@@ -16,10 +16,11 @@
 
 class Listing < ActiveRecord::Base
   has_one :item
+  has_one :sale
   belongs_to :seller
   has_many :watchlists
   has_many :bids
-  has_one :sale
+  has_many :recently_viewed_listings
   accepts_nested_attributes_for :item
 
   validates :starting_price, presence: true
