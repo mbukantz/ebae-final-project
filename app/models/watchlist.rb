@@ -14,7 +14,7 @@ class Watchlist < ActiveRecord::Base
   belongs_to :listing 
 
 
-  def self.already_watching?(buyer_id, listing_id)
+  def self.already_watched?(buyer_id, listing_id)
     watchlist = Watchlist.where("buyer_id = ? AND listing_id = ?", buyer_id, listing_id)
     watchlist.length > 0 ? true : false
   end

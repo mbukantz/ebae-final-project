@@ -7,7 +7,7 @@ Condition: <%= @listing.item.condition.description %> <br>
   <p><%= @listing.watchlist_total %> watchers</p>
 <% end %> 
 
-<% if Watchlist.already_watching?(current_user.id, @listing.id) %>
+<% if Watchlist.already_watched?(current_user.id, @listing.id) %>
   <% watchlist = Watchlist.find_watchlist(current_user.id, @listing.id) %>
   You are already watching this listing. Happy bidding!
   <br>

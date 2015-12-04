@@ -1,7 +1,7 @@
 class WatchlistsController < ApplicationController
 
   def create
-    if Watchlist.already_watching?(current_user.id, params[:listing_id])
+    if Watchlist.already_watched?(current_user.id, params[:listing_id])
       redirect_to listing_path(params[:listing_id])
     else 
       watchlist = Watchlist.create(buyer_id: current_user.id, listing_id: params[:listing_id])
