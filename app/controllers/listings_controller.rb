@@ -25,6 +25,7 @@ class ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
+    @past_bids = @listing.bids.sort_by(&:created_at)
     @bid = Bid.new
   end
 
