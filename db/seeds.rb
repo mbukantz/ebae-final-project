@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-x = 2 #users
+x = 6 #users
 y = 10 #listings
 z = 5 #sales, which is lower than listings
 w = 7 #number of categories
@@ -79,10 +79,10 @@ x.times do |i|
   y.times do |i|
     listing = Listing.new
     listing.starting_price = Faker::Commerce.price * 100
-    listing.current_price = listing.starting_price * 2
+    listing.current_price = listing.starting_price + 10
     listing.shipping_price = Faker::Commerce.price
     listing.seller_id = rand(1..x)
-    listing.start_time = Faker::Date.forward(5)
+    listing.start_time = Faker::Date.between(20.days.ago, Date.today)
     listing.duration = rand(3..10)
     listing.end_time = listing.start_time + listing.duration.days
     listing.save
@@ -103,3 +103,13 @@ x.times do |i|
     review.comments = Faker::Lorem.sentence
     review.save
   end
+
+  20.times do |i|
+    bid = Bid.new
+    bid.listing_id = rand(1..y)
+    bid.amount = bid.listing.current_price + 10
+    bid.buyer_id = rand(1..x)
+    bid.created_at = Faker::Date.backward(15)          
+    bid.save         
+  end
+

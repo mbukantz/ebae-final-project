@@ -18,8 +18,8 @@ Condition: <%= @listing.item.condition.description %> <br>
 <p><img src="<%= @listing.item.picture_url %>" height="200" width="200" />  <br></p>
 
 <br>
-Place Bid:
 <% if @listing.active? %>
+Place Bid:
 <%= form_for(@bid) do |f| %>
   <%= f.number_field :amount, class: 'text_field', step: 0.01, min: (@listing.min_bid_amount / 100.0), :value => (number_with_precision(f.object.amount, :precision => 2) || 0)%>
   <%= f.hidden_field :listing_id, value: @listing.id %>
