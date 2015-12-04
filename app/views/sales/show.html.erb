@@ -1,0 +1,52 @@
+<% if @sale.buyer == current_user.buyer %>
+
+  <!-- move this to a partial: -->
+  <p>
+    Invoice sent at <%= @sale.created_at %>
+  </p>
+
+
+  Item: <%=link_to @sale.listing.item.name, @sale.listing%> <br>
+  Sale Price: <%=number_to_currency(@sale.listing.current_price / 100.0)%><br>
+  Shipping Price: <%=number_to_currency(@sale.listing.shipping_price / 100.0)%><br>
+  Total: <%=number_to_currency((@sale.listing.shipping_price + @sale.listing.current_price) / 100.0)%><br>
+
+  Seller: <%=@sale.seller.user.email%><br><br>
+
+  <% if @sale.charge %>
+    You paid for this item on <%= @sale.charge.created_at %>
+  <% else %>
+    <%= form_tag charges_path do %>
+      <%= hidden_field_tag 'sale_id', @sale.id %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="pk_test_6pRNASCoBOKtIshFeQd4XMUh"
+        data-image="/img/documentation/checkout/marketplace.png"
+        data-name="<%= @sale.item.name %>"
+        data-description="2 widgets"
+        data-amount="<%= @sale.price %>"
+        data-email="<%= @sale.buyer.user.email %>"
+        data-locale="auto">
+      </script>
+    <% end %>
+  <% end %>
+
+<% elsif @sale.seller == current_user.seller %>
+
+<!-- move this to a partial: -->
+  <p>
+    Invoice sent at <%= @sale.created_at %>
+  </p>
+
+  Item: <%=link_to @sale.listing.item.name, @sale.listing%> <br>
+  Sale Price: <%=number_to_currency(@sale.listing.current_price / 100.0)%><br>
+  Shipping Price: <%=number_to_currency(@sale.listing.shipping_price / 100.0)%><br>
+  Total: <%=number_to_currency((@sale.listing.shipping_price + @sale.listing.current_price) / 100.0)%><br><br>
+
+  <% if @sale.charge %>
+    <%=@sale.buyer.user.email%> paid for this item on <%= @sale.charge.created_at %>
+  <% else %>
+    Awaiting payment from <%=@sale.buyer.user.email%>
+  <% end %>
+
+<% end %>

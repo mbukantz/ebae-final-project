@@ -11,7 +11,7 @@ class SalesController < ApplicationController
     sale.buyer = listing.highest_bidder.buyer
     sale.price = listing.current_price + listing.shipping_price
     if sale.save
-      redirect_to listing_path(listing)
+      redirect_to listing_sale_path(listing, sale)
     else
       redirect_to new_sale_path
     end

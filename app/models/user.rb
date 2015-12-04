@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   validates :first_name, presence: true, length: 2..50
   validates :last_name, presence: true, length: 2..50
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
-  validates :birthday, presence: true
+  # validates :birthday, presence: true
   # validates :password, presence: true, length: 6..15
 
   has_secure_password
