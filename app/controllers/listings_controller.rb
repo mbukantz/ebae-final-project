@@ -19,7 +19,8 @@ class ListingsController < ApplicationController
   end
 
   def index
-    @listings = Listing.all
+    # @listings = Listing.all
+    @listings = Listing.active.sort_by(&:end_time)
   end
 
   def show

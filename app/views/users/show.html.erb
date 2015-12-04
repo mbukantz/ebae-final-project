@@ -1,23 +1,28 @@
-<h3>Hello, <%= @user.first_name %>!</h3>
-<%= link_to "Edit Profile",  edit_user_path %>
 
-<h3>Account Info</h3>
-<p>Addresses:</p>
-<% @user.locations.each do |location| %>
-  <%= location.label.capitalize %>:
-  <br>
-  <%= location.street %>
-  <br>
-  <%= location.city %>, 
-  <%= location.state %>
-  <%= location.zip %>
+<% if @user == current_user%>
+  <h3>Hello, <%= @user.first_name %>!</h3>
+  <%= link_to "Edit Profile",  edit_user_path %>
+
+  <h3>Account Info</h3>
+  <p>Addresses:</p>
+  <% @user.locations.each do |location| %>
+    <%= location.label.capitalize %>:
+    <br>
+    <%= location.street %>
+    <br>
+    <%= location.city %>, 
+    <%= location.state %>
+    <%= location.zip %>
+  <% end %>
+
+  <p>Phone Numbers:</p>
+  <% @user.phones.each do |phone| %>
+    <p><%= phone.label %>: <%= phone.number %></p>
+  <% end %>
+
+  <p>Email:</p>
+  <%= @user.email %>
+<% else %>
+  You do not have access to this profile
 <% end %>
-
-<p>Phone Numbers:</p>
-<% @user.phones.each do |phone| %>
-  <p><%= phone.label %>: <%= phone.number %></p>
-<% end %>
-
-<p>Email:</p>
-<%= @user.email %>
 
