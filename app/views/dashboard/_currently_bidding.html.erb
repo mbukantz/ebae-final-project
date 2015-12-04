@@ -1,0 +1,35 @@
+<h3>Bidding</h3>
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Max Bid</th> 
+    <th>Current Price</th>
+    <th>Winning</th>
+    <th>End Date</th>
+    <th>Time Left</th>
+    <th>Bid History</th>
+  </tr>
+  <% @user.buyer.unique_listings.each do |listing| %>
+    <% if listing.active? %>
+      <tr>
+        <td><%= link_to listing.item.name, listing_path(listing) %></td>
+        <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td> 
+        <td><%= number_to_currency(listing.current_price / 100.0) %></td>
+        <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
+        <td><%= listing.end_time %></td>
+        <td><%= listing.time_left %></td>
+        <% user_bids = [] %>
+        <td><% listing.bids.each do |bid| %>
+            <% if bid.buyer.user == @user %>
+              <% user_bids << bid %>
+            <ul>
+              <li><%= number_to_currency(bid.amount / 100.0) %> at <%= bid.created_at %> </li>
+              <% end %>
+            </ul>
+            <% end %>
+            Total Bids on item: <%= user_bids.count %> 
+          </td>
+      </tr>
+    <% end %>
+  <% end %>
+</table>

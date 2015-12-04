@@ -1,0 +1,23 @@
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Max Bid</th> 
+    <th>Current Price</th>
+    <th>End Date</th>
+    <th>Time Left</th>
+    <th></th>
+  </tr>
+  <% @user.buyer.watchlists.each do |watchlist| %>
+    <% if watchlist.listing.active? %>
+      <tr>
+        <td><%= link_to watchlist.listing.item.name, listing_path(watchlist.listing) %></td>
+        <td><%= watchlist.listing.highest_bid ? number_to_currency(watchlist.listing.highest_bid.amount / 100.0) : "No one has bid yet." %></td> 
+        <td><%= watchlist.listing.current_price ? number_to_currency(watchlist.listing.current_price / 100.0) : "No one has bid yet." %></td>
+        <td><%= watchlist.listing.end_time %></td>
+        <td><%= watchlist.listing.time_left %></td>
+        <td><%= link_to "Unwatch", watchlist_path(:id => watchlist.id, :listing_id => watchlist.listing.id), :method => :delete %></td>
+
+      </tr>
+    <% end %>
+  <% end %>
+</table>
