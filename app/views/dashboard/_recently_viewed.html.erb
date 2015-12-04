@@ -1,17 +1,17 @@
-<% recent_views = @user.recently_viewed_listings.last(5) %>
+<% recent_views_view_obj = RecentlyViewedListingsViewObject.new %>
 
-<% if @user.recently_viewed_listings.length > 0 %>
+<% if recent_views_view_obj %>
   <h3>You recently viewed these listings:</h3>
-  <% @user.recently_viewed_listings.last(5).each do |recently_viewed_listing| %>
+  <% recent_views_view_obj.last_five_views.each do |viewed_listing| %>
     <div class="recently-viewed-listing">
-      <%= recently_viewed_listing.listing.item.name %>
+      <%= viewed_listing.listing.item.name %>
       <br>
       <a href="/listings/<%= recently_viewed_listing.listing.id %>"><img src="<%= recently_viewed_listing.listing.item.picture_url %>" width="200" height="200" /></a>
     </div>
   <% end %>
 <% else %>
   <h3>Don't forget these items!</h3>
-  <% Listing.all.last(5).each do |listing| %>
+  <% recent_views_view_obj.most_recent_listings.each do |listing| %>
     <div class="recently-viewed-listing">
       <%= listing.item.name %>
       <br>
