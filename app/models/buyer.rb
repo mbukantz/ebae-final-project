@@ -27,4 +27,9 @@ class Buyer < ActiveRecord::Base
     self.reviews.where("user_id != ?", self.user.id)
   end
 
+  def feedback_given
+    # self.reviews.select {|review| review.user_id != self.id}
+    self.reviews.where("user_id = ?", self.user.id)
+  end
+
 end

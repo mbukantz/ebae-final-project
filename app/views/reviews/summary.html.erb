@@ -1,0 +1,47 @@
+<h3>Feeback Received as Seller</h3>
+
+<%@seller.feedback_received.each do |review|%>
+<p>
+  Item: <%=review.sale.listing.item.name%><br>
+  Description: <%=review.sale.listing.item.description%><br>
+  Rating: <%=review.rating%><br>
+  Comments: <%=review.comments%><br>
+  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
+</p>
+<%end%>
+
+<h3>Feeback Given as Seller</h3>
+
+<%@seller.feedback_given.each do |review|%>
+<p>
+  Item: <%=review.sale.listing.item.name%><br>
+  Description: <%=review.sale.listing.item.description%><br>
+  Rating: <%=review.rating%><br>
+  Comments: <%=review.comments%><br>
+  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
+</p>
+<%end%>
+
+<h3>Feeback Received as Buyer</h3>
+
+<%@buyer.feedback_received.each do |review|%>
+<p>
+  Item: <%=review.sale.listing.item.name%><br>
+  Description: <%=review.sale.listing.item.description%><br>
+  Rating: <%=review.rating%><br>
+  Comments: <%=review.comments%><br>
+  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
+</p>
+<%end%>
+
+<h3>Feeback Given as Buyer</h3>
+
+<%@buyer.feedback_given.each do |review|%>
+<p>
+  Item: <%=review.sale.listing.item.name%><br>
+  Description: <%=review.sale.listing.item.description%><br>
+  Rating: <%=review.rating%><br>
+  Comments: <%=review.comments%><br>
+  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
+</p>
+<%end%>

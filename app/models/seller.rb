@@ -20,7 +20,7 @@ class Seller < ActiveRecord::Base
     self.reviews.where("user_id != ?", self.user.id)
   end
 
-  def givefeedback
+  def feedback_given
     self.reviews.where("user_id = ?", self.user.id)
     #tested and looks like it works
   end

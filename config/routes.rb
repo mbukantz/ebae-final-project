@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy, :new]
   resources :users
-  resources :reviews
+  resources :reviews, only: [:new, :create, :show]
   resources :listings do
     resources :sales do
-      resources :reviews 
+      resources :reviews
     end
   end
   resources :categories
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :watchlists, only: [:create, :destroy]
   get '/user/:id/feedback', to: 'users#feedback'
   get 'user/:id/givefeedback', to: 'users#givefeedback'
+  get '/users/:id/reviews', to: 'reviews#summary', as: 'reviews_summary'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new', as: 'log_in'
   get '/logout', to: 'sessions#destroy', as: 'log_out'

@@ -18,31 +18,13 @@ class ReviewsController < ApplicationController
     redirect_to listing_sale_review_path(listing,sale,review)
   end
 
-  def index
-
+  def summary
+    @seller = Seller.find(params[:id])
+    @buyer = Buyer.find(params[:id])
   end
 
   def show
     @review = Review.find(params[:id])
   end
-
-  def edit
-
-  end
-
-  def update
-
-  end
-
-  def destroy
-
-  end
-
-  private
-
-  def review_params
-    params.require(:review).permit(:listing_id, :sale_id,:review => [:rating, :comments])
-  end
-
 
 end
