@@ -16,7 +16,7 @@
 
 class Listing < ActiveRecord::Base
   has_one :item
-  has_one :sale
+  has_one :sale, :foreign_key => :listing_id
   belongs_to :seller
   has_many :watchlists
   has_many :bids
@@ -26,6 +26,7 @@ class Listing < ActiveRecord::Base
   validates :starting_price, presence: true
   validates :shipping_price, presence: true
   validates :seller_id, presence: true
+
 
   def self.active
     Listing.where('end_time > ?', Time.now)
