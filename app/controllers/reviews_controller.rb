@@ -1,21 +1,25 @@
 class ReviewsController < ApplicationController
 
   def new
+    @listing = Listing.find(params[:listing_id])
+    @sale = Sale.find(params[:sale_id])
     @review = Review.new
   end
 
   def create
-    byebug
-    review = Review.create(review_params)
-    if review.save
-      redirect_to reviews_path
-    else
-      redirect_to new_review_path
-    end
+    review = Review.new
+    sale = Sale.find(params[:sale_id])
+    listing = Listing.find(params[:listing_id])
+      review.user_id = listing.seller.user_id
+      review.comments = params[:review][:review][:comments]
+      review.rating = params[:review][:review][:rating]
+      review.sale_id = params[:sale_id]
+    review.save
+    redirect_to listing_sale_review_path(listing,sale,review)
   end
 
   def index
-    @reviews = Review.all
+
   end
 
   def show
@@ -37,7 +41,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:sale_id, :rating, :comments)
+    params.require(:review).permit(:listing_id, :sale_id,:review => [:rating, :comments])
   end
 
 

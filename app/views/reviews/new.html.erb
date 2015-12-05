@@ -1,12 +1,12 @@
+<%=form_for [@listing, @sale, @review] do |f|%>
+  <%= f.hidden_field :listing_id, value: @listing.id%>
+  <%= f.hidden_field :sale_id, value: @sale.id%>
+  <%= f.fields_for :review do |review| %>
+    <%= review.label :rating %>
+    <%= review.number_field :rating %> <br>
 
-<%= form_for(@review) do |f| %>
-
-  <%= f.label :rating %>
-  <%= f.number_field :rating%><br>
-
-  <%= f.label :comments %>
-  <%= f.text_area :comments%><br>
-
-
-  <%= f.submit "Submit Review" %>
+    <%= review.label :comments %>
+    <%= review.text_field :comments %><br>
+    <%= f.submit "Submit Review" %>
+  <%end%>
 <% end %>

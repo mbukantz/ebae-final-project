@@ -3,9 +3,11 @@ Rails.application.routes.draw do
   resources :users
   resources :reviews
   resources :listings do
-    resources :sales
+    resources :sales do
+      resources :reviews 
+    end
   end
-  resources :categories 
+  resources :categories
   resources :charges, only: [:create]
 
   resources :search, only: [:index]
