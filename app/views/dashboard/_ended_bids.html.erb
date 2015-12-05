@@ -1,7 +1,7 @@
 <table>
   <tr>
     <th>Item</th>
-    <th>Max Bid</th> 
+    <th>Max Bid</th>
     <th>Price</th>
     <th>Won?</th>
     <th>End Date</th>
@@ -11,7 +11,7 @@
     <% if listing.inactive? %>
       <tr>
         <td><%= link_to listing.item.name, listing_path(listing) %></td>
-        <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td> 
+        <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td>
         <td><%= number_to_currency(listing.current_price / 100.0) %></td>
         <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
         <td><%= listing.end_time %></td>
@@ -24,8 +24,11 @@
               <% end %></li>
             </ul>
             <% end %>
-            Total Bids on item: <%= user_bids.count %> 
+            Total Bids on item: <%= user_bids.count %>
           </td>
+          <%if listing.sale%>
+            <td><a href="/listings/<%= listing.id %>/sales/<%= listing.sale.id %>/reviews/new">Review</a></td>
+          <%end%>
       </tr>
     <% end %>
   <% end %>

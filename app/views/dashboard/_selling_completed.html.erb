@@ -23,7 +23,9 @@
             <% end %>
             Total Bids on item: <%= listing.bids.count %>
           </td>
-    <td><a href="/listings/<%= listing.id %>/sales/<%= listing.sale.id %>/reviews/new">Review</a></td>
+      <%if listing.sale%>
+        <td><a href="/listings/<%= listing.id %>/sales/<%= listing.sale.id %>/reviews/new">Review</a></td>
+      <%end%>
     </tr>
     <% end %>
   <% end %>
