@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-x = 6 #users
-y = 10 #listings
-z = 5 #sales, which is lower than listings
+x = 20 #users
+y = 40 #listings
+z = 20 #sales, which is lower than listings
 w = 7 #number of categories
 
 
@@ -92,6 +92,7 @@ x.times do |i|
   z.times do |i|
     review = Review.new
     review.sale_id = i + 1
+    review.user_id = i + 1
     review.rating = rand(1..5)
     review.comments = Faker::Lorem.sentence
     review.save
