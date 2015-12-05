@@ -27,7 +27,9 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
     @past_bids = @listing.bids.sort_by(&:created_at)
     @bid = Bid.new
-    RecentlyViewedListing.find_or_create_by(listing_id: @listing.id, user_id: current_user.id)
+    if current_user
+      RecentlyViewedListing.find_or_create_by(listing_id: @listing.id, user_id: current_user.id)
+    end
   end
 
   def edit
