@@ -5,7 +5,7 @@
 
   <% if Watchlist.already_watched?(current_user.id, @listing.id) %>
     <% watchlist = Watchlist.find_watchlist(current_user.id, @listing.id) %>
-    You are already watching this listing. Happy bidding!
+    You are currently watching this listing. Happy bidding!
     <br>
     <%= link_to "Unwatch", watchlist_path(:id => watchlist.first.id, :listing_id => watchlist.first.listing.id), :method => :delete %>
   <% else %>
