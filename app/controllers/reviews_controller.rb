@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
     review = Review.new
     sale = Sale.find(params[:sale_id])
     listing = Listing.find(params[:listing_id])
-    if current_user = listing.sale.buyer_id
+    if current_user.id == listing.sale.buyer_id
       review.user_id = listing.sale.buyer_id
     else
       review.user_id = listing.seller.user_id
