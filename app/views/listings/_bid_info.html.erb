@@ -2,20 +2,30 @@
 
   Place Bid:
     <%= render 'place_bid' %>
-  <% end %>
+
 
   <br>
   Current Price: <%= number_to_currency(@listing.current_price / 100.0) if @listing.current_price %><br>
   Bids: <%= @listing.bids.size %> <br>
   Highest Bidder: <%= link_to @listing.highest_bidder.name, user_path(@listing.highest_bidder) if @listing.highest_bidder %><br>
   <br>
-Item Bid History:
-<ol>
-<% @past_bids.each do |bid| %>
-    <% if bid.amount > @listing.highest_bid.amount || bid.amount > @listing.current_price %>
-    <li><%= bid.buyer.user.name %>, <%= number_to_currency(@listing.current_price / 100.0) %>, <%= bid.created_at %></li>
-    <% else %>
-    <li><%= bid.buyer.user.name %>, <%= number_to_currency(bid.amount / 100.0) %>, <%= bid.created_at %></li>
-    <% end %>
+  Item Bid History:
+  <ol>
+  <% @past_bids.each do |bid| %>
+      <% if bid.amount > @listing.highest_bid.amount || bid.amount > @listing.current_price %>
+      <li><%= bid.buyer.user.name %>, <%= number_to_currency(@listing.current_price / 100.0) %>, <%= bid.created_at %></li>
+      <% else %>
+      <li><%= bid.buyer.user.name %>, <%= number_to_currency(bid.amount / 100.0) %>, <%= bid.created_at %></li>
+      <% end %>
+  <% end %>
+  </ol>
+
+<% else %>
+  <% bid_view_obj = BidViewObject.new(@listing, current_user) %>
+  Auction Over
+  <% if bid_view_obj.can_create_invoice? %>
+    <%= link_to "Create and Send Invoice", new_listing_sale_path(@listing)%></a>
+  <% elsif @listing.sale %>
+    <%= link_to "Invoice Sent at #{@listing.sale.updated_at}", new_listing_sale_path(@listing)%></a>
+  <% end %>
 <% end %>
-</ol>
