@@ -8,11 +8,8 @@ $(function(){
       url: url, 
       dataType: "json",
       method: "GET"
-    }).success(function(){
-      debugger;
+    }).success(function(data){
+      $('#show-category-items-js').html(data.template);
     })
-    // $.getJSON('/categories/' + categoryId + '.json', function(data){
-    //   debugger;
-    // } )
   })
 })

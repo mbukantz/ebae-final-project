@@ -11,18 +11,16 @@
 <!-- end:heading -->
 
 
-<%@categories.each do |category|%>
-<section>
-  <div class="row padd20-top-btm">
-    <div class="col-md-12 text-center">
-      <button class="btn btn-black category-btn" id="<%= category.id %>"><%=category.name%></button>
-    </div>
+
+<div id="view-listings-by-category" class="container">
+  <div id="menu" class=".col-md-4">
+    <ul id="categories-menu">
+      <%@categories.each do |category|%>
+          <li><button class="btn btn-black category-btn" id="<%= category.id %>"><%=category.name%></button></li>
+      <%end%>
+    </ul>
   </div>
 
-  <%=render partial: 'show_listing', locals: {category: category} %>
 
-
-</section>
-<%end%>
-
-<br>
+  <div id="show-category-items-js" class=".col-md-8"></div>
+</div>
