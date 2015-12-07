@@ -9,4 +9,5 @@ Listing: <%= link_to @analytic.highest_sale_price.listing.item.name, listing_pat
 <% @analytic.auctions_by_category.each_with_index do |cat_num, i| %>
   <%= "#{i + 1}. #{cat_num[0]}: #{cat_num[1]} listings" %><br>
 <% end %>
+
 <div id="bar-chart-js"></div>
