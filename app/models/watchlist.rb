@@ -15,12 +15,11 @@ class Watchlist < ActiveRecord::Base
 
 
   def self.already_watched?(buyer_id, listing_id)
-    watchlist = Watchlist.where("buyer_id = ? AND listing_id = ?", buyer_id, listing_id)
-    watchlist.length > 0 ? true : false
+    self.find_watchlist(buyer_id, listing_id).length > 0 ? true : false
   end
 
   def self.find_watchlist(buyer_id, listing_id)
-    Watchlist.where("buyer_id = ? AND listing_id = ?", buyer_id, listing_id)
+    watchlist = Watchlist.where(buyer_id: buyer_id, listing_id: listing_id)
   end
 
 
