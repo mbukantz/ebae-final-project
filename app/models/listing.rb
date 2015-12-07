@@ -21,6 +21,8 @@ class Listing < ActiveRecord::Base
   has_many :watchlists
   has_many :bids
   has_many :recently_viewed_listings
+  has_many :conversations
+  has_many :messages, through: :conversations
   accepts_nested_attributes_for :item
 
   validates :starting_price, presence: true

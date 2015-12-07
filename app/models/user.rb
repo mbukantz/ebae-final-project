@@ -21,6 +21,8 @@ class User < ActiveRecord::Base
   has_many :phones
   has_many :reviews 
   has_many :recently_viewed_listings
+  has_many :conversations
+  has_many :messages
   validates :first_name, presence: true, length: 2..50
   validates :last_name, presence: true, length: 2..50
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
@@ -65,6 +67,14 @@ class User < ActiveRecord::Base
 
     def forget
      update_attribute(:remember_digest, nil)
+    end
+
+    def sent_messages
+      Message.where(sender_id: self.id)
+    end
+
+    def received_messages
+      Message.where(recipient_id: self.id)
     end
 
   # Seller.create(user_id: self.id)

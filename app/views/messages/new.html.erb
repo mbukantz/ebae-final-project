@@ -1,0 +1,41 @@
+<p>
+  <%= form_for(@message) do |f| %>
+
+    Recipient
+    <% if @listing %>
+        <%= f.hidden_field :recipient_id, value: @listing.seller.user.id%>
+        <%= @listing.seller.user.email %>
+    <% elsif @conversation %>
+        <%= f.hidden_field :recipient_id, value: @conversation.find_counterpart(@user).id%>
+        <%= @conversation.find_counterpart(@user).email %>
+    <% end %>
+    <br>
+    Listing
+    <% if @listing %>
+        <%= f.fields_for :conversation, Conversation.new do |form| %>
+            <%= form.hidden_field :listing_id, value: @listing.id %>
+            <%= form.hidden_field :initiator_id, value: @user.id %>
+            <%= form.hidden_field :noninitiator_id, value: @listing.seller.user.id %>
+            <%= link_to @listing.item.name, @listing %>
+        <% end %>
+    <% elsif @conversation %>
+        <%= f.hidden_field :conversation_id, value: @conversation.id %>
+        <%= link_to @conversation.listing.item.name, @conversation.listing %>
+    <% end %>
+    <br>
+    <%= f.label :subject %>
+    <% if @listing %>
+        <%= f.text_field :subject, value: "Question about Listing ##{@listing.id}" %>
+    <% elsif @conversation %>
+        <%= f.text_field :subject, value: "Re: #{@conversation.messages.last.subject}" %>
+    <% end %> 
+    <br>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <br>
+    <%= f.hidden_field :sender_id, value: @user.id %>
+    <br>
+    <%= f.submit "Send" %>
+
+  <% end %>
+</p>

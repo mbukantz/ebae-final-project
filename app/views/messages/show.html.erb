@@ -1,0 +1,15 @@
+
+<p>
+Recipient: <%= @message.recipient.email %><br>
+Sender: <%= @message.sender.email %><br>
+Time: <%= @message.created_at %><br><br>
+Listing: <%= link_to @message.listing.item.name, @message.listing %><br><br>
+Subject: <%= @message.subject %><br><br>
+
+Message: <%= @message.content %>
+
+</p>
+<p>
+<%= link_to "Reply", new_conversation_message_path(@message.conversation) %>
+</p>
+<%= link_to "Back to messages", messages_path %>

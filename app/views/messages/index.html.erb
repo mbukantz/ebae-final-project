@@ -1,0 +1,19 @@
+
+<h2>Inbox</h2>
+<ul>
+  <% @user.received_messages.each do |message| %>
+    <li>
+      <%= link_to message.subject, conversation_message_path(message.conversation, message) %>
+    </li>
+  <% end %>
+</ul>
+
+<h2>Sent</h2>
+
+<ul>
+  <% @user.sent_messages.each do |message| %>
+    <li>
+      <%= link_to message.subject, conversation_message_path(message.conversation, message) %>
+    </li>
+  <% end %>
+</ul>
