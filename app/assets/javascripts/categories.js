@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('page:load ready', function(){
   $('.category-btn').click(function(){
     console.log("here");
     var $this = $(this);

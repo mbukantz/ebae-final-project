@@ -2,7 +2,7 @@
 
 <% if recent_views_view_obj.has_viewed_listings? %>
   <h3>You recently viewed these listings:</h3>
-  <% recent_views_view_obj.last_five_views.each do |viewed_listing| %>
+  <% recent_views_view_obj.recent_views.each do |viewed_listing| %>
   <div class="col-md-3 col-sm-4 col-xs-12">
     <div class="thumbnail">
       <div class="recently-viewed-listing">

@@ -10,12 +10,12 @@ class RecentlyViewedListingsViewObject
     user.recently_viewed_listings.length > 0 ? true : false
   end
 
-  def last_five_views
-    user.recently_viewed_listings.last(5)
+  def recent_views
+    user.recently_viewed_listings.last(4)
   end
 
   def most_recent_listings
-    Listing.all.last(5)
+    Listing.all.last(4)
   end
 
 end
