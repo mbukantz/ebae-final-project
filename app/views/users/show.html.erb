@@ -1,28 +1,45 @@
 
-<% if @user == current_user%>
-  <h3>Hello, <%= @user.first_name %>!</h3>
-  <%= link_to "Edit Profile",  edit_user_path %>
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span>User Profile </h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
 
-  <h3>Account Info</h3>
-  <h4>Addresses:</h4>
+<div class="page-content">
+  <div class="container">
+
+<% if @user == current_user%>
+  <h1>Hello, <%= @user.first_name %>!</h1>
+  <button><%= link_to "Edit Profile",  edit_user_path %></button>
+
+  <h2>Account Info:</h2>
+  <h3>Addresses:</h3>
   <% @user.locations.each do |location| %>
     <%= location.label.capitalize %>:
     <br>
     <%= location.street %>
     <br>
-    <%= location.city %>, 
+    <%= location.city %>,
     <%= location.state %>
     <%= location.zip %>
   <% end %>
 
-  <h4>Phone Numbers:</h4>
+  <h3>Phone Numbers:</h3>
   <% @user.phones.each do |phone| %>
     <p><%= phone.label %>: <%= phone.number %></p>
   <% end %>
 
-  <h4>Email:</h4>
+  <h3>Email:</h3>
   <%= @user.email %>
 <% else %>
   You do not have access to this profile
 <% end %>
 
+</div>
+</div>
