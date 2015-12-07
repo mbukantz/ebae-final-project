@@ -1,8 +1,8 @@
-<h3>Bidding</h3>
-<table>
+
+<table class = "table table-striped table-bordered">
   <tr>
     <th>Item</th>
-    <th>Max Bid</th> 
+    <th>Max Bid</th>
     <th>Current Price</th>
     <th>Winning</th>
     <th>End Date</th>
@@ -13,7 +13,7 @@
     <% if listing.active? %>
       <tr>
         <td><%= link_to listing.item.name, listing_path(listing) %></td>
-        <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td> 
+        <td><%= number_to_currency(listing.highest_bid_by_user(@user).amount / 100.0) %></td>
         <td><%= number_to_currency(listing.current_price / 100.0) %></td>
         <td><%= (listing.highest_bidder == @user)? "Y" : "N" %></td>
         <td><%= listing.end_time %></td>
@@ -27,7 +27,7 @@
               <% end %>
             </ul>
             <% end %>
-            Total Bids on item: <%= user_bids.count %> 
+            Total Bids on item: <%= user_bids.count %>
           </td>
       </tr>
     <% end %>

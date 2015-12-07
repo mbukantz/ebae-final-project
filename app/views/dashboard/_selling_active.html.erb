@@ -1,7 +1,7 @@
-<table>
+<table class = "table table-striped table-bordered">
   <tr>
     <th>Item</th>
-    <th>Max Bid</th> 
+    <th>Max Bid</th>
     <th>Current Price</th>
     <th>End Date</th>
     <th>Time Left</th>
@@ -21,7 +21,7 @@
               <li><%= number_to_currency(bid.amount / 100.0) %> at <%= bid.created_at %> by <%= bid.buyer.user.name %></li>
             </ul>
             <% end %>
-            Total Bids on item: <%= listing.bids.count %> 
+            Total Bids on item: <%= listing.bids.count %>
           </td>
     </tr>
     <% end %>
