@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def new
+    session[:return_to] ||= request.referer
     @user = current_user
     @reply_message = Message.find_by(id: session[:message_id])
     session[:message_id] = nil
@@ -16,7 +17,8 @@ class MessagesController < ApplicationController
   def create
     message = Message.new(message_params)
     if message.save
-      redirect_to message.listing
+      # redirect_to message.listing
+      redirect_to session.delete(:return_to)
     end
     
   end
