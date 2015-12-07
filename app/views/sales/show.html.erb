@@ -47,6 +47,7 @@
     <%=@sale.buyer.user.email%> paid for this item on <%= @sale.charge.created_at %>
   <% else %>
     Awaiting payment from <%=@sale.buyer.user.email%>
+    <br>
+    <a href="/listings/<%= @sale.listing.id %>/sales/<%= @sale.id %>/reviews/new">Leave a Review</a>
   <% end %>
-
 <% end %>
