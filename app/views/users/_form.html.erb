@@ -1,84 +1,129 @@
-<%= form_for(@user) do |f| %>
- <% if @user.errors.any? %>
-   <div id="error_explanation">
-     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
-     <ul>
-     <% @user.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-     <% end %>
-     </ul>
-   </div>
- <% end %>
-
- <div class="field">
-   <%= f.label :first_name %><br>
-   <%= f.text_field :first_name %><br>
- </div>
-
-<div class="field">
-   <%= f.label :last_name %><br>
-   <%= f.text_field :last_name %><br>
- </div>
-
- <div class="field">
-   <%= f.label :email %><br>
-   <%= f.text_field :email %><br>
- </div>
-
- <div class="field">
-   <%= f.label :birthday %><br>
-   <%= f.date_field :birthday %><br>
- </div>
-
-  <%= f.fields_for :locations do |location_field| %>
-
-    <div>
-      <%= location_field.label 'Address Type' %><br>
-      <%= location_field.text_field :label %><br>
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span>Sign Up</h2>
+      </div>
     </div>
-    <div>
-      <%= location_field.label 'Street Address (include apartment number if application)' %><br>
-      <%= location_field.text_field :street %><br>
-    </div>
-    <div>
-      <%= location_field.label 'City' %><br>
-      <%= location_field.text_field :city %><br>
-    </div>
-    <div>
-      <%= location_field.label 'State' %><br>
-      <%= location_field.text_field :state %><br>
-    </div>
-    <div>
-      <%= location_field.label 'Zip Code' %><br>
-      <%= location_field.text_field :zip %><br>
-    </div>
-  <% end %>
+  </div>
+</div>
+<!-- end:heading -->
+<div class="container">
+  <div class="row">
 
-  <%= f.fields_for :phones do |phone_field| %>
-   <div>
-      <%= phone_field.label 'Number' %><br>
-      <%= phone_field.text_field :number %><br>
-    </div>
-    <div>
-      <%= phone_field.label 'Type (Cell or Home)' %><br>
-      <%= phone_field.text_field :label %><br>
-    </div>
-  <% end %>
+<div class="row confirm">
+  <div class="col-md-12">
 
-<% if !current_user %>
- <div class="field">
-   <%= f.label :password %><br>
-   <%= f.password_field :password %><br>
- </div>
+  <%= form_for(@user) do |f| %>
+   <% if @user.errors.any? %>
+     <div id="error_explanation">
+       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
+       <ul>
+       <% @user.errors.full_messages.each do |msg| %>
+         <li><%= msg %></li>
+       <% end %>
+       </ul>
+     </div>
+   <% end %>
+  <div class="form-group">
    <div class="field">
-   <%= f.label :password_confirmation %><br>
-   <%= f.password_field :password_confirmation %><br>
+     <%= f.label :first_name %><br>
+     <%= f.text_field :first_name %><br>
+   </div>
  </div>
-<% end %>
 
- <div class="actions">
-   <%= f.submit %>
+<div class="form-group">
+  <div class="field">
+     <%= f.label :last_name %><br>
+     <%= f.text_field :last_name %><br>
+   </div>
  </div>
-<% end %>
+
+  <div class="form-group">
+   <div class="field">
+     <%= f.label :email %><br>
+     <%= f.text_field :email %><br>
+   </div>
+ </div>
+  <div class="form-group">
+   <div class="field">
+     <%= f.label :birthday %><br>
+     <%= f.date_field :birthday %><br>
+   </div>
+ </div>
+
+    <%= f.fields_for :locations do |location_field| %>
+
+    <div class="form-group">
+      <div>
+        <%= location_field.label 'Address Type' %><br>
+        <%= location_field.text_field :label %><br>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <%= location_field.label 'Street Address (include apartment number if application)' %><br>
+        <%= location_field.text_field :street %><br>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <%= location_field.label 'City' %><br>
+        <%= location_field.text_field :city %><br>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <%= location_field.label 'State' %><br>
+        <%= location_field.text_field :state %><br>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <%= location_field.label 'Zip Code' %><br>
+        <%= location_field.text_field :zip %><br>
+      </div>
+    </div>
+    <% end %>
+
+    <%= f.fields_for :phones do |phone_field| %>
+    <div class="form-group">
+     <div>
+        <%= phone_field.label 'Number' %><br>
+        <%= phone_field.text_field :number %><br>
+      </div>
+    </div>
+    <div class="form-group">
+      <div>
+        <%= phone_field.label 'Type (Cell or Home)' %><br>
+        <%= phone_field.text_field :label %><br>
+      </div>
+    </div>
+    <% end %>
+
+  <% if !current_user %>
+  <div class="form-group">
+   <div class="field">
+     <%= f.label :password %><br>
+     <%= f.password_field :password %><br>
+   </div>
+ </div>
+
+  <div class="form-group">
+     <div class="field">
+     <%= f.label :password_confirmation %><br>
+     <%= f.password_field :password_confirmation %><br>
+   </div>
+ </div>
+  <% end %>
+
+  <div class="form-group">
+     <%= f.submit "Sign Up", class: "btn btn-black" %>
+ </div>
+  <% end %>
+  </div>
+</div>
+  </div>
+</div>

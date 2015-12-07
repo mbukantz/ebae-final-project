@@ -1,18 +1,30 @@
-<div id = "box">
-<h1>Log in</h1>
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span>Log In</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
 
-<%= form_tag sessions_path do %>
-<p>
- <%= label_tag :email %> <br>
- <%= text_field_tag :email, params[:email] %>
-</p>
+<div class="container">
+  <div class="row">
+      <%= form_tag sessions_path do %>
+      <p>
+       <%= label_tag :email %> <br>
+       <%= text_field_tag :email, params[:email] %>
+      </p>
 
-<p>
- <%= label_tag :password %> <br>
- <%= password_field_tag :password %>
-</p>
+      <p>
+       <%= label_tag :password %> <br>
+       <%= password_field_tag :password %>
+      </p>
 
-<p class="button"><%= submit_tag "Log In"%></p>
-
-<% end %>
+      <p class="button"><%= submit_tag "Log In",class: "btn btn-black"%></p>
+    <% end %>
+    </div>
+  </div>
 </div>

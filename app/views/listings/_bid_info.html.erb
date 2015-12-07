@@ -23,11 +23,11 @@
 
 <% else %>
   <% bid_view_obj = BidViewObject.new(@listing, current_user) %>
-  Auction Over
+  <h4><strong>Auction Over
   <% if bid_view_obj.can_create_invoice? %>
     <%= link_to "Create and Send Invoice", new_listing_sale_path(@listing)%></a>
   <% elsif @listing.sale %>
-    <%= link_to "Invoice Sent at #{@listing.sale.updated_at}", new_listing_sale_path(@listing)%></a>
+    <%= link_to "Invoice Sent at #{@listing.sale.updated_at}", new_listing_sale_path(@listing)%></a></strong></h4><br>
     </p>
   <% end %>
 <% end %>
