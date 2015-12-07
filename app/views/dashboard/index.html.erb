@@ -42,33 +42,43 @@
 
 <!--
 <h1><%= @user.first_name.capitalize %>'s Dashboard</h1> -->
+<section class="dashboard-section"> 
+  <button class="btn btn-black">Bidding - Active Listings</button>
+    <div class="info-table">
+      <%= render 'currently_bidding' %>
+    </div>
+</section>
 
-<h3>Bidding</h3>
+<section class="dashboard-section"> 
+  <button class="btn btn-black">Bid - Expired Listings</button>
+  <div class="info-table">
+    <%= render 'ended_bids' %>
+  </div>
+</section>
 
-  <%= render 'currently_bidding' %>
+<section class="dashboard-section"> 
+  <button class="btn btn-black">Currently Watching - Active Listings</button>
+  <div class="info-table">
+    <%= render 'watching' %>
+  </div>
+</section>
 
-<<<<<<< HEAD
+<section class="dashboard-section"> 
+  <button class="btn btn-black">Selling: Active Listings</button>
+  <div class="info-table">
+    <%= render 'selling_active' %>
+  </div>
+</section>
 
-<h3>Ended</h3>
+<section class="dashboard-section"> 
+  <button class="btn btn-black">Selling: Completed Listings</button>
+  <div class="info-table">
+    <%= render 'selling_completed' %>
+  </div>
 
-<h3 class="dashboard-head">Ended</h3>
+</section>
 
-
-  <%= render 'ended_bids' %>
-
-<h3>Watching</h3>
-
-  <%= render 'watching' %>
-
-<h3>Selling: Active Listings</h3>
-
-  <%= render 'selling_active' %>
-
-<h3>Selling: Completed Listings</h3>
-
-  <%= render 'selling_completed' %>
-
-<%= render 'recently_viewed' %>
+  <%= render 'recently_viewed' %>
 
   </div>
 </div>
