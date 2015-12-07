@@ -1,11 +1,23 @@
-Item: <%=@listing.item.name%> <br>
-Sale Price: <%=number_to_currency(@listing.current_price / 100.0)%><br>
-Shipping Price: <%=number_to_currency(@listing.shipping_price / 100.0)%><br>
-Total: <%=number_to_currency((@listing.shipping_price + @listing.current_price) / 100.0)%><br>
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span> Create Sale</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
 
-Buyer: <%=@listing.highest_bidder.email%>
+<h4>Item: <%=@listing.item.name%></h4> <br>
+<h4>Sale Price: <%=number_to_currency(@listing.current_price / 100.0)%></h4><br>
+<h4>Shipping Price: <%=number_to_currency(@listing.shipping_price / 100.0)%></h4><br>
+<h4>Total: <%=number_to_currency((@listing.shipping_price + @listing.current_price) / 100.0)%></h4><br>
+
+<h4>Buyer: <%=@listing.highest_bidder.email%><h4><br>
 
 <%=form_for [@listing, @sale] do |f|%>
   <%= f.hidden_field :listing_id, value: @listing.id%>
-  <%= f.submit "Create Sale" %>
+  <%= f.submit "Create Sale", class: "btn btn-black" %>
 <%end%>
