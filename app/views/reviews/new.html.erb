@@ -1,12 +1,33 @@
-<%=form_for [@listing, @sale, @review] do |f|%>
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span>Write Review</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
+<p>
+</p>
+
+<%=form_for [@listing, @sale, @review], html:{class: "form-horizontal", role:"form"} do |f|%>
   <%= f.hidden_field :listing_id, value: @listing.id%>
   <%= f.hidden_field :sale_id, value: @sale.id%>
+  <div class="form-group">
   <%= f.fields_for :review do |review| %>
-    <%= review.label :rating %>
-    <%= review.number_field :rating %> <br>
-
-    <%= review.label :comments %>
-    <%= review.text_field :comments %><br>
-    <%= f.submit "Submit Review" %>
+    <%= review.label :rating, class: "col-sm-3 control-label" %>
+    <%= review.number_field :rating, class:"col-sm-4 form-control" %> <br>
+  </div>
+  <div class="form-group">
+    <%= review.label :comments, class: "col-sm-3 control-label" %>
+    <%= review.text_area :comments, class:"col-sm-4 form-control" %><br>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-10">
+    <%= f.submit "Submit Review", class: "btn btn-black" %>
+    </div>
+  </div>
   <%end%>
 <% end %>

@@ -16,11 +16,12 @@
 <p>
   <div class="row padd20-top-btm">
     <div class="col-md-12 text-center">
-      <h3><a href="/categories/<%=category.id%>"><%=category.name%></a></h3>
+      <h3><strong><a href="/categories/<%=category.id%>"><%=category.name%></a></strong></h3>
+    </p>
     </div>
   </div>
 
-    <%category.items.last(3).each do |item|%>
+    <%category.items.last(4).each do |item|%>
     <p>
 
       <li class="col-md-3 col-sm-3">
@@ -34,10 +35,6 @@
         <span class="price"><%=number_to_currency(item.listing.current_price / 100.0) if item.listing.current_price %></span>
         </div>
       </li>
-      <a
-    </p>
-
-
     <%end%>
-</p>
-<%end%><br>
+  </p>
+<%end%>

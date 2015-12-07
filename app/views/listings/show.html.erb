@@ -1,18 +1,32 @@
-<h1> <%= @listing.item.name %> </h1>
-
-<div>
-  <%= render 'watchlist' %>
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span> <%= @listing.item.name %> </h2>
+      </div>
+    </div>
+  </div>
 </div>
+<!-- end:heading -->
 
-<div>
-  <%= render 'item_description' %>
+<div class="page-content">
+  <div class="container">
+
+    <div>
+      <%= render 'watchlist' %>
+    </div>
+
+    <div>
+      <%= render 'item_description' %>
+    </div>
+
+    <div>
+      <%= render 'bid_info' %>
+    </div>
+
+    <div>
+      <%= render 'listing_details' %>
+    </div>
+  </div>
 </div>
-
-<div>
-  <%= render 'bid_info' %>
-</div>
-
-<div>
-  <%= render 'listing_details' %>
-</div>
-

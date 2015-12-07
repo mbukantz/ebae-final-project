@@ -34,51 +34,21 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav nav-left">
-      <li class="active"><a href="/users/<%="#{current_user.id}"%>">Home</a></li>
+
+    <ul class="nav navbar-nav nav-left">
+      <li><a href="/users/<%="#{current_user.id}"%>">Home</a></li>
       <li><%= render "/layouts/search" %></li>
       <li><a href="/dashboard">Dashboard</a></li>
       <li><a href="/listings/new">Create Listing</a></li>
-
-
-    <!-- <a href="#" class="logo visible-lg visible-md"><img src="img/logo.jpg" alt="dodolan manuk responsive catalog themes"></a>
-    <div id="brand" class="visible-lg visible-md">&nbsp;</div> -->
-      <li><a href="/listings">View All Listings</a></li>
       <li><a href="/categories">Browse Categories</a></li>
+      <li><a href="/listings">View All Listings</a></li>
       <li><a href="/users/<%="#{current_user.id}"%>/reviews">Review Portal</a></li>
       <li>
         <a
         <a href="/logout">Sign Out</a></li>
-      <ul class="dropdown-menu">
-        <li><a href="product.html">Canary</a></li>
-        <li><a href="product.html">Emprit</a></li>
-        <li>
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Doro <i class="fa fa-caret-down icon-dropdown"></i></a>
-        <ul class="dropdown-menu sub-menu">
-          <li><a href="product.html">Doro Pos</a></li>
-          <li><a href="product.html">Doro Kucir</a></li>
-          <li><a href="product.html">Doro Belehan</a></li>
-          <li><a href="product.html">Doro Sungut</a></li>
-        </ul>
-        </li>
-        <li class="divider"></li>
-        <li><a href="product.html">Pitik</a></li>
-        <li><a href="product.html">Cucak Rowo</a></li>
-      </ul>
-      </li>
-      <li class="dropdown">
-
-      <ul class="dropdown-menu">
-        <li><a href="blog.html">Blog 1</a></li>
-        <li><a href="blog2.html">Blog 2</a></li>
-        <li><a href="single.html">Single 1</a></li>
-        <li><a href="single2.html">Single 2</a></li>
-      </ul>
-      </li>
     </ul>
 
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-    <%end%>
-  </nav>
+  </div><!-- /.navbar-collapse -->
+
+<%end%>
+</nav>
