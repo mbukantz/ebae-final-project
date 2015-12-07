@@ -1,36 +1,76 @@
-<%= form_for(@listing) do |f| %>
+<!-- begin:heading -->
+<div class="heads" style="background: url(img/img02.jpg) center center;">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span> Create Listing</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
+
+<div class="row confirm">
+  <div class="col-md-12">
+
+<%= form_for(@listing, html:{class: "form-horizontal", role:"form"}) do |f| %>
 
   <%= f.fields_for :item do |item| %>
-    <%= item.label :name %>
-    <%= item.text_field :name %> <br>
+  <div class="form-group">
+    <%= item.label :name, class: "col-sm-3 control-label"%>
+    <%= item.text_field :name, class: "col-sm-4 form-control"%> <br>
+  </div>
 
-    <%= item.label :description %>
-    <%= item.text_field :description %><br>
+  <div class="form-group">
+    <%= item.label :description,class: "col-sm-3 control-label" %>
+    <%= item.text_field :description, class:"col-sm-4 form-control" %><br>
+  </div>
 
-    <%= item.label :picture_url %>
-    <%= item.text_field :picture_url %><br>
+  <div class="form-group">
+    <%= item.label :picture_url, class: "col-sm-3 control-label" %>
+    <%= item.text_field :picture_url, class: "col-sm-4 form-control" %><br>
+  </div>
 
-    <%= item.label :condition_id %>
+  <div class="form-group">
+    <%= item.label :condition_id, class: "col-sm-3 control-label" %>
     <%= item.collection_select :condition_id, Condition.all,:id,:description, include_blank: false %><br>
+  </div>
 
-    <%= item.label :category_id %>
+  <div class="form-group">
+    <%= item.label :category_id, class: "col-sm-3 control-label" %>
     <%= item.collection_select :category_id, Category.all,:id,:name, include_blank: false %><br>
+  </div>
 
 
   <% end %>
 
-  <%= f.label :starting_price %>
-  <%= f.number_field :starting_price, class: 'text_field', step: 0.01 %><br>
+  <div class="form-group">
+    <%= f.label :starting_price, class: "col-sm-3 control-label" %>
+    <%= f.number_field :starting_price, class: 'text_field', step: 0.01 , class: "col-sm-4 form-control"%><br>
+  </div>
 
-  <%= f.label :shipping_price %>
-  <%= f.number_field :shipping_price, class: 'text_field', step: 0.01  %><br>
+  <div class="form-group">
+    <%= f.label :shipping_price, class: "col-sm-3 control-label" %>
+    <%= f.number_field :shipping_price, class: 'text_field', step: 0.01  , class: "col-sm-4 form-control"%><br>
+  </div>
 
-  <%= f.label :start_time %>
-  <%= f.datetime_select :start_time %><br>
+  <div class="form-group">
+    <%= f.label :start_time, class: "col-sm-3 control-label" %>
+    <%= f.datetime_select :start_time , class: "col-sm-4 form-control"%><br>
+  </div>
 
-  <%= f.label :duration %>
-  <%= f.number_field :duration %><br>
+  <div class="form-group">
+    <%= f.label :duration, class: "col-sm-3 control-label" %>
+    <%= f.number_field :duration , class: "col-sm-4 form-control"%><br>
+  </div>
 
-  <%= f.submit "Create Listing" %>
+	<div class="form-group">
+    <div class="col-sm-offset-3 col-sm-10">
+    <%= f.submit "Create Listing", class: "btn btn-black" %>
+    </div>
+  </div>
 
 <% end %>
+
+</div>
+</div>

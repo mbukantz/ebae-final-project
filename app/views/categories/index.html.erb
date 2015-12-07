@@ -1,13 +1,43 @@
 
-Browse Categories
+
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span> Browse Categories</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
 
 <%@categories.each do |category|%>
 <p>
-  <strong><a href="/categories/<%=category.id%>"><%=category.name%></a></strong>
+  <div class="row padd20-top-btm">
+    <div class="col-md-12 text-center">
+      <h3><a href="/categories/<%=category.id%>"><%=category.name%></a></h3>
+    </div>
+  </div>
+
     <%category.items.last(3).each do |item|%>
     <p>
-      <a href="/listings/<%=item.listing.id%>"><%=item.name%></a>-<%=number_to_currency(item.listing.current_price / 100.0) if item.listing.current_price %>
+
+      <li class="col-md-3 col-sm-3">
+      <a href="/listings/<%=item.listing.id%>">
+        <div class="thumbnail">
+          <img src="<%=item.picture_url%>" >
+        </div>
+      </a>
+      <div class="caption-details">
+        <h3><a href="/listings/<%=item.listing.id%>"><%=item.name%></a></h3>
+        <span class="price"><%=number_to_currency(item.listing.current_price / 100.0) if item.listing.current_price %></span>
+        </div>
+      </li>
+      <a
     </p>
+
+
     <%end%>
 </p>
 <%end%><br>

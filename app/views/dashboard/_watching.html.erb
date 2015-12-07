@@ -1,7 +1,8 @@
-<table>
+
+<table class = "table table-striped table-bordered">
   <tr>
     <th>Item</th>
-    <th>Max Bid</th> 
+    <th>Max Bid</th>
     <th>Current Price</th>
     <th>End Date</th>
     <th>Time Left</th>
@@ -11,7 +12,7 @@
     <% if watchlist.listing.active? %>
       <tr>
         <td><%= link_to watchlist.listing.item.name, listing_path(watchlist.listing) %></td>
-        <td><%= watchlist.listing.highest_bid ? number_to_currency(watchlist.listing.highest_bid.amount / 100.0) : "No one has bid yet." %></td> 
+        <td><%= watchlist.listing.highest_bid ? number_to_currency(watchlist.listing.highest_bid.amount / 100.0) : "No one has bid yet." %></td>
         <td><%= watchlist.listing.current_price ? number_to_currency(watchlist.listing.current_price / 100.0) : "No one has bid yet." %></td>
         <td><%= watchlist.listing.end_time %></td>
         <td><%= watchlist.listing.time_left %></td>
