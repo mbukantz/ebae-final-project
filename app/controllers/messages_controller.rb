@@ -6,6 +6,8 @@ class MessagesController < ApplicationController
 
   def new
     @user = current_user
+    @reply_message = Message.find_by(id: session[:message_id])
+    session[:message_id] = nil
     @message = Message.new
     @listing = Listing.find_by(id: params[:listing_id])
     @conversation = Conversation.find_by(id: params[:conversation_id])
@@ -21,6 +23,7 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    session[:message_id] = @message.id
   end
 
   private

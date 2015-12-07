@@ -27,7 +27,7 @@
     <% if @listing %>
         <%= f.text_field :subject, value: "Question about Listing ##{@listing.id}" %>
     <% elsif @conversation %>
-        <%= f.text_field :subject, value: "Re: #{@conversation.messages.last.subject}" %>
+        <%= f.text_field :subject, value: "Re: #{@reply_message.subject}" %>
     <% end %> 
     <br>
     <%= f.label :content %>
