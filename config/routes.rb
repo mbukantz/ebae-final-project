@@ -9,20 +9,35 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :messages
+
+  # NOTES:
+  # should the initial route from listings#show be conversations/new? 
+  # Can the user just interact with a conversations resource, and the 
+  # message resource just exist for the DB?
+  # i.e. the form creates a conversation and a message, but the 
+  # user is only aware of the conversations path(s)
+  # Think about: Why would you ever display a message without a conversation?
+  # (make a conversation controller)
+  # People think of messages in a larger context, not as individual messages.
+  # The view and the model don't have to mirror one another (The view doesn't have to know about messages. It can just handle conversations.)
+  # Note: You can pass through the listing this way, no matter the route/controller action: <%= link_to "Ask seller a question about this item", {:controller => "messages", :action => "new", :listing_id => @listing.id} %>
+
   resources :conversations do
     resources :messages, only: [:show, :new, :create]
   end
   
   resources :categories
   resources :charges, only: [:create]
-  resources :messages
 
   resources :search, only: [:index]
   resources :bids, only: [:create]
   resources :dashboard, only: [:index]
   resources :watchlists, only: [:create, :destroy]
+  
+
   get '/user/:id/feedback', to: 'users#feedback'
-  get 'user/:id/givefeedback', to: 'users#givefeedback'
+  get '/user/:id/givefeedback', to: 'users#givefeedback'
   get '/users/:id/reviews', to: 'reviews#summary', as: 'reviews_summary'
   get '/signup', to: 'users#new'
   get '/login', to: 'sessions#new', as: 'log_in'

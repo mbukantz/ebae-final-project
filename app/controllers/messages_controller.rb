@@ -5,6 +5,7 @@ class MessagesController < ApplicationController
   end
 
   def new
+    
     session[:return_to] ||= request.referer
     @user = current_user
     @reply_message = Message.find_by(id: session[:message_id])
