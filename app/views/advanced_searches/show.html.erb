@@ -1,0 +1,32 @@
+<div id="search-results">
+  <h1>Search Results</h1>
+  <h2>You searched for:</h2>
+  <ul>
+    <% @attributes.each do |attribute, val| %>
+      <% attribute = attribute.gsub("min_price", "Minimum Price").gsub("max_price", "Maximum Price").gsub("keywords", "Keywords").gsub("completed", "Completed") %>
+      <% if val %>
+        <li><%= attribute %>: <%= val.respond_to?("capitalize") ? val.capitalize : val %></li>
+      <% end %>
+    <% end %>
+    <% if @category %>
+      <li>Category: <%= @category.name %>
+    <% end %>
+  </ul>
+
+  <ul>
+  <% @results.each do |listing| %>
+    <li>
+    Item: <%= link_to listing.item.name, listing %>
+    <br>
+    Starting Price: <%= number_to_currency(listing.starting_price/ 100.0) %>
+    <br>
+    Current Price <%= listing.current_price ? number_to_currency(listing.current_price / 100.0) : number_to_currency(0) %>
+    <br>
+  </li>
+  <% end %>
+
+<% if @results.empty? %>
+  <h2>Sorry, your search returned no results.</h2>
+<% end %>
+</ul>
+</div>

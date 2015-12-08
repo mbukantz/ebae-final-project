@@ -1,0 +1,25 @@
+<h1>Advanced Search</h1>
+
+<div class="row confirm">
+  <div class="col-md-12">
+<%= form_for @advanced_search, html:{class: "form-horizontal", id: "search-form", role:"form"} do |f| %>
+  <div class="field">
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="field">
+    <%= f.label :category_id %><br />
+    <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %>
+  </div>
+  <div class="field">
+    <%= f.label :min_price, "Price Range" %><br />
+    <%= f.text_field :min_price, class: 'text_field', step: 0.01, :value => (number_with_precision(f.object.min_price, :precision => 2)) %> -
+    <%= f.text_field :max_price, class: 'text_field', step: 0.01, :value => (number_with_precision(f.object.max_price, :precision => 2))%>
+    <br>
+    <%= f.label :completed, "Search Only Completed Listings?" %>
+    <%= f.check_box :completed%>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+</div>
+</div>
