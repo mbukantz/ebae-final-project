@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @watcher.name %>!</h1>
+    <h3>Just letting you know that <%= @listing.item.name %> is no longer on your watchlist</h3>
+    <p>
+    Bidding for this item ends at <%= @listing.end_time %>.<br>
+    Come back before then if you change your mind!
+    </p>
+
+  </body>
+</html>
