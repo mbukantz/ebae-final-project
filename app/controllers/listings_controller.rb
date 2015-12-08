@@ -6,6 +6,7 @@ class ListingsController < ApplicationController
   end
 
   def create
+    # binding.pry
     listing = Listing.new(listing_params.except(:item))
     listing.starting_price = (listing_params[:starting_price].to_f * 100).to_i
     listing.shipping_price = (listing_params[:shipping_price].to_f * 100).to_i
@@ -47,7 +48,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:starting_price, :shipping_price, :start_time, :duration, :item_attributes => [:name, :description, :picture_url, :condition_id])
+    params.require(:listing).permit(:starting_price, :shipping_price, :start_time, :duration, :item_attributes => [:name, :description, :picture_url, :condition_id, :category_id])
   end
 
   # def item_params
