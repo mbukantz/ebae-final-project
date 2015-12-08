@@ -10,9 +10,7 @@
     <link rel="shortcut icon" href="img/favicon.png">
 
 
-<%= link_to "My Messages", messages_path %>
 
-  <%= render 'currently_bidding' %>
 
 
     <!-- Bootstrap core CSS -->
@@ -43,6 +41,10 @@
 
   <div class="page-content">
 		<div class="container">
+
+  <%= link_to "My Messages", messages_path, :class => "btn btn-black" %>
+
+        <%= render 'currently_bidding' %>
 
 <!--
 <h1><%= @user.first_name.capitalize %>'s Dashboard</h1> -->

@@ -16,7 +16,7 @@
 
 <% if @user == current_user%>
   <h1>Hello, <%= @user.first_name %>!</h1>
-  <button><%= link_to "Edit Profile",  edit_user_path %></button>
+  <%= link_to "Edit Profile",  edit_user_path, :class => "btn btn-black" %>
 
   <h2>Account Info:</h2>
   <h3>Addresses:</h3>
