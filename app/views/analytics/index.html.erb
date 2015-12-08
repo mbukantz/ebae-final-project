@@ -3,6 +3,10 @@
 
 <%@analytic = AnalyticViewObject.new %>
 <div class="container" id="analytics-container">
+
+ <h3>Category Rankings</h3>
+  <%=bar_chart(@analytic.auctions_by_category)%>
+
  <h3>Highest Sale Price To Date:</h3>
  Price: <%= number_to_currency(@analytic.highest_sale_price.price / 100.0) %>
  <br>
@@ -17,6 +21,16 @@
 
  Listing: <%= link_to @analytic.highest_sale_this_month.listing.item.name, listing_path(@analytic.highest_sale_this_month.listing) %>
 
+ <h3>Average Sale Price This Month:</h3>
+ Price: <%= number_to_currency(@analytic.average_sale_this_month/ 100.0) %>
+ <br>
+
+ <h3>Lowest Sale Price This Month:</h3>
+ Price: <%= number_to_currency(@analytic.lowest_sale_this_month.price / 100.0) %>
+ <br>
+
+
+ Listing: <%= link_to @analytic.lowest_sale_this_month.listing.item.name, listing_path(@analytic.lowest_sale_this_month.listing) %>
 
  <h3>Most Popular Item (by number of bids)</h3>
  <table class = "table table-striped table-bordered">
@@ -26,16 +40,27 @@
   <th>Auction Status</th>
   <% @analytic.most_popular_by_bids.each do |listing, num_bids| %>
     <tr>
-      <td><%= link_to listing.item.name, listing_path(listing) %></td>
-      <td><%= num_bids %></td>
-      <td><%= number_to_currency(listing.current_price / 100) %></td>
-      <td><%= listing.end_time < Time.now ? "Completed" : "Active" %></td>
+      <td><center><%= link_to listing.item.name, listing_path(listing) %></center></td>
+      <td><center><%= num_bids %></center></td>
+      <td><center><%= number_to_currency(listing.current_price / 100)%></center></td>
+      <td><center><%= listing.end_time < Time.now ? "Completed" : "Active" %></center></td>
     </tr>
   <% end %>
 </table>
 
- <h3>Category Rankings</h3>
-  <%=bar_chart(@analytic.auctions_by_category)%>
+<h3>Most Watched Item</h3>
+<table class = "table table-striped table-bordered">
+ <th>Listing</th>
+ <th>Number of Watches</th>
+ <th>Current Price</th>
+ <th>Auction Status</th>
+   <tr>
+     <td><center><%=@analytic.most_watched_listing.item.name%></center></td>
+     <td><center><%=@analytic.most_watched_listing.watchlist_total%></center></td>
+     <td><center><%= number_to_currency(@analytic.most_watched_listing.current_price/100)%></center></td>
+     <td><center><%= @analytic.most_watched_listing.end_time < Time.now ? "Completed" : "Active" %></center></td>
+   </tr>
+</table>
 
 
 <h3>Users by State</h3>

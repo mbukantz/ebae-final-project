@@ -5,7 +5,16 @@ class AnalyticViewObject
   end
 
   def highest_sale_this_month
-  Sale.order(price: :desc).where(created_at: Date.today.beginning_of_month..Date.today.end_of_month).first
+    Sale.order(price: :desc).where(created_at: Date.today.beginning_of_month..Date.today.end_of_month).first
+  end
+
+  def average_sale_this_month
+    month_sales = Sale.where(created_at: Date.today.beginning_of_month..Date.today.end_of_month)
+    month_sales.average(:price).to_f
+  end
+
+  def lowest_sale_this_month
+    Sale.order(:price).where(created_at: Date.today.beginning_of_month..Date.today.end_of_month).first
   end
 
   def auctions_by_category
@@ -30,6 +39,19 @@ class AnalyticViewObject
     # {<Listing#35> => 2, <Listing#14 => 2}
   end
 
+  def most_watched_listing
+    listing_array = Listing.all.to_a
+    most_watched= nil
+    watches = 0
+    listing_array.each do |obj|
+      if obj.watchlist_total > watches
+        watches = obj.watchlist_total
+        most_watched = obj
+      end
+    end
+    most_watched
+  end
+
   def users_by_state
     top20 = Location.group(:state).count.sort_by {|k,v| v}.reverse[0..19]
     top20_users = 0
@@ -41,17 +63,5 @@ class AnalyticViewObject
     input["Other"] = other
     input
   end
-
-
-
-
-
- # category that fetches highest price, on average
- # seller with the most earnings
- # buyer with the best reviews
- # seller with the best reviews
- # most watched items of all time
- # highest price in the last month
-
 
 end

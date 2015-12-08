@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
-    <meta name="description" content="dodolan manuk responsive catalog themes built with twitter bootstrap">
+    <meta name="description" content=" responsive catalog themes built with twitter bootstrap">
       <meta name="keywords" content="responsive, catalog, cart, themes, twitter bootstrap, bootstrap">
 
 
@@ -47,13 +47,12 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand visible-xs" href="#">Dodolan Manuk</a>
+        <a class="navbar-brand visible-xs" href="#"></a>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav nav-left">
-      <li><%= render "/layouts/search" %></li>
       <li><a href="/users/<%="#{current_user.id}"%>">Home</a></li>
       <li><a href="/dashboard">Dashboard</a></li>
       <li class="dropdown">
@@ -70,9 +69,12 @@
       <li><a href="/users/<%="#{current_user.id}"%>/reviews">Review Portal</a></li>
 
       <li><a href="/analytics">Analytics</a></li>
-      <li>
-        <a
+
+      <li><a href="/messages">Messages</a></li>
+      <li><a
         <a href="/logout">Sign Out</a></li>
+
+      <li><%= render "/layouts/search" %></li>
     </ul>
   </div><!-- /.navbar-collapse -->
 
