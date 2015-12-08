@@ -1,5 +1,17 @@
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span> Analytics</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
 
-<%= @analytic = AnalyticViewObject.new %>
+
+<%@analytic = AnalyticViewObject.new %>
 <div class="container" id="analytics-container">
  <h3>Highest Sale Price To Date:</h3>
  Price: <%= number_to_currency(@analytic.highest_sale_price.price / 100.0) %>
@@ -33,9 +45,10 @@
 </table>
 
  <h3>Category Rankings</h3>
- <% @analytic.auctions_by_category.each_with_index do |cat_num, i| %>
-   <%= "#{i + 1}. #{cat_num[0]}: #{cat_num[1]} listings" %><br>
- <% end %>
- <div id="bar-chart-js"></div>
+  <%=bar_chart(@analytic.auctions_by_category)%>
+
+
+<h3>Users by State</h3>
+  <%= pie_chart(@analytic.users_by_state) %>
 
 </div>

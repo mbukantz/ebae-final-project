@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-x = 20 #users
+x = 100 #users
 y = 40 #listings
 z = 20 #sales, which is lower than listings
 w = 7 #number of categories
