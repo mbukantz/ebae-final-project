@@ -6,3 +6,5 @@ class EndingEmailJob < ActiveJob::Base
     WatchlistMailer.item_ending(@watchlist).deliver_later
   end
 end
+
+# $run bundle exec rake jobs:work to start job queue
