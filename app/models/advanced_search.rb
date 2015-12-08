@@ -23,18 +23,23 @@ class AdvancedSearch < ActiveRecord::Base
     # keywords, category_id, min_price, max_price
     # join items and listings
     search_base = Listing.joins(:item)
-    hash = {
+    search_hash = {
       :keywords => ["lower(items.name) like ?", "%#{keywords}%".downcase],
       :category_id => ["items.category_id = ?", category_id],
       :min_price => ["starting_price >= ?", min_price],
-      :max_price => ["starting_price <= ?", max_price] 
+      :max_price => ["starting_price <= ?", max_price],
+      :completed => ["listings.end_time < ?", Time.now] 
     }
-    hash.each do |key, val| 
+    search_hash.each do |key, val| 
       if self.send(key)
         search_base = search_base.where(val[0], val[1])
       end
     end
+    if !completed 
+      search_base = search_base.where("listings.end_time > ?", Time.now)
+    end
     search_base
+
   end
 
 

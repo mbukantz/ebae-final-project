@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208162614) do
+ActiveRecord::Schema.define(version: 20151208213400) do
 
   create_table "advanced_searches", force: :cascade do |t|
     t.string   "keywords"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20151208162614) do
     t.integer  "max_price"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "completed"
   end
 
   create_table "bids", force: :cascade do |t|
