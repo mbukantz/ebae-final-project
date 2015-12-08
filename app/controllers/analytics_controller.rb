@@ -1,7 +1,9 @@
 class AnalyticsController < ApplicationController
 
   def index
+
     # @analytic = AnalyticViewObject.new
+
     respond_to do |format|
       format.html 
       format.json { 

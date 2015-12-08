@@ -31,6 +31,16 @@
 </p>
 
 
+      <a href="/users/<%="#{current_user.id}"%>">Home</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/listings/new">Create Listing</a>
+      <a href="/listings">View All Listings</a>
+      <a href="/categories">Browse Categories</a>
+      <a href="/users/<%="#{current_user.id}"%>/reviews">Review Portal</a>
+      <a href="/analytics">Site Analytics</a>
+      <a href="/logout">Sign Out</a>
+      <%= render "/layouts/search" %>
+
 <!-- <% else %> -->
 
    <a href="/signup">Sign Up!</a></li>
