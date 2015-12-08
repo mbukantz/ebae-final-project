@@ -1,6 +1,4 @@
-$(function(){
-
- 
+$(document).on('page:load ready', function(){
 
   var makeBarGraph = function(data){
        // debugger;

@@ -1,4 +1,4 @@
-class Analytic < ActiveRecord::Base
+class AnalyticViewObject
 
   def highest_sale_price
     Sale.order(price: :desc).first
@@ -20,5 +20,7 @@ class Analytic < ActiveRecord::Base
   # buyer with the best reviews
   # seller with the best reviews
   # most watched items of all time 
+  # highest price in the last month
+
 
 end
