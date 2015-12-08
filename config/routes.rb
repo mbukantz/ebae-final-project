@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   # (make a conversation controller)
   # People think of messages in a larger context, not as individual messages.
   # The view and the model don't have to mirror one another (The view doesn't have to know about messages. It can just handle conversations.)
-  # Note: You can pass through the listing this way, no matter the route/controller action: <%= link_to "Ask seller a question about this item", {:controller => "messages", :action => "new", :listing_id => @listing.id} %>
+  # Note: You can pass through the listing this way, no matter the route/controller action: <%= link_to "Ask seller a question about this item", {:controller => "conversations", :action => "new", :listing_id => @listing.id} %>
 
   resources :conversations do
     resources :messages, only: [:show, :new, :create]
