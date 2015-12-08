@@ -1,5 +1,20 @@
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span>Message Overview</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
+<div class="page-content">
+  <div class="container">
+
 <% if @message.recipient == current_user || @message.sender == current_user %>
   <p>
+
     Recipient: <%= @message.recipient.email %><br>
     Sender: <%= @message.sender.email %><br>
     Time: <%= @message.created_at %><br><br>
@@ -20,8 +35,9 @@
   <% end %><br>
 
 <% if @message %>
-  <p>Reply</p>
+  <h4><strong>Reply</strong></h4>
   <%= render 'form' %>
+  <%= link_to "Back to messages", messages_path %>
 <% end %>
 
 <% else %>
@@ -30,4 +46,8 @@
   </p>
 <% end %>
 
+
 <%= link_to "Back to messages", messages_path %>
+
+  </div>
+</div>

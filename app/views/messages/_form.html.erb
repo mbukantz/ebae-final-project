@@ -1,35 +1,53 @@
-<p>
-  <%= form_for @msg, url: { action: "create" } do |f| %>
-    <% if @message %>
-        <%= f.hidden_field :recipient_id, value: @conversation.find_counterpart(@user).id %>
-    <% else %>
-        Recipient
-        <%= f.hidden_field :recipient_id, value: @listing.seller.user.id%>
-        <%= @listing.seller.user.email %><br>
-    <% end %>
-        <% if @message %>
-            <%= f.hidden_field :conversation_id, value: @conversation.id%>
-        <% else %>
-            Listing
-            <%= f.fields_for :conversation, Conversation.new do |form| %>
-                <%= form.hidden_field :listing_id, value: @listing.id %>
-                <%= form.hidden_field :initiator_id, value: @user.id %>
-                <%= form.hidden_field :noninitiator_id, value: @listing.seller.user.id %>
-            <% end %>
-            <%= link_to @listing.item.name, @listing %><br>
-        <% end %>
-        <% if @message %>
-            <%= f.text_field :subject, value: "Re: #{@message.subject}" %>
-        <% else %>
-            <%= f.text_field :subject, value: "Question about Listing ##{@listing.id}" %>
-        <% end %>
-    <br>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.hidden_field :sender_id, value: @user.id %>
-    <br>
-    <%= f.submit "Send" %>
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span> Create Listing</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
 
-  <% end %>
-</p>
+<div class="page-content">
+  <div class="container">
+
+    <div class="row confirm">
+      <div class="col-md-12">
+      <%= form_for @msg, url: { action: "create" } do |f| %>
+        <% if @message %>
+            <%= f.hidden_field :recipient_id, value: @conversation.find_counterpart(@user).id %>
+        <% else %>
+            <h4>Recipient</h4>
+            <%= f.hidden_field :recipient_id, value: @listing.seller.user.id%>
+            <%= @listing.seller.user.email %><br>
+        <% end %>
+            <% if @message %>
+                <%= f.hidden_field :conversation_id, value: @conversation.id%>
+            <% else %>
+                Listing
+                <%= f.fields_for :conversation, Conversation.new do |form| %>
+                    <%= form.hidden_field :listing_id, value: @listing.id %>
+                    <%= form.hidden_field :initiator_id, value: @user.id %>
+                    <%= form.hidden_field :noninitiator_id, value: @listing.seller.user.id %>
+                <% end %>
+                <%= link_to @listing.item.name, @listing %><br>
+            <% end %>
+            <% if @message %>
+                <%= f.text_field :subject, value: "Re: #{@message.subject}" %>
+            <% else %>
+                <%= f.text_field :subject, value: "Question about Listing ##{@listing.id}" %>
+            <% end %>
+        <h4><%= f.label :content %><br></h4>
+        <%= f.text_area :content %>
+        <br>
+        <%= f.hidden_field :sender_id, value: @user.id %>
+        <br>
+        <%= f.submit "Send" , :class => "btn btn-black" %>
+
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
