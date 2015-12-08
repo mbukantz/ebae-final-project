@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20151208162614) do
 
   create_table "advanced_searches", force: :cascade do |t|
