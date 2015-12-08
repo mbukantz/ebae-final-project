@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
 
   def index
     @user = current_user
+    @message = Message.new
   end
 
   def new
@@ -20,7 +21,6 @@ class MessagesController < ApplicationController
       redirect_to messages_path
       # redirect_to session.delete(:return_to)
     end
-    
   end
 
   def show
@@ -36,10 +36,35 @@ class MessagesController < ApplicationController
     end
   end
 
+  def update
+    @message = Message.find(params[:id])
+    @message.update(message_params)
+    redirect_to messages_path
+  end
+
+  def update_multiple
+    
+    selected_messages = params[:message_ids].select{|k,v| v == "1"}
+    messages = Message.find(selected_messages.keys)
+    messages.each do |message|
+      if current_user == message.sender
+        message.sender_deleted = true
+      else
+        message.recipient_deleted = true
+      end
+      message.save
+    end
+    redirect_to messages_path
+  end
+
   private
 
   def message_params
-    params.require(:message).permit(:subject, :content, :recipient_id, :sender_id, :conversation_id, conversation_attributes: [:listing_id, :initiator_id, :noninitiator_id])
+    params.require(:message).permit(:subject, :content, :recipient_id, :sender_id, :recipient_deleted, :sender_deleted, :conversation_id, conversation_attributes: [:listing_id, :initiator_id, :noninitiator_id])
+  end
+
+  def multiple_message_params
+    params.require(:message).permit(message_ids: [])
   end
 
 end
