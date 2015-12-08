@@ -1,0 +1,11 @@
+<h3>Highest Sale Price To Date:</h3>
+Price: <%= number_to_currency(@analytic.highest_sale_price.price) %>
+<br>
+
+
+Listing: <%= link_to @analytic.highest_sale_price.listing.item.name, listing_path(@analytic.highest_sale_price.listing) %>
+
+<h3>Category Rankings</h3>
+<% @analytic.auctions_by_category.each_with_index do |cat_num, i| %>
+  <%= "#{i + 1}. #{cat_num[0]}: #{cat_num[1]} listings" %><br>
+<% end %>
