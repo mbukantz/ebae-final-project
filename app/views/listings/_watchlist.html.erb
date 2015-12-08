@@ -11,12 +11,11 @@
     <h4>You are currently watching this listing. Happy bidding!</h4>
     <br>
     <div class="form-group">
-    <button>
-      <%= link_to "Unwatch", watchlist_path(:id => watchlist.first.id, :listing_id => watchlist.first.listing.id), :method => :delete %>
-    </button>
+      <%= link_to "Unwatch", watchlist_path(:id => watchlist.first.id, :listing_id => watchlist.first.listing.id), :method => :delete,:class => "btn btn-black" %>
+
   <% else %>
         <div class="form-group">
-        <button> <%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post %></button>
+        <%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post, :class => "btn btn-black" %>
       </div>
   <% end %>
 <% else %>
