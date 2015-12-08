@@ -64,16 +64,4 @@ class AnalyticViewObject
     input
   end
 
-
-
-
-
- # category that fetches highest price, on average
- # seller with the most earnings
- # buyer with the best reviews
- # seller with the best reviews
- # most watched items of all time
- # highest price in the last month
-
-
 end
