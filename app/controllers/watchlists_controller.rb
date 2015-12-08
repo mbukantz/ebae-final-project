@@ -12,8 +12,8 @@ class WatchlistsController < ApplicationController
 
   def destroy 
     watchlist = Watchlist.find_watchlist(current_user.id, params[:listing_id]) 
-    list = watchlist.first
-    WatchlistMailer.removed_item(list).deliver_now
+    watched_item = watchlist.first
+    WatchlistMailer.removed_item(watched_item).deliver_now
     Watchlist.destroy(watchlist.first.id)
     redirect_to dashboard_index_path
   end
