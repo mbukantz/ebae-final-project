@@ -43,7 +43,6 @@ class MessagesController < ApplicationController
   end
 
   def update_multiple
-    
     selected_messages = params[:message_ids].select{|k,v| v == "1"}
     messages = Message.find(selected_messages.keys)
     messages.each do |message|
@@ -61,10 +60,6 @@ class MessagesController < ApplicationController
 
   def message_params
     params.require(:message).permit(:subject, :content, :recipient_id, :sender_id, :recipient_deleted, :sender_deleted, :conversation_id, conversation_attributes: [:listing_id, :initiator_id, :noninitiator_id])
-  end
-
-  def multiple_message_params
-    params.require(:message).permit(message_ids: [])
   end
 
 end
