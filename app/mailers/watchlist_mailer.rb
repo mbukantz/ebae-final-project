@@ -1,0 +1,2 @@
+class WatchlistMailer < ApplicationMailer
+end
