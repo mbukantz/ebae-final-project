@@ -26,4 +26,9 @@ class Sale < ActiveRecord::Base
     price + listing.shipping_price
   end
 
+  def self.highest_sale_price
+    self.order(price: :desc).first
+  end
+
+
 end
