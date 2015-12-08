@@ -11,17 +11,18 @@
 <!-- end:heading -->
 
 
+
 <%@listings.each do |listing| %>
-<div class="row">
   <div class="col-md-3 col-sm-6 col-xs-12 pricing-table">
-          <ul class="list-unstyled">
-            <li class="head"><a href="/listings/<%=listing.id%>"><%=listing.item.name%></a></li>
-            <li class="price"><sup>$</sup><%= number_to_currency((listing.current_price||listing.starting_price) / 100.0)%> <p></p></li>
-            <li>Bids: <%=listing.bids.size%></li>
-            <li>End Time:<%=listing.end_time %></li>
-            <li class="foot"><a href="/listings/<%=listing.id%>" class="btn btn-black btn-larges">Go To Listing</a></li>
-          </ul>
-      </div>
+      <ul class="list-unstyled">
+        <li class="head"><a href="/listings/<%=listing.id%>"><%=listing.item.name%></a></li>
+        <li class="price"><sup>$</sup><%= number_to_currency((listing.current_price||listing.starting_price) / 100.0)%> <p></p></li>
+        <li>Bids: <%=listing.bids.size%></li>
+        <li>End Time:<%=listing.end_time %></li>
+        <li class="foot"><a href="/listings/<%=listing.id%>" class="btn btn-black btn-larges">Go To Listing</a></li>
+      </ul>
+    </div>
+
 <!-- <table>
   <tr>
     <th>Item</th>
