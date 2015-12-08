@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @watcher.name %>!</h1>
+    <h3>You are now watching <%= @listing.item.name %></h3>
+    <p>
+    Bidding for this item ends at <%= @listing.end_time %>.<br>
+    We will notify you before then...hopefully...
+    </p>
+
+  </body>
+</html>
