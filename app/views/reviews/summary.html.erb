@@ -1,7 +1,7 @@
 <%=render partial:"layouts/header", locals:{title: "Review Portal"}%>
 <div class="page-content">
   <div class="container">
-  <h3> Overall Rating: <%= @user.average_rating %> / 5.0</h3>
+  <h3> Overall Rating: <%= render_stars(@user.average_rating)%></h3>
 
 <h3>Feedback Received as Seller</h3>
   <table class = "table table-striped table-bordered">
