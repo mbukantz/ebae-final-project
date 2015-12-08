@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'log_out'
   get '/welcome', to: 'sessions#welcome', as: 'welcome'
   root to: "home#index"
+  get '/analytics', to: 'analytics#index', as: 'analytics'
 
 end
