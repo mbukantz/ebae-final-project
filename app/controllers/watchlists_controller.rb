@@ -6,6 +6,7 @@ class WatchlistsController < ApplicationController
     else 
       watchlist = Watchlist.create(buyer_id: current_user.id, listing_id: params[:listing_id])
       WatchlistMailer.added_item(watchlist).deliver_now
+      EndingEmailJob.set(wait: 45.seconds).perform_later(watchlist)
       redirect_to listing_path(params[:listing_id])
     end
   end
