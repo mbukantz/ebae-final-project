@@ -1,26 +1,28 @@
-<!-- begin:heading -->
-<div class="heads">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <h2><span>//</span>Message Overview</h2>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- end:heading -->
+<%=render partial:"layouts/header", locals:{title: "Message"}%>
 <div class="page-content">
   <div class="container">
 
 <% if @message.recipient == current_user || @message.sender == current_user %>
   <p>
-    <h4>Recipient: <%= @message.recipient.email %></h4>
-    <h4>Sender: <%= @message.sender.email %></h4>
-    <h4>Time: <%= @message.created_at %></h4>
-    <h4>Listing: <%= link_to @message.listing.item.name, @message.listing %></h4>
-    <h4>Subject: <%= @message.subject %></h4><br>
-    <h4>Message: <%= @message.content %></h4>
-  </p><br>
+
+    Recipient: <%= @message.recipient.email %><br>
+    Sender: <%= @message.sender.email %><br>
+    Time: <%= @message.created_at %><br><br>
+    Listing: <%= link_to @message.listing.item.name, @message.listing %><br><br>
+    Subject: <%= @message.subject %><br><br>
+
+    Message: <%= @message.content %>
+
+  </p>
+
+  <%= form_for [@message.listing, @message] do |f|%>
+    <% if @message.recipient == current_user %>
+      <%= f.hidden_field :recipient_deleted, value: "true" %>
+    <% else %>
+      <%= f.hidden_field :sender_deleted, value: "true" %>
+    <% end %>
+    <%= f.submit "Delete" %>
+  <% end %><br>
 
 <% if @message %>
   <h4><strong>Reply</strong></h4>
@@ -33,5 +35,6 @@
     You do not have access to this page.
   </p>
 <% end %>
+
   </div>
 </div>
