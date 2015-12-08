@@ -23,8 +23,9 @@ class ReviewsController < ApplicationController
   end
 
   def summary
-    @seller = Seller.find(params[:id])
-    @buyer = Buyer.find(params[:id])
+    @user = User.find(params[:id])
+    @seller = @user.seller
+    @buyer = @user.buyer
   end
 
   def show

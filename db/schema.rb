@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207194152) do
+ActiveRecord::Schema.define(version: 20151208162614) do
 
   create_table "bids", force: :cascade do |t|
     t.integer  "amount"
@@ -93,8 +93,11 @@ ActiveRecord::Schema.define(version: 20151207194152) do
     t.string   "subject"
     t.text     "content"
     t.integer  "conversation_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.datetime "read_at"
+    t.boolean  "sender_deleted"
+    t.boolean  "recipient_deleted"
   end
 
   create_table "phones", force: :cascade do |t|

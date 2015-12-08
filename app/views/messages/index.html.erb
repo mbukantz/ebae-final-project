@@ -5,12 +5,14 @@
     <th>Subject</th>
     <th>Sender</th>
     <th>Time</th>
+    <th>Status</th>
   </tr>
   <% @user.received_messages.each do |message| %>
     <tr>
       <td><%= link_to message.subject, listing_message_path(message.listing, message) %></td>
       <td><%= message.sender.email %></td>
       <td><%= message.created_at %></td>
+      <td><%= message.read? ? "Read" : "Unread" %></td>
     </tr>
   <% end %>
 </table>
@@ -23,12 +25,14 @@
     <th>Subject</th>
     <th>Recipient</th>
     <th>Time</th>
+    <th>Status</th>
   </tr>
   <% @user.sent_messages.each do |message| %>
     <tr>
       <td><%= link_to message.subject, listing_message_path(message.listing, message) %></td>
       <td><%= message.recipient.email %></td>
       <td><%= message.created_at %></td>
+      <td><%= message.read? ? "Read" : "Unread" %></td>
     </tr>
   <% end %>
 </table>
