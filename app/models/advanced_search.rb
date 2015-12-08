@@ -35,9 +35,11 @@ class AdvancedSearch < ActiveRecord::Base
         search_base = search_base.where(val[0], val[1])
       end
     end
+
     if !completed 
       search_base = search_base.where("listings.end_time > ?", Time.now)
     end
+
     search_base
 
   end
