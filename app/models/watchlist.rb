@@ -22,5 +22,8 @@ class Watchlist < ActiveRecord::Base
     watchlist = Watchlist.where(buyer_id: buyer_id, listing_id: listing_id)
   end
 
+  def alert_time
+    self.listing.end_time - 1.hour
+  end
 
 end
