@@ -30,6 +30,10 @@ class MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @conversation = @message.conversation
     session[:message_id] = @message.id
+    if @message.recipient == current_user
+      @message.read_at = Time.now.utc
+      @message.save
+    end
   end
 
   private

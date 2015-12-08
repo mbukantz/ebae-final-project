@@ -77,6 +77,18 @@ class User < ActiveRecord::Base
       Message.where(recipient_id: self.id).sort_by(&:created_at).reverse
     end
 
-  # Seller.create(user_id: self.id)
-  # Buyer.create(user_id: self.id)
+    def total_possible_rating
+     (seller.feedback_received.size + buyer.feedback_received.size) * 5
+    end
+
+    def total_rating
+      seller_rating = seller.feedback_received.inject(0){|total, fdbk| total += fdbk.rating}
+      buyer_rating = buyer.feedback_received.inject(0){|total, fdbk| total += fdbk.rating}
+      buyer_rating + seller_rating
+    end
+
+    def average_rating
+      total_possible_rating != 0 ? ((1.0 * total_rating / total_possible_rating) * 5) : 0
+    end
+
 end

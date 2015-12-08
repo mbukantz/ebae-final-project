@@ -11,8 +11,9 @@
 <!-- end:heading -->
 <div class="page-content">
   <div class="container">
+  <h3> Overall Rating: <%= @user.average_rating %> / 5.0</h3>
 
-<h3>Feeback Received as Seller</h3>
+<h3>Feedback Received as Seller</h3>
   <table class = "table table-striped table-bordered">
     <%@seller.feedback_received.each do |review|%>
     <tr>
@@ -23,7 +24,7 @@
       <th></th>
     </tr>
     <tr>
-      <td><%=review.sale.listing.item.name%></td>
+      <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
       <td><%=review.rating%></td>
       <td><%=review.comments%></td>
@@ -32,7 +33,7 @@
     <%end%>
   </table>
 
-<h3>Feeback Given as Seller</h3>
+<h3>Feedback Given as Seller</h3>
   <table class = "table table-striped table-bordered">
     <%@seller.feedback_given.each do |review|%>
     <tr>
@@ -43,7 +44,7 @@
       <th></th>
     </tr>
     <tr>
-      <td><%=review.sale.listing.item.name%></td>
+      <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
       <td><%=review.rating%></td>
       <td><%=review.comments%></td>
@@ -52,7 +53,7 @@
     <%end%>
   </table>
 
-<h3>Feeback Received as Buyer</h3>
+<h3>Feedback Received as Buyer</h3>
   <table class = "table table-striped table-bordered">
     <%@buyer.feedback_received.each do |review|%>
     <tr>
@@ -63,7 +64,7 @@
       <th></th>
     </tr>
     <tr>
-      <td><%=review.sale.listing.item.name%></td>
+      <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
       <td><%=review.rating%></td>
       <td><%=review.comments%></td>
@@ -72,7 +73,7 @@
     <%end%>
   </table>
 
-<h3>Feeback Given as Buyer</h3>
+<h3>Feedback Given as Buyer</h3>
   <table class = "table table-striped table-bordered">
     <%@buyer.feedback_given.each do |review|%>
     <tr>
@@ -83,7 +84,7 @@
       <th></th>
     </tr>
     <tr>
-      <td><%=review.sale.listing.item.name%></td>
+      <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
       <td><%=review.rating%></td>
       <td><%=review.comments%></td>

@@ -1,34 +1,55 @@
+<!-- begin:heading -->
+<div class="heads">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2><span>//</span>My Messages</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end:heading -->
 
-<h2>Inbox</h2>
-<table>
+<div class="page-content">
+  <div class="container">
+
+<h3>Inbox</h3>
+  <table class = "table table-striped table-bordered">
   <tr>
     <th>Subject</th>
     <th>Sender</th>
     <th>Time</th>
+    <th>Status</th>
   </tr>
   <% @user.received_messages.each do |message| %>
     <tr>
       <td><%= link_to message.subject, listing_message_path(message.listing, message) %></td>
       <td><%= message.sender.email %></td>
       <td><%= message.created_at %></td>
+      <td><%= message.read? ? "Read" : "Unread" %></td>
     </tr>
   <% end %>
 </table>
-  
 
-<h2>Sent</h2>
 
-<table>
+<h3>Sent</h3>
+
+<table class = "table table-striped table-bordered">
   <tr>
     <th>Subject</th>
     <th>Recipient</th>
     <th>Time</th>
+    <th>Status</th>
   </tr>
   <% @user.sent_messages.each do |message| %>
     <tr>
       <td><%= link_to message.subject, listing_message_path(message.listing, message) %></td>
       <td><%= message.recipient.email %></td>
       <td><%= message.created_at %></td>
+      <td><%= message.read? ? "Read" : "Unread" %></td>
     </tr>
   <% end %>
 </table>
+
+  </div>
+</div>
