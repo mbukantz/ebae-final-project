@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :advanced_searches
   resources :sessions, only: [:create, :destroy, :new]
   resources :users
   resources :reviews, only: [:new, :create, :show]
