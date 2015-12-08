@@ -15,8 +15,22 @@
 
  Listing: <%= link_to @analytic.highest_sale_this_month.listing.item.name, listing_path(@analytic.highest_sale_this_month.listing) %>
 
+
  <h3>Most Popular Item (by number of bids)</h3>
- Listing: <%= link_to @analytic.most_popular_by_bids.listing.item.name, listing_path(@analytic.most_popular_by_bids.listing) %>
+ <table class = "table table-striped table-bordered">
+  <th>Listing</th>
+  <th>Number of Bids</th>
+  <th>Current Price</th>
+  <th>Auction Status</th>
+  <% @analytic.most_popular_by_bids.each do |listing, num_bids| %>
+    <tr>
+      <td><%= link_to listing.item.name, listing_path(listing) %></td>
+      <td><%= num_bids %></td>
+      <td><%= number_to_currency(listing.current_price / 100) %></td>
+      <td><%= listing.end_time < Time.now ? "Completed" : "Active" %></td>
+    </tr>
+  <% end %>
+</table>
 
  <h3>Category Rankings</h3>
  <% @analytic.auctions_by_category.each_with_index do |cat_num, i| %>
