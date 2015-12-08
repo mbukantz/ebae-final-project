@@ -15,6 +15,9 @@
 
  Listing: <%= link_to @analytic.highest_sale_this_month.listing.item.name, listing_path(@analytic.highest_sale_this_month.listing) %>
 
+ <h3>Most Popular Item (by number of bids)</h3>
+ Listing: <%= link_to @analytic.most_popular_by_bids.listing.item.name, listing_path(@analytic.most_popular_by_bids.listing) %>
+
  <h3>Category Rankings</h3>
  <% @analytic.auctions_by_category.each_with_index do |cat_num, i| %>
    <%= "#{i + 1}. #{cat_num[0]}: #{cat_num[1]} listings" %><br>

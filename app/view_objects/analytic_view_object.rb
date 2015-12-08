@@ -19,7 +19,14 @@ class AnalyticViewObject
    category_count_with_names.sort_by{|k, v| v}.reverse
  end
 
-
+def most_popular_by_bids
+  counts = Bid.group(:listing_id).count
+  listing_bids_array = counts.group_by {|k,v| v}.max.last
+  listing_bids_array.each_with_object({}) do | listing_array, bid_count_hash|
+      listing = Listing.find(listing_array[0])
+      bid_count_hash[listing] = listing_array[1]
+  end
+end
 
 
 
