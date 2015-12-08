@@ -1,0 +1,25 @@
+<% if @message.recipient == current_user || @message.sender == current_user %>
+  <p>
+    Recipient: <%= @message.recipient.email %><br>
+    Sender: <%= @message.sender.email %><br>
+    Time: <%= @message.created_at %><br><br>
+    Listing: <%= link_to @message.listing.item.name, @message.listing %><br><br>
+    Subject: <%= @message.subject %><br><br>
+
+    Message: <%= @message.content %>
+
+  </p>
+
+  <%= link_to "Back to messages", messages_path %>
+
+<% if @message %>
+  <p>Reply</p>
+  <%= render 'form' %>
+<% end %>
+
+<% else %>
+  <p>
+    You do not have access to this page.
+  </p>
+<% end %>
+

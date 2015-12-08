@@ -3,12 +3,19 @@ Rails.application.routes.draw do
   resources :users
   resources :reviews, only: [:new, :create, :show]
   resources :listings do
+    resources :messages, only: [:new, :create, :show]
     resources :sales do
       resources :reviews
     end
   end
+
+  # resources :conversations do
+  #   resources :messages, only: [:show, :new, :create]
+  # end
+  
   resources :categories
   resources :charges, only: [:create]
+  resources :messages, only: [:index]
 
   resources :search, only: [:index]
   resources :bids, only: [:create]

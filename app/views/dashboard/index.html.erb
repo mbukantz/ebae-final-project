@@ -9,7 +9,11 @@
     <meta name="author" content="afriq yasin ramadhan">
     <link rel="shortcut icon" href="img/favicon.png">
 
-    <title>Dodolan Manuk - Responsive catalog Template</title>
+
+<%= link_to "My Messages", messages_path %>
+
+  <%= render 'currently_bidding' %>
+
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -42,35 +46,35 @@
 
 <!--
 <h1><%= @user.first_name.capitalize %>'s Dashboard</h1> -->
-<section class="dashboard-section"> 
+<section class="dashboard-section">
   <button class="btn btn-black">Bidding - Active Listings</button>
     <div class="info-table">
       <%= render 'currently_bidding' %>
     </div>
 </section>
 
-<section class="dashboard-section"> 
+<section class="dashboard-section">
   <button class="btn btn-black">Bid - Expired Listings</button>
   <div class="info-table">
     <%= render 'ended_bids' %>
   </div>
 </section>
 
-<section class="dashboard-section"> 
+<section class="dashboard-section">
   <button class="btn btn-black">Currently Watching - Active Listings</button>
   <div class="info-table">
     <%= render 'watching' %>
   </div>
 </section>
 
-<section class="dashboard-section"> 
+<section class="dashboard-section">
   <button class="btn btn-black">Selling: Active Listings</button>
   <div class="info-table">
     <%= render 'selling_active' %>
   </div>
 </section>
 
-<section class="dashboard-section"> 
+<section class="dashboard-section">
   <button class="btn btn-black">Selling: Completed Listings</button>
   <div class="info-table">
     <%= render 'selling_completed' %>
