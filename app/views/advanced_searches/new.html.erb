@@ -13,8 +13,8 @@
   </div>
   <div class="field">
     <%= f.label :min_price, "Price Range" %><br />
-    <%= f.text_field :min_price, size: 10 %> -
-    <%= f.text_field :max_price, size: 10 %>
+    <%= f.text_field :min_price, class: 'text_field', step: 0.01, :value => (number_with_precision(f.object.min_price, :precision => 2) || 0) %> -
+    <%= f.text_field :max_price, class: 'text_field', step: 0.01, :value => (number_with_precision(f.object.max_price, :precision => 2) || 0)%>
   </div>
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>

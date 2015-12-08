@@ -1,11 +1,16 @@
 <div id="search-results">
   <h1>Search Results</h1>
 
-  <%= @advanced_search.listings.each do |listing| %>
-    Item: <%= listing.item.name %>
+  <ul>
+  <% @results.each do |listing| %>
+    <li>
+    Item: <%= link_to listing.item.name, listing %>
     <br>
-    Starting Price: <%= number_to_currency(listing.starting_price) %>
+    Starting Price: <%= number_to_currency(listing.starting_price/ 100.0) %>
     <br>
-    Current Price <%= listing.current_price ? number_to_currency(listing.current_price) : number_to_currency(0) %>
+    Current Price <%= listing.current_price ? number_to_currency(listing.current_price / 100.0) : number_to_currency(0) %>
+    <br>
+  </li>
   <% end %>
+</ul>
 </div>
