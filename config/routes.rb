@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users
   resources :reviews, only: [:new, :create, :show]
   resources :listings do
-    resources :messages, only: [:new, :create, :show]
+    resources :messages, only: [:new, :create, :show, :update]
     resources :sales do
       resources :reviews
     end
@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :charges, only: [:create]
   resources :messages, only: [:index]
+  patch 'messages/update_multiple', :to => 'messages#update_multiple'
 
   resources :search, only: [:index]
   resources :bids, only: [:create]

@@ -10,7 +10,14 @@
 
   </p>
 
-  <%= link_to "Back to messages", messages_path %>
+  <%= form_for [@message.listing, @message] do |f|%>
+    <% if @message.recipient == current_user %>
+      <%= f.hidden_field :recipient_deleted, value: "true" %>
+    <% else %>
+      <%= f.hidden_field :sender_deleted, value: "true" %>
+    <% end %>
+    <%= f.submit "Delete" %>
+  <% end %><br>
 
 <% if @message %>
   <p>Reply</p>
@@ -23,3 +30,4 @@
   </p>
 <% end %>
 
+<%= link_to "Back to messages", messages_path %>
