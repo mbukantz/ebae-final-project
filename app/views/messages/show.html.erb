@@ -9,13 +9,17 @@
     Message: <%= @message.content %>
 
   </p>
-  <p>
-  <%= link_to "Reply", new_conversation_message_path(@message.conversation) %>
-  </p>
+
   <%= link_to "Back to messages", messages_path %>
+
+<% if @message %>
+  <p>Reply</p>
+  <%= render 'form' %>
+<% end %>
 
 <% else %>
   <p>
     You do not have access to this page.
   </p>
 <% end %>
+

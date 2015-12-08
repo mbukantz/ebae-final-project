@@ -5,26 +5,30 @@ class MessagesController < ApplicationController
   end
 
   def new
-    session[:return_to] ||= request.referer
+    # session[:return_to] ||= request.referer
     @user = current_user
-    @reply_message = Message.find_by(id: session[:message_id])
-    session[:message_id] = nil
-    @message = Message.new
+    # @reply_message = Message.find_by(id: session[:message_id])
+    # session[:message_id] = nil
+    @msg = Message.new
     @listing = Listing.find_by(id: params[:listing_id])
-    @conversation = Conversation.find_by(id: params[:conversation_id])
+    @conversation = Conversation.find_by(listing_id: @listing.id, initiator_id: @user.id, noninitiator_id:@listing.seller.user.id)
   end
 
   def create
     message = Message.new(message_params)
     if message.save
-      # redirect_to message.listing
-      redirect_to session.delete(:return_to)
+      redirect_to messages_path
+      # redirect_to session.delete(:return_to)
     end
     
   end
 
   def show
+    @user = current_user
+    @msg = Message.new
+    @listing = Listing.find_by(id: params[:listing_id])
     @message = Message.find(params[:id])
+    @conversation = @message.conversation
     session[:message_id] = @message.id
   end
 

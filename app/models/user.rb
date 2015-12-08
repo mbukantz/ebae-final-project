@@ -70,11 +70,11 @@ class User < ActiveRecord::Base
     end
 
     def sent_messages
-      Message.where(sender_id: self.id)
+      Message.where(sender_id: self.id).sort_by(&:created_at).reverse
     end
 
     def received_messages
-      Message.where(recipient_id: self.id)
+      Message.where(recipient_id: self.id).sort_by(&:created_at).reverse
     end
 
   # Seller.create(user_id: self.id)

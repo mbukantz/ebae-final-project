@@ -20,9 +20,9 @@ class Message < ActiveRecord::Base
   belongs_to :sender, class_name: 'User'
   accepts_nested_attributes_for :sender, :recipient, :conversation
 
-  # def conversation_attributes=(listing_id)
-  #   Conversation.find_or_create_by(listing_id: listing_id)
-  #   Conversation.where(listing_id: listing_id, initiator_id: )
-  # end
+  def conversation_attributes=(hash)
+    conversation = Conversation.find_or_create_by(hash)
+    self.conversation = conversation
+  end
 
 end
