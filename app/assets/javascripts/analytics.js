@@ -1,6 +1,5 @@
 $(document).on('page:load ready', function(){
-
-
+  console.log("hello");
  var makeBarGraph = function(data){
       // debugger;
    var chart = d3.select('#bar-chart-js');
