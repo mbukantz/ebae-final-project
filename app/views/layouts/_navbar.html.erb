@@ -1,21 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="description" content="dodolan manuk responsive catalog themes built with twitter bootstrap">
+      <meta name="keywords" content="responsive, catalog, cart, themes, twitter bootstrap, bootstrap">
+
+
+    <!-- Bootstrap core CSS -->
+    <script src="bootstrap.min.js"></script>
+    <link href="css/bootstrap.css" rel="stylesheet">
+
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- [if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+      <script src="js/respond.min.js"></script> -->
+
+
 <!-- <% if current_user %> -->
 <p align="right" style="padding-right:20px">
 <i>logged in as <a href="/users/<%="#{current_user.id}"%>"><%= current_user.email %></a></i>
 </p>
 
-    <!-- <a href="/users/<%="#{current_user.id}"%>">Home</a>
-    <a href="/dashboard">Dashboard</a>
-    <a href="/listings/new">Create Listing</a>
-    <a href="/listings">View All Listings</a>
-    <a href="/categories">Browse Categories</a>
-    <a href="/users/<%="#{current_user.id}"%>/reviews">Review Portal</a>
-    <a href="/logout">Sign Out</a> -->
-      <%= render "/layouts/search" %>
 
-<!-- <% else %> -->
    <a href="/signup">Sign Up!</a></li>
    <a href="/login">Login</a></li>
-   <%= render "/layouts/search" %>
 
 <!-- <%end%> -->
 
@@ -34,21 +51,29 @@
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
-
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav nav-left">
-      <li><a href="/users/<%="#{current_user.id}"%>">Home</a></li>
       <li><%= render "/layouts/search" %></li>
+      <li><a href="/users/<%="#{current_user.id}"%>">Home</a></li>
       <li><a href="/dashboard">Dashboard</a></li>
-      <li><a href="/listings/new">Create Listing</a></li>
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Listings
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/listings/new">Create</a></li>
+            <li><a href="/listings">View All</a></li>
+          </ul>
+        </li>
+
       <li><a href="/categories">Browse Categories</a></li>
-      <li><a href="/listings">View All Listings</a></li>
+
       <li><a href="/users/<%="#{current_user.id}"%>/reviews">Review Portal</a></li>
       <li>
         <a
         <a href="/logout">Sign Out</a></li>
     </ul>
-
   </div><!-- /.navbar-collapse -->
 
 <%end%>
+
 </nav>

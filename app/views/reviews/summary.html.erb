@@ -9,51 +9,87 @@
   </div>
 </div>
 <!-- end:heading -->
+<div class="page-content">
+  <div class="container">
 
 <h3>Feeback Received as Seller</h3>
-
-<%@seller.feedback_received.each do |review|%>
-<p>
-  Item: <%=review.sale.listing.item.name%><br>
-  Description: <%=review.sale.listing.item.description%><br>
-  Rating: <%=review.rating%><br>
-  Comments: <%=review.comments%><br>
-  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
-</p>
-<%end%>
+  <table class = "table table-striped table-bordered">
+    <%@seller.feedback_received.each do |review|%>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>Comments</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%=review.sale.listing.item.name%></td>
+      <td><%=review.sale.listing.item.description%></td>
+      <td><%=review.rating%></td>
+      <td><%=review.comments%></td>
+      <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
+    </tr>
+    <%end%>
+  </table>
 
 <h3>Feeback Given as Seller</h3>
-
-<%@seller.feedback_given.each do |review|%>
-<p>
-  Item: <%=review.sale.listing.item.name%><br>
-  Description: <%=review.sale.listing.item.description%><br>
-  Rating: <%=review.rating%><br>
-  Comments: <%=review.comments%><br>
-  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
-</p>
-<%end%>
+  <table class = "table table-striped table-bordered">
+    <%@seller.feedback_given.each do |review|%>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>Comments</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%=review.sale.listing.item.name%></td>
+      <td><%=review.sale.listing.item.description%></td>
+      <td><%=review.rating%></td>
+      <td><%=review.comments%></td>
+      <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
+    </tr>
+    <%end%>
+  </table>
 
 <h3>Feeback Received as Buyer</h3>
-
-<%@buyer.feedback_received.each do |review|%>
-<p>
-  Item: <%=review.sale.listing.item.name%><br>
-  Description: <%=review.sale.listing.item.description%><br>
-  Rating: <%=review.rating%><br>
-  Comments: <%=review.comments%><br>
-  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
-</p>
-<%end%>
+  <table class = "table table-striped table-bordered">
+    <%@buyer.feedback_received.each do |review|%>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>Comments</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%=review.sale.listing.item.name%></td>
+      <td><%=review.sale.listing.item.description%></td>
+      <td><%=review.rating%></td>
+      <td><%=review.comments%></td>
+      <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
+    </tr>
+    <%end%>
+  </table>
 
 <h3>Feeback Given as Buyer</h3>
-
-<%@buyer.feedback_given.each do |review|%>
-<p>
-  Item: <%=review.sale.listing.item.name%><br>
-  Description: <%=review.sale.listing.item.description%><br>
-  Rating: <%=review.rating%><br>
-  Comments: <%=review.comments%><br>
-  <a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a>
-</p>
-<%end%>
+  <table class = "table table-striped table-bordered">
+    <%@buyer.feedback_given.each do |review|%>
+    <tr>
+      <th>Item</th>
+      <th>Description</th>
+      <th>Rating</th>
+      <th>Comments</th>
+      <th></th>
+    </tr>
+    <tr>
+      <td><%=review.sale.listing.item.name%></td>
+      <td><%=review.sale.listing.item.description%></td>
+      <td><%=review.rating%></td>
+      <td><%=review.comments%></td>
+      <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
+    </tr>
+    <%end%>
+  </table>
+</div>
+</div>

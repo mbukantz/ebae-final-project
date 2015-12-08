@@ -16,5 +16,5 @@ class Review < ActiveRecord::Base
 
   validates :sale_id, presence: true
   validates :rating, presence: true
-  validates :comments, presence: true, length: 10..200
+  validates :comments, presence: true
 end
