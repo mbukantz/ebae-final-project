@@ -9,7 +9,7 @@
 <p>
   <img src="<%= @review.sale.listing.item.picture_url %>" height="200" width="200" />  <br></p>
 <p>
-  Rating: <%=@review.rating%>
+  Rating: <%= render_stars(@review.rating) %>
 </p>
 
 <p>

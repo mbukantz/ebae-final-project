@@ -16,7 +16,7 @@
     <tr>
       <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
-      <td><%=review.rating%></td>
+      <td><center><%= render_stars(review.rating)%></center></td>
       <td><%=review.comments%></td>
       <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
     </tr>
@@ -36,7 +36,7 @@
     <tr>
       <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
-      <td><%=review.rating%></td>
+      <td><center><%= render_stars(review.rating)%></center></td>
       <td><%=review.comments%></td>
       <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
     </tr>
@@ -56,7 +56,7 @@
     <tr>
       <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
-      <td><%=review.rating%></td>
+      <td><center><%= render_stars(review.rating)%></center></td>
       <td><%=review.comments%></td>
       <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
     </tr>
@@ -76,7 +76,7 @@
     <tr>
       <td><%=link_to review.sale.listing.item.name, review.sale.listing%></td>
       <td><%=review.sale.listing.item.description%></td>
-      <td><%=review.rating%></td>
+      <td><center><%= render_stars(review.rating)%></center></td>
       <td><%=review.comments%></td>
       <td><a href="/listings/<%=review.sale.listing.id%>/sales/<%=review.sale.id%>/reviews/<%=review.id%>">Review</a></td>
     </tr>
