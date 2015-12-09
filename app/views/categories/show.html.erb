@@ -1,4 +1,4 @@
-<%@category.items.each do |item|%>
+<%@category.active_items.each do |item|%>
   <p>
     Item: <a href="/listings/<%=item.listing.id%>"><%=item.name%></a><br>
     Current Price: <%=number_to_currency(item.listing.current_price / 100.0)%><br>

@@ -10,6 +10,12 @@
 
 class Category < ActiveRecord::Base
   has_many :items
+  has_many :listings, through: :items
 
   validates :name, presence: name
+
+  def active_items
+    self.items.joins(:listing).where('end_time > ?', Time.now)
+  end
+
 end
