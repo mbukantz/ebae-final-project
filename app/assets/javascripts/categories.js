@@ -5,10 +5,11 @@ $(document).on('page:load ready', function(){
     var categoryId = $this.attr('id');
     var url = '/categories/' + categoryId;
     $.ajax({
-      url: url, 
+      url: url,
       dataType: "json",
       method: "GET"
     }).success(function(data){
+           debugger
       $('#show-category-items-js').html(data.template);
     })
   })

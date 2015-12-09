@@ -33,6 +33,7 @@
  Listing: <%= link_to @analytic.lowest_sale_this_month.listing.item.name, listing_path(@analytic.lowest_sale_this_month.listing) %>
 
  <h3>Most Popular Item (by number of bids)</h3>
+ <%if @analytic.most_popular_by_bids != nil%>
  <table class = "table table-striped table-bordered">
   <th>Listing</th>
   <th>Number of Bids</th>
@@ -46,6 +47,7 @@
       <td><center><%= listing.end_time < Time.now ? "Completed" : "Active" %></center></td>
     </tr>
   <% end %>
+  <%end%>
 </table>
 
 <h3>Most Watched Item</h3>

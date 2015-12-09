@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151208213400) do
+ActiveRecord::Schema.define(version: 20151208215951) do
 
   create_table "advanced_searches", force: :cascade do |t|
     t.string   "keywords"
