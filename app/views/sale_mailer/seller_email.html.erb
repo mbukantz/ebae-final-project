@@ -1,3 +1,5 @@
+<% @mailer = MailerViewObject.new(@sale) %>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,25 +17,10 @@ Shipping: <%=number_to_currency(@listing.shipping_price / 100.0)%><br>
 Total: <%=number_to_currency((@listing.shipping_price + @listing.current_price) / 100.0)%><br>
     </p>
 
-<h3>Buyer Information:</h3>
-<ul>
-  <li>Name: <%= @buyer.name %></li>
-  <li>Email: <%= @buyer.email %></li>
+<h3>Buyer Contact Information:</h3>
+<p><%= @mailer.buyer_name_email %></p>
+<p><%= @mailer.buyer_phones %></p>
+<p><%= @mailer.buyer_address %></p>
 
-  <li>Phone Number: <% @buyer.phones.each do |phone| %>
-      <ul>
-        <li>Type: <%= phone.label.capitalize %>, Number: <%= phone.number %>
-        <% end %>
-        </li>
-      </ul>
-  <li>Address: <% @buyer.locations.each do |location| %>
-    <ul>
-     <li>
-      Type: <%= location.label.capitalize %><br>
-       <%= location.street %> <br>
-       <%= location.city %>, <%= location.state %> <%= location.zip %>  
-       <% end %>
-    </li>
-  </ul>
   </body>
 </html>
