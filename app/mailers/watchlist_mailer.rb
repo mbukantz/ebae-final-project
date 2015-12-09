@@ -25,7 +25,7 @@ class WatchlistMailer < ApplicationMailer
     @watcher = watchlist.buyer.user
     mail(to: @watcher.email,
         from: 'bae@ebae.com',
-        subject: "The end is near for #{@listing.item.name}!"
+        subject: "The end is near for #{@listing.item.name}!")
   end
 
 end
