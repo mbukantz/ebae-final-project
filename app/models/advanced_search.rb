@@ -13,70 +13,70 @@
 
 class AdvancedSearch < ActiveRecord::Base
 
-  def listings
-    @listings ||= find_listings
-  end
-
-  # private
-
   def find_listings
-    # keywords, category_id, min_price, max_price
-    # join items and listings
-    search_base = Listing.joins(:item)
-    search_hash = {
-      :keywords => ["lower(items.name) like ?", "%#{keywords}%".downcase],
-      :category_id => ["items.category_id = ?", category_id],
-      :completed => ["listings.end_time < ?", Time.now] 
-    }
 
+    results = initial_query(self)
 
-    search_hash.each do |key, val| 
-      if self.send(key)
-        search_base = search_base.where(val[0], val[1])
-      end
-    end
-
-    if !completed 
-      search_base = search_base.where("listings.end_time > ?", Time.now)
+    if !self.completed 
+      results = active_listings_only(results)
     end
    
-    if min_price
-      min_base = search_base.where("starting_price >= ? AND current_price is NULL", min_price) 
-      min_base2 = search_base.where("current_price >= ? AND current_price is not NULL", min_price)
-      search_base_min = min_base | min_base2
+    if self.min_price
+      min_price_results = refine_by_min_price(results)
     end
 
-    if max_price
-      max_base = search_base.where("starting_price <= ? AND current_price is NULL", max_price)
-      max_base2 = search_base.where("current_price <= ? AND current_price is not NULL", max_price)
-      search_base_max = max_base | max_base2
+    if self.max_price
+      max_price_results = refine_by_max_price(results)
     end
 
-    if search_base_min && search_base_max
-      search_base = search_base_min & search_base_max
-    elsif search_base_min
-      search_base = search_base_min
-    elsif search_base_max
-      search_base = search_base_max
+    if min_price_results && max_price_results
+      results = min_price_results & max_price_results
+    elsif min_price_results
+      results = min_price_results
+    elsif max_price_results
+      results = max_price_results
     end
 
-    search_base
+    results
 
   end
 
 
+  def initial_query(search_terms)
+    results = Listing.joins(:item)
+  
+    search_hash.each do |key, val| 
+      if self.send(key)
+        results = results.where(val[0], val[1])
+      end
+    end
+    results
+  end
+
+  def search_hash
+    {
+      :keywords => ["lower(items.name) like ?", "%#{self.keywords}%".downcase],
+      :category_id => ["items.category_id = ?", self.category_id],
+      :completed => ["listings.end_time < ?", Time.now] 
+    }
+  end
+
+  def active_listings_only(results)
+    results = results.where("listings.end_time > ?", Time.now)
+  end
+
+  def refine_by_min_price(results)
+    min_base = results.where("starting_price >= ? AND current_price is NULL", self.min_price) 
+    min_base2 = results.where("current_price >= ? AND current_price is not NULL", self.min_price)
+    min_base | min_base2
+  end
+
+  def refine_by_max_price(results)
+    max_base = results.where("starting_price <= ? AND current_price is NULL", self.max_price)
+    max_base2 = results.where("current_price <= ? AND current_price is not NULL", self.max_price)
+    max_base | max_base2
+  end
 
 
-
-
-
-    # Listing.joins(:item).where("lower(items.name) like ?", "%#{keywords}%".downcase).where("items.category_id = ?", "%#{category_id}%").send()
-
-    # items = Item.order(:name)
-    # listings = Listing.order(:starting_price)
-    # itemsWithKeyword = items.where("name like ?", "%#{keywords}%") if keywords.present?
-    # itemsWithCategory = items.where(category_id: category_id) if category_id.present?
-    # listingsByMinPrice = listings.where("starting_price >= ?", min_price) if min_price.present?
-    # listingsByMaxPrice = listings.where("starting_price <= ?", max_price) if max_price.present?
 
 end
