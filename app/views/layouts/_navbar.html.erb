@@ -53,24 +53,33 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav nav-left">
-      <li><a href="/users/<%="#{current_user.id}"%>">Home</a></li>
-      <li><a href="/dashboard">Dashboard</a></li>
+     
+
+      <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><%= current_user.email %>
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a href="/messages">Messages</a></li>
+             <li><a href="/users/<%="#{current_user.id}"%>">Account Settings</a></li>
+          </ul>
+      </li>
+
       <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#">Listings
           <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/listings/new">Create</a></li>
             <li><a href="/listings">View All</a></li>
+            <li><a href="/categories">Browse Categories</a></li>
           </ul>
-        </li>
+      </li>
 
-      <li><a href="/categories">Browse Categories</a></li>
+
 
       <li><a href="/users/<%="#{current_user.id}"%>/reviews">Review Portal</a></li>
 
       <li><a href="/analytics">Analytics</a></li>
-
-      <li><a href="/messages">Messages</a></li>
       <li><a
         <a href="/logout">Sign Out</a></li>
 
