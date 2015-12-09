@@ -21,7 +21,7 @@ class AdvancedSearchesController < ApplicationController
     @advanced_search = AdvancedSearch.find(params[:id])
     # binding.pry
     @results = @advanced_search.find_listings
-    binding.pry
+    # binding.pry
     @attributes = @advanced_search.attributes.except("id","created_at", "updated_at", "category_id")
     @category = Category.find_by(id: @advanced_search.category_id)
   end

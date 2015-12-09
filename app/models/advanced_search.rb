@@ -55,9 +55,14 @@ class AdvancedSearch < ActiveRecord::Base
       search_base_max = max_base | max_base2
     end
 
-    search_base = search_base_min & search_base_max
-
-    binding.pry
+    if search_base_min && search_base_max
+      search_base = search_base_min & search_base_max
+    elsif search_base_min
+      search_base = search_base_min
+    elsif search_base_max
+      search_base = search_base_max
+    end
+    
     search_base
 
   end
