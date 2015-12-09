@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        html_string = render_to_string('categories/_show_listing.html.erb', locals: {category: @category}, layout: false)
+          html_string = render_to_string('categories/_show_listing.html.erb', locals: {category: @category}, layout: false)
         render json: {template: html_string}
       }
     end

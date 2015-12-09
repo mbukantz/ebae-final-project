@@ -5,8 +5,8 @@ class WatchlistMailer < ApplicationMailer
     @watchlist = watchlist
     @listing = watchlist.listing
     @watcher = watchlist.buyer.user
-    mail(to: @watcher.email, 
-        from: 'bae@ebae.com', 
+    mail(to: @watcher.email,
+        from: 'bae@ebae.com',
         subject: "Now watching #{@listing.item.name}")
   end
 
@@ -14,8 +14,8 @@ class WatchlistMailer < ApplicationMailer
     @watchlist = watchlist
     @listing = watchlist.listing
     @watcher = watchlist.buyer.user
-    mail(to: @watcher.email, 
-        from: 'bae@ebae.com', 
+    mail(to: @watcher.email,
+        from: 'bae@ebae.com',
         subject: "No longer watching #{@listing.item.name}")
   end
 
@@ -23,9 +23,9 @@ class WatchlistMailer < ApplicationMailer
     @watchlist = watchlist
     @listing = watchlist.listing
     @watcher = watchlist.buyer.user
-    mail(to: @watcher.email, 
-        from: 'bae@ebae.com', 
-        subject: "The end is near for #{@listing.item.name}")!
+    mail(to: @watcher.email,
+        from: 'bae@ebae.com',
+        subject: "The end is near for #{@listing.item.name}!")
   end
 
 end

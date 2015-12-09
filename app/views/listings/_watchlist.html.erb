@@ -14,12 +14,18 @@
       <%= link_to "Unwatch", watchlist_path(:id => watchlist.first.id, :listing_id => watchlist.first.listing.id), :method => :delete,:class => "btn btn-black" %>
 
   <% else %>
-        <div class="form-group">
-        <%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post, :class => "btn btn-black" %>
-      </div>
+    <div class="form-group">
+
+        <!-- <%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post, :class => "btn btn-black watchlist-btn" %> -->
+
+      <button class="btn btn-black watchlist-btn" id="<%= @listing.id %>">Watch this Item</button>
+
+    </div>
   <% end %>
 <% else %>
   <h4><i>This auction has ended.</i></h4>
 <% end %>
   </div>
 </div>
+
+  <div id="watchlist-output" class=".col-md-8"></div>

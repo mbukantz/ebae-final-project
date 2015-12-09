@@ -9,7 +9,6 @@ $(document).on('page:load ready', function(){
       dataType: "json",
       method: "GET"
     }).success(function(data){
-           debugger
       $('#show-category-items-js').html(data.template);
     })
   })
