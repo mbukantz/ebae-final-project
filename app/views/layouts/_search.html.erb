@@ -1,8 +1,11 @@
-     <form class="navbar-form navbar-left" role="search" method="GET" action="/search">
-        <div class="form-group">
-          <input type="text" name = "keyword" class="form-control" placeholder="Search for Listings">
-       <button type="submit" class="btn btn-default">Submit</button>
-       </div>
-     <li class="search"><a
-       <a href="/advanced_searches/new">Advanced Search</a></li>
-     </form>
+
+<%= form_for AdvancedSearch.new, html:{class: "form-horizontal", id: "search-form", role:"form"} do |f| %>
+  <div class="field">
+    <%= f.label :keywords %><br />
+    <%= f.text_field :keywords %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+<li class="search">
+  <a href="/advanced_searches/new">Advanced Search</a>
+</li>

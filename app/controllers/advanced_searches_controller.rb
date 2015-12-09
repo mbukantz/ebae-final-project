@@ -6,8 +6,12 @@ class AdvancedSearchesController < ApplicationController
 
   def create
     @advanced_search = AdvancedSearch.new(advanced_search_params)
-    @advanced_search.min_price = (advanced_search_params[:min_price].to_f * 100).to_i if advanced_search_params[:min_price] != ""
-    @advanced_search.max_price = (advanced_search_params[:max_price].to_f * 100).to_i if advanced_search_params[:max_price] != ""
+    if advanced_search_params[:min_price] != "" && advanced_search_params[:min_price] != nil
+      @advanced_search.min_price = (advanced_search_params[:min_price].to_f * 100).to_i
+    end 
+    if advanced_search_params[:max_price] != "" && advanced_search_params[:max_price] != nil
+      @advanced_search.max_price = (advanced_search_params[:max_price].to_f * 100).to_i 
+    end
     # binding.pry
     @advanced_search.save
     redirect_to @advanced_search
@@ -16,7 +20,8 @@ class AdvancedSearchesController < ApplicationController
   def show
     @advanced_search = AdvancedSearch.find(params[:id])
     # binding.pry
-    @results = @advanced_search.listings
+    @results = @advanced_search.find_listings
+    binding.pry
     @attributes = @advanced_search.attributes.except("id","created_at", "updated_at", "category_id")
     @category = Category.find_by(id: @advanced_search.category_id)
   end

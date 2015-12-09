@@ -4,8 +4,9 @@
   <ul>
     <% @attributes.each do |attribute, val| %>
       <% attribute = attribute.gsub("min_price", "Minimum Price").gsub("max_price", "Maximum Price").gsub("keywords", "Keywords").gsub("completed", "Completed") %>
+
       <% if val %>
-        <li><%= attribute %>: <%= val.respond_to?("capitalize") ? val.capitalize : val %></li>
+        <li><%= attribute %>: <%= val.is_a?(Integer) ? number_to_currency(val / 100.0) : val %></li>
       <% end %>
     <% end %>
     <% if @category %>
