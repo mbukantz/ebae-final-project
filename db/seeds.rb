@@ -72,7 +72,6 @@ x.times do |i|
   y.times do |i|
     listing = Listing.new
     listing.starting_price = Faker::Commerce.price * 100
-    listing.current_price = listing.starting_price + 10
     listing.shipping_price = Faker::Commerce.price
     listing.seller_id = rand(1..x)
     listing.start_time = Faker::Date.between(20.days.ago, Date.today)
@@ -81,28 +80,28 @@ x.times do |i|
     listing.save
   end
 
-  z.times do |i|
-    sale = Sale.new
-    sale.listing_id = i + 1
-    sale.buyer_id = rand(1..x)
-    sale.price = Faker::Commerce.price * 100
-    sale.save
-  end
+  # z.times do |i|
+  #   sale = Sale.new
+  #   sale.listing_id = i + 1
+  #   sale.buyer_id = rand(1..x)
+  #   sale.price = Faker::Commerce.price * 100
+  #   sale.save
+  # end
 
-  z.times do |i|
-    review = Review.new
-    review.sale_id = i + 1
-    review.user_id = i + 1
-    review.rating = rand(1..5)
-    review.comments = Faker::Lorem.sentence
-    review.save
-  end
-
-  20.times do |i|
-    bid = Bid.new
-    bid.listing_id = rand(1..y)
-    bid.amount = bid.listing.current_price + i + 10
-    bid.buyer_id = rand(1..x)
-    bid.created_at = Faker::Date.backward(15)
-    bid.save
-  end
+  # z.times do |i|
+  #   review = Review.new
+  #   review.sale_id = i + 1
+  #   review.user_id = i + 1
+  #   review.rating = rand(1..5)
+  #   review.comments = Faker::Lorem.sentence
+  #   review.save
+  # end
+  # 
+  # 20.times do |i|
+  #   bid = Bid.new
+  #   bid.listing_id = rand(1..y)
+  #   bid.amount = bid.listing.current_price + i + 10
+  #   bid.buyer_id = rand(1..x)
+  #   bid.created_at = Faker::Date.backward(15)
+  #   bid.save
+  # end
