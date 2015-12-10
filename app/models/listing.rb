@@ -99,4 +99,6 @@ class Listing < ActiveRecord::Base
     current_price || starting_price
   end
 
+
+
 end
