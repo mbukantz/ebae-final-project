@@ -7,7 +7,7 @@
  <h3>Category Rankings</h3>
   <%=bar_chart(@analytic.auctions_by_category)%>
 
- <h3>Highest Sale Price To Date:</h3>
+ <h3><%= link_to 'Highest Sale Price To Date:', highest_sale_price_path%></h3>
  Price: <%= number_to_currency(@analytic.highest_sale_price.price / 100.0) %>
  <br>
 
