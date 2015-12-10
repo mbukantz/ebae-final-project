@@ -1,4 +1,7 @@
-<%=render partial:"layouts/header", locals:{title: "Sign Up"}%>
+<% if !current_user %>
+  <%=render partial:"layouts/header", locals:{title: "Sign Up"}%>
+<% end %>
+
 <div class="container">
   <div class="row">
 
