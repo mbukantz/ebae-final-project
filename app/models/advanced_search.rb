@@ -44,7 +44,6 @@ class AdvancedSearch < ActiveRecord::Base
 
   def initial_query(search_terms)
     results = Listing.joins(:item)
-  
     search_hash.each do |key, val| 
       if self.send(key)
         results = results.where(val[0], val[1])
