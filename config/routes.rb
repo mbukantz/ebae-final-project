@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # resources :conversations do
   #   resources :messages, only: [:show, :new, :create]
   # end
-  
+
   resources :categories
   resources :charges, only: [:create]
   resources :messages, only: [:index]
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :bids, only: [:create]
   resources :dashboard, only: [:index]
   resources :watchlists, only: [:create, :destroy]
+  get '/analytics/highest_sale_price', to: 'analytics#highest_sale_price', as: 'highest_sale_price'
   get '/user/:id/feedback', to: 'users#feedback'
   get 'user/:id/givefeedback', to: 'users#givefeedback'
   get '/users/:id/reviews', to: 'reviews#summary', as: 'reviews_summary'

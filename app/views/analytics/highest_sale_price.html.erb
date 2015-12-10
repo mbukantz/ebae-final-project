@@ -1,0 +1,11 @@
+<%=render partial:"layouts/header", locals:{title: "Highest Sale Price"}%>
+
+<div class="container" id="analytics-container">
+
+  <% Sale.order(price: :desc).each do |sale| %>
+    <h3><%=sale.listing.item.name%></h3>
+    <ul>
+      <li><h4><%= number_to_currency(sale.price/ 100.0)%></h4></li>
+    </ul>
+  <% end%>
+</div>
