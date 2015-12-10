@@ -2,15 +2,19 @@
 #
 # Table name: items
 #
-#  id           :integer          not null, primary key
-#  name         :string
-#  description  :string
-#  picture_url  :string
-#  condition_id :integer
-#  listing_id   :integer
-#  category_id  :integer
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
+#  id                   :integer          not null, primary key
+#  name                 :string
+#  description          :string
+#  picture_url          :string
+#  condition_id         :integer
+#  listing_id           :integer
+#  category_id          :integer
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  picture_file_name    :string
+#  picture_content_type :string
+#  picture_file_size    :integer
+#  picture_updated_at   :datetime
 #
 
 require 'spec_helper'

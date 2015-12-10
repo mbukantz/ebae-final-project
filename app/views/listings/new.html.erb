@@ -17,9 +17,15 @@
     <%= item.text_field :description, class:"col-sm-4 form-control" %><br>
   </div>
 
-  <div class="form-group">
+<!--   <div class="form-group">
     <%= item.label :picture_url, class: "col-sm-3 control-label" %>
     <%= item.text_field :picture_url, class: "col-sm-4 form-control" %><br>
+  </div>
+ -->
+  <div class="form-group">
+      <!-- html: { multipart: true } -->
+      <%= item.label :picture, class: "col-sm-3 control-label"%>
+      <%= item.file_field :picture, class: "col-sm-4 form-control"%>
   </div>
 
   <div class="form-group">
