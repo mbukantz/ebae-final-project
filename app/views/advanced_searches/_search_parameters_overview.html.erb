@@ -5,11 +5,11 @@
     <% attribute = attribute.gsub("min_price", "Minimum Price").gsub("max_price", "Maximum Price").gsub("keywords", "Keywords").gsub("completed", "Completed") %>
 
     <% if val %>
-      <li><h3><%= attribute %>: <%= val.is_a?(Integer) ? number_to_currency(val / 100.0) : val %></h3></li>
+      <li><h4><%= attribute %>: <%= val.is_a?(Integer) ? number_to_currency(val / 100.0) : val %></h4></li>
     <% end %>
   <% end %>
 
   <% if category %>
-    <li><h3>Category: <%= category.name %></h3></li>
+    <li><h4>Category: <%= category.name %></h4></li>
   <% end %>
 </ul>
