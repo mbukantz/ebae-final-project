@@ -1,0 +1,25 @@
+<ul class="list-unstyled">
+  <% results.each do |listing| %>
+    <li class="col-md-3 col-sm-3 clearfix list-unstyled">
+      <a href="/listings/<%=listing.id%>">
+          <div class="thumbnail">
+            <img src="<%=listing.item.picture_to_use%>" >
+          </div>
+        </a>
+
+      <div class="caption-details">
+          <h3><a href="/listings/<%=listing.id%>"><%=listing.item.name%></a></h3>
+          <span class="price">Starting Price: <%= number_to_currency(listing.starting_price/ 100.0) %>
+            <br>
+            <% if listing.current_price %>
+              Current Price: <%= number_to_currency(listing.current_price / 100.0) %>
+            <% else %> 
+              Be the first to bid!</span>
+            <% end %>
+      </div>
+    </li>
+</ul>
+  <% end %>
+<% if results.empty? %>
+  <h2>Sorry, your search returned no results.</h2>
+<% end %>
