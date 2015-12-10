@@ -11,7 +11,12 @@ class AnalyticsController < ApplicationController
  end
 
  def highest_sale_price
+ end
 
+ def highest_sale_price_month
+ end
+
+ def lowest_sale_price_month
  end
 
 end

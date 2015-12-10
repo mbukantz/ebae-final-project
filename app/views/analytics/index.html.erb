@@ -25,7 +25,7 @@
  Price: <%= number_to_currency(@analytic.average_sale_this_month/ 100.0) %>
  <br>
 
- <h3>Lowest Sale Price This Month:</h3>
+  <h3><%= link_to 'Lowest Sale Price This Month:', lowest_sale_price_month_path%></h3>
  Price: <%= number_to_currency(@analytic.lowest_sale_this_month.price / 100.0) %>
  <br>
 
