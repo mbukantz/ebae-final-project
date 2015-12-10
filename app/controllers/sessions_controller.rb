@@ -11,7 +11,7 @@ helper_method :current_user
    if user && user.authenticate(params[:password])
      log_in user
      remember user
-     redirect_to welcome_path, :notice => "Hello, #{user.name}!"
+     redirect_to root_path, :notice => "Hello, #{user.name}!"
    else
      flash.now.alert = "Invalid email or password"
      render 'new'
