@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
       ExampleMailer.sample_email(@user).deliver_now
 
-      redirect_to welcome_path
+      redirect_to root_path
     else
       flash.now[:error] = "COULD NOT DAVE USER"
       render :new
