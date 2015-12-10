@@ -1,6 +1,7 @@
 <%=render partial:"layouts/header", locals:{title: "Advanced Analytics"}%>
 
 <div class="container" id="analytics-container">
+  <%=link_to 'Back to Analytics', analytics_path, :class => "btn btn-black category-btn"%>
 
   <h2>Highest Sale Price to Date</h2><br>
 
@@ -8,7 +9,7 @@
     <h4><%="#{index + 1}. "%> <%=link_to sale.listing.item.name, listing_path(sale.listing)%></h4>
     <p>
     <ul>
-      <li><h5><%= number_to_currency(sale.price/ 100.0)%></h5></li>
+      <li><h5>Sale Price: <%=number_to_currency(sale.price/ 100.0)%></h5></li>
     </ul>
     </p>
   <% end%>

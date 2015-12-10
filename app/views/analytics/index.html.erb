@@ -32,7 +32,7 @@
 
  Listing: <%= link_to @analytic.lowest_sale_this_month.listing.item.name, listing_path(@analytic.lowest_sale_this_month.listing) %>
 
- <h3>Most Popular Item (by number of bids)</h3>
+ <h3><%=link_to 'Most Popular Item (by number of bids)', popular_by_bids_path %></h3>
  <%if @analytic.most_popular_by_bids != nil%>
  <table class = "table table-striped table-bordered">
   <th>Listing</th>
@@ -50,7 +50,7 @@
   <%end%>
 </table>
 
-<h3>Most Watched Item</h3>
+<h3><%=link_to 'Most Watched Item', most_watched_path%></h3>
 <%if @analytic.most_watched_listing != nil%>
   <table class = "table table-striped table-bordered">
    <th>Listing</th>
