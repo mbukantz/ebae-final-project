@@ -9,6 +9,7 @@
 #  max_price   :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  completed   :boolean
 #
 
 FactoryGirl.define do
