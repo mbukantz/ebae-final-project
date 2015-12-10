@@ -630,7 +630,7 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
 }(jQuery);
 
 /* ========================================================================
- * Bootstrap: dropdown.js v3.1.1
+ * Bootstrap: d.js v3.1.1
  * http://getbootstrap.com/javascript/#dropdowns
  * ========================================================================
  * Copyright 2011-2014 Twitter, Inc.
@@ -764,6 +764,13 @@ if (typeof jQuery === 'undefined') { throw new Error('Bootstrap\'s JavaScript re
     $.fn.dropdown = old
     return this
   }
+
+  $('.dropdown-toggle').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    return false;
+});
 
 
   // APPLY TO STANDARD DROPDOWN ELEMENTS
