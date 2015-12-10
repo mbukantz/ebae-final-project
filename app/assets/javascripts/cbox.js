@@ -1,3 +1,7 @@
 $(document).ready(function($){
-  $("a.colorbox").colorbox();
+  $("a.colorbox").colorbox({
+    transition: "elastic",
+    speed: 350,
+    overlayClose: true
+  });
 });
