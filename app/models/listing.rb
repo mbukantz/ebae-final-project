@@ -95,4 +95,8 @@ class Listing < ActiveRecord::Base
     self.watchlists.length
   end
 
+  def default_price
+    current_price || starting_price
+  end
+
 end

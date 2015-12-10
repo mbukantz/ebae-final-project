@@ -43,7 +43,7 @@
     <tr>
       <td><center><%= link_to listing.item.name, listing_path(listing) %></center></td>
       <td><center><%= num_bids %></center></td>
-      <td><center><%= number_to_currency(listing.current_price / 100)%></center></td>
+      <td><center><%= number_to_currency(listing.default_price / 100)%></center></td>
       <td><center><%= listing.end_time < Time.now ? "Completed" : "Active" %></center></td>
     </tr>
   <% end %>
@@ -60,7 +60,7 @@
      <tr>
        <td><center><%=@analytic.most_watched_listing.item.name%></center></td>
        <td><center><%=@analytic.most_watched_listing.watchlist_total%></center></td>
-       <td><center><%= number_to_currency(@analytic.most_watched_listing.current_price/100)%></center></td>
+       <td><center><%= number_to_currency(@analytic.most_watched_listing.default_price/100)%></center></td>
        <td><center><%= @analytic.most_watched_listing.end_time < Time.now ? "Completed" : "Active" %></center></td>
      </tr>
   </table>
