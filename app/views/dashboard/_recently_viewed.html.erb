@@ -8,7 +8,7 @@
       <div class="recently-viewed-listing">
       <%= viewed_listing.listing.item.name %>
       <br>
-      <a href="/listings/<%= viewed_listing.listing.id %>"><img src="<%= viewed_listing.listing.item.picture_url %>" width="200" height="200" /></a>
+      <a href="/listings/<%= viewed_listing.listing.id %>"><img src="<%= viewed_listing.listing.item.picture_to_use %>" width="200" height="200" /></a>
       </div>
     </div>
   </div>
@@ -19,7 +19,7 @@
     <div class="recently-viewed-listing">
       <%= listing.item.name %>
       <br>
-      <a href="/listings/<%= listing.id %>"><img src="<%= listing.item.picture_url %>" width="200" height="200" /></a>
+      <a href="/listings/<%= listing.id %>"><img src="<%= listing.item.picture_to_use %>" width="200" height="200" /></a>
     </div>
   <% end %>
 <% end %>
