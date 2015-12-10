@@ -14,7 +14,7 @@
 
  Listing: <%= link_to @analytic.highest_sale_price.listing.item.name, listing_path(@analytic.highest_sale_price.listing) %>
 
- <h3>Highest Sale Price This Month:</h3>
+ <h3><%= link_to 'Highest Sale Price This Month:', highest_sale_price_month_path%></h3>
  Price: <%= number_to_currency(@analytic.highest_sale_this_month.price / 100.0) %>
  <br>
 

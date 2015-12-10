@@ -2,9 +2,9 @@
 
 <div class="container" id="analytics-container">
 
-  <h2>Highest Sale Price to Date</h2><br>
+  <h2>Highest Sale Price this Month</h2><br>
 
-  <% Sale.order(price: :desc).each_with_index do |sale,index| %>
+  <% Sale.order(price: :desc).where(created_at: Date.today.beginning_of_month..Date.today.end_of_month).each_with_index do |sale,index| %>
     <h4><%="#{index + 1}. "%> <%=link_to sale.listing.item.name, listing_path(sale.listing)%></h4>
     <p>
     <ul>
