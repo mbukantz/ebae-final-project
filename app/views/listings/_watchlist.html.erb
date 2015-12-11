@@ -1,27 +1,7 @@
 <div class="row padd20-top-btm">
   <div class="col-md-12 t-center">
-
 <% if @listing.active? %>
-  <% if @listing.watchlists %>
-    <div><h4><%= @listing.watchlist_total %> watchers</h4></div>
-  <% end %>
-
-  <% if Watchlist.already_watched?(current_user.id, @listing.id) %>
-    <% watchlist = Watchlist.find_watchlist(current_user.id, @listing.id) %>
-    <h4>You are currently watching this listing. Happy bidding!</h4>
-    <br>
-    <div class="form-group">
-      <%= link_to "Unwatch", watchlist_path(:id => watchlist.first.id, :listing_id => watchlist.first.listing.id), :method => :delete,:class => "btn btn-black" %>
-
-  <% else %>
-    <div class="form-group">
-
-        <!-- <%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post, :class => "btn btn-black watchlist-btn" %> -->
-
-      <button class="btn btn-black watchlist-btn" id="<%= @listing.id %>">Watch this Item</button>
-
-    </div>
-  <% end %>
+    <div  id = "watchlist-counter"><%=render partial: 'listings/watchlist_counter', locals: {listing: @listing, current_user: current_user, watchlist: @watchlist}%></div>
 <% else %>
   <h4><i>This auction has ended.</i></h4>
 <% end %>

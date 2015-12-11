@@ -3,32 +3,32 @@ class WatchlistsController < ApplicationController
 skip_before_action :verify_authenticity_token
 
   def create
-    # if Watchlist.already_watched?(current_user.id, params[:listing_id])
-    #   redirect_to listing_path(params[:listing_id])
-    # else
-      watchlist = Watchlist.create(buyer_id: current_user.id, listing_id: params[:listing_id])
-      WatchlistMailer.added_item(watchlist).deliver_now
-      EndingEmailJob.set(wait_until: watchlist.alert_time).perform_later(watchlist)
+    @watchlist = Watchlist.create(buyer_id: current_user.id, listing_id: params[:listing_id])
 
-    # end
+    @listing = Listing.find(params[:listing_id])
 
-    respond_to do |format|
-      format.html{redirect_to listing_path(params[:listing_id])}
-      format.json {
-          html_string =
-         render_to_string('listings/_watchlist.html.erb', locals: {listing: params[:listing_id]}, layout: false)
-         binding.pry
-        render json: {template: html_string}
-      }
+    if request.xhr?
+      html_string = render_to_string( 'listings/_watchlist_counter.html.erb', locals: {listing: @listing, watchlist: @watchlist}, layout: false)
+      render json: {template: html_string}
     end
+
+    # WatchlistMailer.added_item(watchlist).deliver_now
+    # EndingEmailJob.set(wait_until: watchlist.alert_time).perform_later(watchlist)
+
   end
 
   def destroy
-    watchlist = Watchlist.find_watchlist(current_user.id, params[:listing_id])
-    watched_item = watchlist.first
-    WatchlistMailer.removed_item(watched_item).deliver_now
-    Watchlist.destroy(watchlist.first.id)
-    redirect_to dashboard_index_path
+    @watchlist = Watchlist.find(params[:id])
+    @listing = @watchlist.listing
+    # watched_item = @watchlist
+    # WatchlistMailer.removed_item(watched_item).deliver_now
+    Watchlist.destroy(@watchlist.id)
+
+    if request.xhr?
+      html_string = render_to_string( 'listings/_watchlist_counter.html.erb', locals: {listing: @listing, watchlist: @watchlist}, layout: false)
+      render json: {template: html_string}
+    end
+
   end
 
 end

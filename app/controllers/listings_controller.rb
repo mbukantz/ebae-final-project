@@ -24,6 +24,7 @@ class ListingsController < ApplicationController
   end
 
   def show
+    @watchlist = Watchlist.find_by(buyer_id: current_user.id, listing_id: params[:listing_id])
     @listing = Listing.find(params[:id])
     @past_bids = @listing.bids.sort_by(&:created_at)
     @bid = Bid.new
