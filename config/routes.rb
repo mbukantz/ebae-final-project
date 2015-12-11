@@ -33,5 +33,7 @@ Rails.application.routes.draw do
   get '/analytics', to: 'analytics#index', as: 'analytics'
   namespace :api, :defaults => { :format => 'json' } do 
     resources :categories
+    resources :items
+    resources :listings
   end
 end
