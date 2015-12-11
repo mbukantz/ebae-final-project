@@ -15,6 +15,7 @@
 #
 
 class Listing < ActiveRecord::Base
+
   has_one :item
   has_one :sale, :foreign_key => :listing_id
   belongs_to :seller
@@ -23,7 +24,9 @@ class Listing < ActiveRecord::Base
   has_many :recently_viewed_listings
   has_many :conversations
   has_many :messages, through: :conversations
-  accepts_nested_attributes_for :item
+  has_many :pictures, through: :item
+  has_many :images, through: :pictures 
+  accepts_nested_attributes_for :item, :pictures, :images
 
   validates :starting_price, presence: true
   validates :shipping_price, presence: true

@@ -3,6 +3,20 @@
 
 <h4>Description:<%= @listing.item.description %></h4>
 <h4>Condition:<%= @listing.item.condition.description %></h4>
+<h4>Category:<%= @listing.item.category.name %></h4>
 <p>
 
-    <a href="<%=@listing.item.picture.url(:medium) %>" class="colorbox"><img src="<%=@listing.item.picture_to_use %>" ></a>
+    <% if @listing.item.pictures.empty? %>
+
+      <div class="col-md-3 col-sm-3 thumbnail">
+        <img src="<%=@listing.item.picture_url%>" >
+      </div>
+
+    <% else %>
+
+      <% @listing.item.pictures.each do |picture| %>
+        <a href="<%= picture.image.url(:medium) %>" class="colorbox"><img src="<%=picture.image.url(:thumb) %>" ></a>
+      <% end %>
+    <% end %>
+
+
