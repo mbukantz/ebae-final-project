@@ -18,12 +18,9 @@ class AnalyticViewObject
   end
 
   def auctions_by_category
-   category_count = Item.group(:category_id).count
-    # => {1=>1, 4=>4, 5=>3, 7=>2}
+   category_count_by_category_id = Item.group(:category_id).count
    category_count_with_names = Category.all.each_with_object({}) do | category, category_count_hash|
-     if category_count[category.id]
-       category_count_hash[category.name] = category_count[category.id]
-     end
+    category_count_hash[category.name] = category_count_by_category_id[category.id] if category_count_by_category_id[category.id] != nil 
    end
    category_count_with_names.sort_by{|k, v| v}.reverse.to_h
   end
