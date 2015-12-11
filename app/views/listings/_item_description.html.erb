@@ -1,11 +1,17 @@
-<div class="row padd20-top-btm">
-  <div class="col-md-12 t-center">
+<div class="thumbnail">
+  <img src="<%=@listing.item.picture_to_use %>" >
+</div>
 
-<h4>Description:<%= @listing.item.description %></h4>
-<h4>Condition:<%= @listing.item.condition.description %></h4>
-<p>
-  <li class="col-md-3 col-sm-3 list-unstyled">
-    <div class="thumbnail">
-      <img src="<%=@listing.item.picture_to_use %>" >
-    </div>
-  </li>
+<table class = "table table-striped table-bordered">
+  <th>Description</th>
+  <th>Condition</th>
+  <th>Shipping Price</th>
+  <th>Seller</th>
+  <tr>
+    <td><%= @listing.item.description %></td>
+    <td><%= @listing.item.condition.description %></td>
+    <td><%= number_to_currency(@listing.shipping_price / 100.0) %></td>
+    <td> <%= link_to @listing.seller.user.email, user_path(@listing.seller.user) %></td>
+  </tr>
+</table>
+

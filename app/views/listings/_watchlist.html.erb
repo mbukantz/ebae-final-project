@@ -1,9 +1,6 @@
-<div class="row padd20-top-btm">
-  <div class="col-md-12 t-center">
-
 <% if @listing.active? %>
   <% if @listing.watchlists %>
-    <div><h4><%= @listing.watchlist_total %> watchers</h4></div>
+    <h3>Watchlist: <%= @listing.watchlist_total %> watchers</h3>
   <% end %>
 
   <% if Watchlist.already_watched?(current_user.id, @listing.id) %>
@@ -21,5 +18,4 @@
 <% else %>
   <h4><i>This auction has ended.</i></h4>
 <% end %>
-  </div>
-</div>
+

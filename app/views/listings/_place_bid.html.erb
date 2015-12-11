@@ -1,3 +1,4 @@
+<h3>Place Bid:</h3>
 <%= form_for(@bid) do |f| %>
   <div class="form-group">
     <%= f.number_field :amount, class: 'text_field', step: 0.01, min: (@listing.min_bid_amount / 100.0), :value => (number_with_precision(f.object.amount, :precision => 2) || 0)%>

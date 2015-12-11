@@ -1,26 +1,55 @@
 <%=render partial:"layouts/header", locals:{title: @listing.item.name}%>
 
-
-
-<div class="page-content">
+<!-- <div class="page-content"> -->
   <div class="container">
 
     <div>
-      <%= render 'watchlist' %>
-    </div>
-
-    <div>
+      <h3>Item Description:</h3>
       <%= render 'item_description' %>
     </div>
 
-    <div>
-      <%= render 'bid_info' %>
+    <% if @listing.active? %>
+      
+      <div id="bid-and-watchlist">
+
+        <div class="bid-section">
+            <%= render 'place_bid' %>
+        </div> 
+
+        <div class="bid-section">
+          <%= render 'watchlist' %>
+        </div>
+
+        <div class="bid-section">
+          <h3>Questions?</h3>
+          <%= link_to "Ask the seller.", new_listing_message_path(@listing), :class => "btn btn-black" %>
+        </div>
+
+      </div>
+
+    <% else %>
+
+      <%= render 'auction_over' %>
+
+    <% end %>
+
+    <div id="auction-snapshot">
+      <h3>Auction Snapshot:</h3>
+      <%= render 'bid_stats' %>
     </div>
 
-    <div>
-      <%= render 'listing_details' %>
-    </div>
+      <div id="clock">
+        <h3>Clock</h3>
+        <%= render 'clock' %>
+      </div>
+
+      <div>
+        <h3>Bid History:</h3>
+        <%= render 'bid_history' %>
+      </div>
+
+
+
   </div>
-</div>
-<br>
-<%= link_to "Ask seller a question about this item", new_listing_message_path(@listing) %>
+<!-- </div>
+ -->
