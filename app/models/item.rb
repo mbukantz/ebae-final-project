@@ -37,7 +37,7 @@ class Item < ActiveRecord::Base
   end
 
   def picture_to_use
-    self.picture.url == "/pictures/original/missing.png" ? self.picture_url : self.picture.url
+    self.picture.url == "/pictures/original/missing.png" ? self.picture_url : self.picture.url(:medium)
   end
 
 end
