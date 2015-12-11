@@ -5,7 +5,7 @@
   <th>Bid Amount</th>
   <% @past_bids.each do |bid| %>
     <% bid_history_obj = BidHistoryViewObject.new(@listing, bid) %>
-      <tr>
+      <tr id="bid-history-row">
         <td id="timestamp"><%= bid.created_at %></td>
         <td id="buyer"><%= bid.buyer.user.name %></td>
         <% if bid_history_obj.higher_than_cur_price? %>

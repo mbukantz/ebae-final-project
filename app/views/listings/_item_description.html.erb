@@ -1,5 +1,5 @@
 <div>
-  <img src="<%=@listing.item.picture_to_use %>" id="listing-item-pic" />
+  <img src="<%=listing.item.picture_to_use %>" id="listing-item-pic" />
 </div>
 
 <table class = "table table-striped table-bordered">
@@ -8,10 +8,10 @@
   <th>Shipping Price</th>
   <th>Seller</th>
   <tr class="success">
-    <td><%= @listing.item.description %></td>
-    <td><%= @listing.item.condition.description %></td>
-    <td><%= number_to_currency(@listing.shipping_price / 100.0) %></td>
-    <td> <%= link_to @listing.seller.user.email, user_path(@listing.seller.user) %></td>
+    <td><%= listing.item.description %></td>
+    <td><%= listing.item.condition.description %></td>
+    <td><%= number_to_currency(listing.shipping_price / 100.0) %></td>
+    <td> <%= link_to listing.seller.user.email, user_path(listing.seller.user) %></td>
   </tr>
 </table>
 

@@ -3,7 +3,7 @@
   <div class="container">
 
     <div>
-      <%= render 'item_description' %>
+      <%= render partial: 'item_description', locals: {listing: @listing} %>
     </div>
 
     <% if @listing.active? %>
@@ -11,7 +11,7 @@
       <div id="bid-and-watchlist">
 
         <div class="bid-section">
-            <%= render 'place_bid' %>
+          <%= render partial: 'place_bid', locals: {listing: @listing, bid: @bid} %>
         </div> 
 
         <div class="bid-section">
@@ -32,7 +32,7 @@
     <% end %>
 
     <div id="auction-snapshot">
-      <%= render 'auction_snapshot' %>
+      <%= render partial: 'auction_snapshot', locals: {listing: @listing} %>
     </div>
 
       <div id="clock">
@@ -40,7 +40,7 @@
       </div>
 
       <div>
-        <%= render 'bid_history' %>
+        <%= render partial: 'bid_history', locals: {listing: @listing} %>
       </div>
 
   </div>
