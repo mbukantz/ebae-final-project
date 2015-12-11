@@ -34,6 +34,9 @@ gem "paperclip", "~> 4.3"
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'active_model_serializers'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'rails-api'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
