@@ -31,7 +31,5 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy', as: 'log_out'
   root to: "home#index"
   get '/analytics', to: 'analytics#index', as: 'analytics'
-  namespace :api, :defaults => { :format => 'json' } do 
-    resources :categories
-  end
+
 end
