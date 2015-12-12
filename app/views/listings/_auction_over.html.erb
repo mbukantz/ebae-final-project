@@ -1,0 +1,8 @@
+ <% bid_view_obj = BidViewObject.new(@listing, current_user) %>
+  <h4><strong>Auction Over </br>
+  <% if bid_view_obj.can_create_invoice? %>
+    <%= link_to "Create and Send Invoice", new_listing_sale_path(@listing), class: "btn btn-black"%></a>
+  <% elsif bid_view_obj.won_auction? %>
+    <%= link_to "Invoice Sent at #{@listing.sale.updated_at}", new_listing_sale_path(@listing), class: "btn btn-black"%></a></strong></h4><br>
+    </p>
+  <% end %>
