@@ -8,29 +8,34 @@
   <%=bar_chart(@analytic.auctions_by_category)%>
 
  <h3>Highest Sale Price To Date:</h3>
- Price: <%= number_to_currency(@analytic.highest_sale_price.price / 100.0) %>
+ Price:
+<%if Sale.all.count > 0%>
+   <%= number_to_currency(@analytic.highest_sale_price.price / 100.0) %>
  <br>
-
 
  Listing: <%= link_to @analytic.highest_sale_price.listing.item.name, listing_path(@analytic.highest_sale_price.listing) %>
+ <%end%>
 
  <h3>Highest Sale Price This Month:</h3>
- Price: <%= number_to_currency(@analytic.highest_sale_this_month.price / 100.0) %>
+ Price:
+ <%if Sale.all.count > 0  %>
+   <%= number_to_currency(@analytic.highest_sale_this_month.price / 100.0) %>
  <br>
 
-
  Listing: <%= link_to @analytic.highest_sale_this_month.listing.item.name, listing_path(@analytic.highest_sale_this_month.listing) %>
+ <%end%>
 
  <h3>Average Sale Price This Month:</h3>
  Price: <%= number_to_currency(@analytic.average_sale_this_month/ 100.0) %>
  <br>
 
  <h3>Lowest Sale Price This Month:</h3>
- Price: <%= number_to_currency(@analytic.lowest_sale_this_month.price / 100.0) %>
- <br>
+ <%if Sale.all.count > 0  %>
+   Price: <%= number_to_currency(@analytic.lowest_sale_this_month.price / 100.0) %>
+   <br>
 
-
- Listing: <%= link_to @analytic.lowest_sale_this_month.listing.item.name, listing_path(@analytic.lowest_sale_this_month.listing) %>
+   Listing: <%= link_to @analytic.lowest_sale_this_month.listing.item.name, listing_path(@analytic.lowest_sale_this_month.listing) %>
+ <%end%>
 
  <h3>Most Popular Item (by number of bids)</h3>
  <%if @analytic.most_popular_by_bids != nil%>
