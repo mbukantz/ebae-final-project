@@ -1,18 +1,18 @@
-<% if @listing.active? %>
-  <% if @listing.watchlists %>
-    <h3>Watchlist: <%= @listing.watchlist_total %> watchers</h3>
+<% if listing.active? %>
+  <% if listing.watchlists %>
+    <h3>Watchlist: <%= listing.watchlist_total %> watchers</h3>
   <% end %>
 
-  <% if Watchlist.already_watched?(current_user.id, @listing.id) %>
-    <% watchlist = Watchlist.find_watchlist(current_user.id, @listing.id) %>
+  <% if Watchlist.already_watched?(current_user.id, listing.id) %>
+    <% watchlist = Watchlist.find_by(buyer_id: current_user.id, listing_id: listing.id) %>
+    <div class="form-group watch-buttons" id="<%= watchlist.id %>" data-no-turbolink>
+      <button class="btn btn-black" id="unwatch-button">Unwatch</button>
+    </div>
     <h4>You are currently watching this listing. Happy bidding!</h4>
-    <br>
-    <div class="form-group">
-      <%= link_to "Unwatch", watchlist_path(:id => watchlist.first.id, :listing_id => watchlist.first.listing.id), :method => :delete,:class => "btn btn-black" %>
 
   <% else %>
-        <div class="form-group">
-        <%= link_to "Watch this item", watchlists_path(:listing_id => @listing.id), :method => :post, :class => "btn btn-black" %>
+        <div class="form-group watch-buttons" id="<%= listing.id %>" data-no-turbolink>
+          <button class="btn btn-black" id="watch-button">Watch this Item</button>
       </div>
   <% end %>
 <% else %>
