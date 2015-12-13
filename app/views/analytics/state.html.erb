@@ -1,0 +1,22 @@
+<%=render partial:"layouts/header", locals:{title: "Advanced Analytics"}%>
+
+<div class="container" id="analytics-container">
+  <%=link_to 'Back to Analytics', analytics_path, :class => "btn btn-black category-btn"%>
+
+  <h2>Users by State</h2><br>
+    <!-- <%Location.group(:state).count.each do |k,v|%>
+      <%Location.where(state: k).each do |state|%>
+      <h3><%=k%></h3>
+        <li><%=state.user.name%></li>
+      <%end%>
+    <%end%> -->
+  <%locations = Location.order('state ASC')%>
+  <%@grouped_locations = locations.group_by &:state%>
+
+  <% @grouped_locations.each do |state, locations| %>
+    <h3><%=state %></h3>
+    <% locations.each do |a| %>
+        <li><%=link_to a.user.name, public_path(a) %></li>
+    <% end %>
+  <% end %>
+</div>

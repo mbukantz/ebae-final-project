@@ -24,9 +24,11 @@ Rails.application.routes.draw do
   resources :dashboard, only: [:index]
   resources :watchlists, only: [:create, :destroy]
   get '/analytics/highest_sale_price', to: 'analytics#highest_sale_price', as: 'highest_sale_price'
+  get '/analytics/state', to: 'analytics#state', as: 'state'
   get '/analytics/highest_sale_price_month', to: 'analytics#highest_sale_price_month', as: 'highest_sale_price_month'
   get '/analytics/lowest_sale_price_month', to: 'analytics#lowest_sale_price_month', as: 'lowest_sale_price_month'
   get '/analytics/popular_by_bids', to: 'analytics#popular_by_bids', as: 'popular_by_bids'
+  get '/users/public/:id', to: 'users#public', as: 'public'
   get '/analytics/most_watched', to: 'analytics#most_watched', as: 'most_watched'
   get '/user/:id/feedback', to: 'users#feedback'
   get 'user/:id/givefeedback', to: 'users#givefeedback'

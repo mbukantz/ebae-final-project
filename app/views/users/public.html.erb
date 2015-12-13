@@ -3,11 +3,9 @@
 <div class="page-content">
   <div class="container">
 
+  <h1><%= @user.name %></h1>
 
-  <h1>Hello, <%= @user.first_name %>!</h1>
-  <%= link_to "Edit Profile",  edit_user_path, :class => "btn btn-black" %>
-
-  <h2>Account Info:</h2>
+  <h2>Info:</h2>
   <h3>Addresses:</h3>
   <% @user.locations.each do |location| %>
     <%= location.label.capitalize %>:
@@ -25,9 +23,9 @@
   <% end %>
 
   <h3>Email:</h3>
-  <%= @user.email %>
+  <%= @user.email %><br>
 
+  <%=link_to 'Back to Users by State', state_path, :class => "btn btn-black category-btn"%>
 
-
-</div>
+  </div>
 </div>
