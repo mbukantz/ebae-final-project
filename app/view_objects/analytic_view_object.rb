@@ -20,18 +20,20 @@ class AnalyticViewObject
   def auctions_by_category
    category_count_by_category_id = Item.group(:category_id).count
    category_count_with_names = Category.all.each_with_object({}) do | category, category_count_hash|
-    category_count_hash[category.name] = category_count_by_category_id[category.id] if category_count_by_category_id[category.id] != nil 
+    category_count_hash[category.name] = category_count_by_category_id[category.id] if category_count_by_category_id[category.id] != nil
    end
    category_count_with_names.sort_by{|k, v| v}.reverse.to_h
   end
 
   def most_popular_by_bids
-    counts = Bid.group(:listing_id).count
-    listing_bids_array = counts.group_by {|listing_id, num_bids| num_bids}.max.last
-    #[[35, 2],[14, 2]]
-    listing_bids_array.each_with_object({}) do | listing_array, bid_count_hash|
-        listing = Listing.find(listing_array[0])
-        bid_count_hash[listing] = listing_array[1]
+    if Bid.all.count > 0
+      counts = Bid.group(:listing_id).count
+      listing_bids_array = counts.group_by {|listing_id, num_bids| num_bids}.max.last
+      #[[35, 2],[14, 2]]
+      listing_bids_array.each_with_object({}) do | listing_array, bid_count_hash|
+          listing = Listing.find(listing_array[0])
+          bid_count_hash[listing] = listing_array[1]
+      end
     end
     # {<Listing#35> => 2, <Listing#14 => 2}
   end
