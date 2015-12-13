@@ -1,28 +1,24 @@
-== README
+== Ebae
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## What is it? 
+-------------
 
-Things you may want to cover:
+Ebae was built by students at The Flatiron School in December 2015 in an effort to explore the components of a complex, multifacted web application. Ebae provides users with a platform for creating virtual auctions and bidding on items that others are selling. 
 
-* Ruby version
+## Dependencies & Gems
+-------------
+* chartkick - for analytics
+* faker - to seed the database
+* Stripe API - to process payments
+* paperclip - to allow users to upload pictures to a listing
+* figaro - to protect API keys
+* factory_girl_rails - for testing with factories
+* delayed_job_active_record - for sending email notifications on signup, winning, etc.
+* [Bootstrap theme - Dodolan Manuk](https://wrapbootstrap.com/theme/dodolan-manuk-catalog-theme-WB02008M9)
 
-* System dependencies
+## Collaborators
+-------------
+* [Korey Aaronson](https://github.com/sarkk)
+* [Roslynn Graves](https://github.com/r0mg)
+* [Michael Bukantz](https://github.com/mbukantz)
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
