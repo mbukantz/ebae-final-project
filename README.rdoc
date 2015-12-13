@@ -1,12 +1,11 @@
 == Ebae
 
-## What is it? 
--------------
+=== What is it? 
 
 Ebae was built by students at The Flatiron School in December 2015 in an effort to explore the components of a complex, multifacted web application. Ebae provides users with a platform for creating virtual auctions and bidding on items that others are selling. 
 
-## Dependencies & Gems
--------------
+=== Dependencies & Gems
+
 * chartkick - for analytics
 * faker - to seed the database
 * Stripe API - to process payments
@@ -14,11 +13,11 @@ Ebae was built by students at The Flatiron School in December 2015 in an effort 
 * figaro - to protect API keys
 * factory_girl_rails - for testing with factories
 * delayed_job_active_record - for sending email notifications on signup, winning, etc.
-* [Bootstrap theme - Dodolan Manuk](https://wrapbootstrap.com/theme/dodolan-manuk-catalog-theme-WB02008M9)
+* Bootstrap theme - Dodolan Manuk
 
-## Collaborators
--------------
-* [Korey Aaronson](https://github.com/sarkk)
-* [Roslynn Graves](https://github.com/r0mg)
-* [Michael Bukantz](https://github.com/mbukantz)
+=== Collaborators
+
+* Korey Aaronson - https://github.com/sarkk
+* Roslynn Graves - https://github.com/r0mg
+* Michael Bukantz - https://github.com/mbukantz
 
