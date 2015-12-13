@@ -1,8 +1,0 @@
-<% bid_history_obj = BidHistoryViewObject.new(listing, bid) %>
-<td id="timestamp"><%= bid.created_at %></td>
-<td id="buyer"><%= bid.buyer.user.name %></td>
-<% if bid_history_obj.higher_than_cur_price? %>
-  <td class="bid-amount"><%= number_to_currency(bid_history_obj.amount_to_display(listing.current_price))%></td>
-<% else %>
-  <td class="bid-amount"><%= number_to_currency(bid_history_obj.amount_to_display(bid.amount))%></td>
-<% end %>
