@@ -42,5 +42,10 @@ Rails.application.routes.draw do
     resources :categories
     resources :advanced_searches
     resources :bids
+    resources :reviews
+    resources :sales
+    resources :sellers
+    resources :users
+    resources :watchlists
   end
 end
