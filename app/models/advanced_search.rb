@@ -18,10 +18,10 @@ class AdvancedSearch < ActiveRecord::Base
 
     results = initial_query(self)
 
-    if !self.completed 
+    if !self.completed
       results = active_listings_only(results)
     end
-   
+
     if self.min_price
       min_price_results = refine_by_min_price(results)
     end
@@ -45,7 +45,7 @@ class AdvancedSearch < ActiveRecord::Base
 
   def initial_query(search_terms)
     results = Listing.joins(:item)
-    search_hash.each do |key, val| 
+    search_hash.each do |key, val|
       if self.send(key)
         results = results.where(val[0], val[1])
       end
@@ -57,7 +57,7 @@ class AdvancedSearch < ActiveRecord::Base
     {
       :keywords => ["lower(items.name) like ?", "%#{self.keywords}%".downcase],
       :category_id => ["items.category_id = ?", self.category_id],
-      :completed => ["listings.end_time < ?", Time.now] 
+      :completed => ["listings.end_time < ?", Time.now]
     }
   end
 
@@ -66,7 +66,7 @@ class AdvancedSearch < ActiveRecord::Base
   end
 
   def refine_by_min_price(results)
-    min_base = results.where("starting_price >= ? AND current_price is NULL", self.min_price) 
+    min_base = results.where("starting_price >= ? AND current_price is NULL", self.min_price)
     min_base2 = results.where("current_price >= ? AND current_price is not NULL", self.min_price)
     min_base | min_base2
   end

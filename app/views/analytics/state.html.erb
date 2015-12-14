@@ -17,6 +17,10 @@
     <h3><%=state %></h3>
     <% locations.each do |a| %>
         <li><%=link_to a.user.name, public_path(a) %></li>
+        <p class = "tab">
+          <%=a.street%><br>
+          <%=a.city%>, <%=state%> <%=a.zip%>
+        </p>
     <% end %>
   <% end %>
 </div>
