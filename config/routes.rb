@@ -52,5 +52,11 @@ Rails.application.routes.draw do
     resources :messages
     resources :phones
     resources :recently_viewed_listings
+    resources :reviews
+    resources :sales
+    resources :sellers
+    resources :users
+    resources :watchlists
+
   end
 end
