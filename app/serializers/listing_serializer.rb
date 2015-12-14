@@ -5,5 +5,4 @@ class ListingSerializer < ActiveModel::Serializer
   has_many :bids
   has_many :recently_viewed_listings
   has_many :conversations
-  has_many :messages, through: :conversations
 end
