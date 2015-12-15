@@ -1,5 +1,18 @@
 <div>
-  <img src="<%=listing.item.picture_to_use %>" id="listing-item-pic" />
+  
+  <% if @listing.item.pictures.empty? %>
+
+    <div class="col-md-3 col-sm-3 thumbnail">
+      <img src="<%=@listing.item.picture_url%>" >
+    </div>
+
+  <% else %>
+
+    <% @listing.item.pictures.each do |picture| %>
+      <a href="<%= picture.image.url(:medium) %>" class="colorbox"><img src="<%=picture.image.url(:thumb) %>" ></a>
+    <% end %>
+
+  <% end %>
 </div>
 
 <table class = "table table-striped table-bordered">
@@ -14,4 +27,9 @@
     <td> <%= link_to listing.seller.user.email, user_path(listing.seller.user) %></td>
   </tr>
 </table>
+
+
+
+
+
 

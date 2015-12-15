@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pictures
   resources :advanced_searches
   resources :sessions, only: [:create, :destroy, :new]
   resources :users

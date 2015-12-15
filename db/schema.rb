@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151210150426) do
+ActiveRecord::Schema.define(version: 20151211160802) do
 
   create_table "advanced_searches", force: :cascade do |t|
     t.string   "keywords"
@@ -86,12 +86,8 @@ ActiveRecord::Schema.define(version: 20151210150426) do
     t.integer  "condition_id"
     t.integer  "listing_id"
     t.integer  "category_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "listings", force: :cascade do |t|
@@ -136,6 +132,16 @@ ActiveRecord::Schema.define(version: 20151210150426) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "pictures", force: :cascade do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "item_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "recently_viewed_listings", force: :cascade do |t|

@@ -2,10 +2,16 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    @listing.build_item
+    item = @listing.build_item
+    @pictures = []
+    3.times do 
+      @pictures << item.pictures.build
+    end
+    # item.pictures.build
   end
 
   def create
+
     listing = Listing.new(listing_params.except(:item))
     listing.starting_price = (listing_params[:starting_price].to_f * 100).to_i
     listing.shipping_price = (listing_params[:shipping_price].to_f * 100).to_i
@@ -45,7 +51,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:starting_price, :shipping_price, :start_time, :duration, :item_attributes => [:name, :description, :picture_url, :condition_id, :category_id, :picture])
+    params.require(:listing).permit(:starting_price, :shipping_price, :start_time, :duration, :item_attributes => [:name, :description, :picture_url, :condition_id, :category_id, :pictures_attributes => [:image]])
   end
 
 end
