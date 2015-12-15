@@ -11,13 +11,13 @@ class ListingsController < ApplicationController
   end
 
   def create
-
     listing = Listing.new(listing_params.except(:item))
-    listing.starting_price = (listing_params[:starting_price].to_f * 100).to_i
-    listing.shipping_price = (listing_params[:shipping_price].to_f * 100).to_i
-    listing.end_time = listing.start_time + listing.duration.days
-    listing.seller = current_user.seller
-    if listing.save
+    if listing.duration #need to work on proper validation for all fields
+      listing.starting_price = (listing_params[:starting_price].to_f * 100).to_i
+      listing.shipping_price = (listing_params[:shipping_price].to_f * 100).to_i
+      listing.end_time = listing.start_time + listing.duration.days
+      listing.seller = current_user.seller
+      listing.save
       redirect_to listing_path(listing)
     else
       redirect_to new_listing_path
