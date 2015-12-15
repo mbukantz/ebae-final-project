@@ -39,7 +39,7 @@ class Item < ActiveRecord::Base
     if self.pictures.empty?
       self.picture_url
     else
-      self.pictures.first.image.url
+      self.pictures.first.image.url(:thumb)
     end
   end
 

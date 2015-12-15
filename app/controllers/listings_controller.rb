@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new
     item = @listing.build_item
     @pictures = []
-    3.times do 
+    5.times do 
       @pictures << item.pictures.build
     end
     # item.pictures.build

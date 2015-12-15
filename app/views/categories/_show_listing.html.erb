@@ -1,19 +1,17 @@
 <div class = 'category-listings'>
   <%category.active_items.each do |item|%>
   <div>
-    <ul>
-      <li class="col-md-3 col-sm-3">
+      <div class="col-md-3 col-sm-3">
       <a href="/listings/<%=item.listing.id%>">
         <div class="thumbnail">
           <img src="<%=item.picture_to_use%>" >
         </div>
       </a>
       <div class="caption-details">
-        <h3><a href="/listings/<%=item.listing.id%>"><%=item.name%></a></h3>
-        <span class="price"><%=number_to_currency(item.listing.current_price / 100.0) if item.listing.current_price %></span>
+        <h3><a href="/listings/<%=item.listing.id%>"><%=item.name%></h3>
+        <span class="price"><%=number_to_currency(item.listing.default_price / 100.0) %></span></a>
         </div>
-      </li>
-    </ul>
+      </div>
   </div>
   <%end%>
 </div>
