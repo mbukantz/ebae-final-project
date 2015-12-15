@@ -19,5 +19,9 @@
 # Ignore application configuration
 /config/application.yml
 
+# Ignore images 
+public/system/pictures/images/*
+
 gmail_username: 'ebae.auctions@gmail.com'
 gmail_password: 'ebaetest'
+
