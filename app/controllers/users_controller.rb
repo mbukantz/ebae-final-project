@@ -12,8 +12,8 @@ class UsersController < ApplicationController
       Buyer.create(user_id: @user.id)
       Seller.create(user_id: @user.id)
       session[:user_id] = @user.id
-
-      ExampleMailer.sample_email(@user).deliver_now
+      # 
+      # ExampleMailer.sample_email(@user).deliver_now
 
       redirect_to root_path
     else
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
   end
-  
+
   def public
     @user = User.find(params[:id])
   end
